@@ -1,0 +1,80 @@
+vlan 100
+vlan 200
+vlan 300
+vlan 400
+vlan 1000
+interface range all
+shutdown
+interface {input_port}
+switchport mode access
+no switch access vlan
+no shut
+interface {output_port}
+switchport mode access
+no switch access vlan
+no shut
+interface {dev_port1}
+speed auto
+switchport mode access
+switchport access vlan 100
+no shut
+interface {dev_port2}
+speed auto
+switchport mode access
+switchport access vlan 200
+no shut
+interface {dev_port3}
+speed auto
+switchport mode access
+switchport access vlan 300
+no shut
+interface {dev_port4}
+speed auto
+switchport mode access
+switchport access vlan 400
+no shut
+interface {nbr_port1}
+speed auto
+switchport mode access
+switchport access vlan 100
+no shut
+interface {nbr_port2}
+speed auto
+switchport mode access
+switchport access vlan 200
+no shut
+interface {nbr_port3}
+speed auto
+switchport mode access
+switchport access vlan 300
+no shut
+interface {nbr_port4}
+speed auto
+switchport mode access
+switchport access vlan 400
+no shut
+exit
+#S_UPLINK_PORT_SHUT
+interface {uplink_port}
+shutdown
+switchport mode access
+switchport access vlan 1000
+exit
+#E_UPLINK_PORT_SHUT
+self-loop disable
+interface range all
+set lldp disable
+end
+clear arp
+clear mac address-table dynamic
+configure terminal force
+line console 0
+exec-timeout 10
+end
+wr
+configure terminal force
+#S_CLI_SHOW_SYSTEM
+end
+show system
+configure terminal force
+#E_CLI_SHOW_SYSTEM

@@ -1,0 +1,37 @@
+#S_NBR1_SPEED_SET
+interface {(nbr1)nbr_port1}
+speed auto
+exit
+#E_NBR1_SPEED_SET
+#S_CLI_2PAIR_SHOW
+interface {dev_port1}
+speed 100
+end
+sleep 5
+show cable-diagnostic {dev_port1}
+conf
+#E_CLI_2PAIR_SHOW
+#S_SHELL_2PAIR_SHOW
+rtk_user_diag
+diag get cable-doctor port {sdk_port1}
+exit
+#E_SHELL_2PAIR_SHOW
+#S_CLI_4PAIR_SHOW
+interface {dev_port1}
+speed 1000
+end
+sleep 5
+show cable-diagnostic {dev_port1}
+conf
+#E_CLI_4PAIR_SHOW
+#S_SHELL_4PAIR_SHOW
+rtk_user_diag
+diag get cable-doctor port {sdk_port1}
+exit
+#E_SHELL_4PAIR_SHOW
+#S_HOST_RECOVERY
+interface {dev_port1}
+speed auto
+exit
+sleep 5
+#E_HOST_RECOVERY

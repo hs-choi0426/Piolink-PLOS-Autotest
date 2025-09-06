@@ -1,0 +1,827 @@
+#S_HOST_SPEED_SET
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+speed 10
+TiFRONT(config-if-ge10)# 
+exit
+TiFRONT(config)# 
+#E_HOST_SPEED_SET
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 10
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | FORC |    10 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 10F 
+	AutoNego             	: Disable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Force Mode Ability   	: 10F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | FORC |    10 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 100
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN | DOWN | FORC |    10 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: DOWN
+	AutoNego             	: Disable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Force Mode Ability   	: 10F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN | DOWN | FORC |   100 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 1000
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN | DOWN | FORC |    10 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: DOWN
+	AutoNego             	: Disable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Force Mode Ability   	: 10F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN | DOWN | FORC |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed AUTO
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | FORC |    10 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 10F 
+	AutoNego             	: Disable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Force Mode Ability   	: 10F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | AUTO |    10 | HALF | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_HOST_SPEED_SET
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+speed 100
+TiFRONT(config-if-ge10)# 
+exit
+TiFRONT(config)# 
+#E_HOST_SPEED_SET
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 10
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN | DOWN | FORC |   100 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: DOWN
+	AutoNego             	: Disable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Force Mode Ability   	: 100F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN | DOWN | FORC |    10 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 100
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | FORC |   100 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 100F 
+	AutoNego             	: Disable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Force Mode Ability   	: 100F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | FORC |   100 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 1000
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN | DOWN | FORC |   100 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: DOWN
+	AutoNego             	: Disable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Force Mode Ability   	: 100F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN | DOWN | FORC |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed AUTO
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | FORC |   100 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 100F 
+	AutoNego             	: Disable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Force Mode Ability   	: 100F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | AUTO |   100 | HALF | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_HOST_SPEED_SET
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+speed 1000
+TiFRONT(config-if-ge10)# 
+exit
+TiFRONT(config)# 
+#E_HOST_SPEED_SET
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 10
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN | DOWN | FORC |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: DOWN
+	AutoNego             	: Disable
+	AutoNego Ability     	: 1000F 
+	Force Mode Ability   	: 1000F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN | DOWN | FORC |    10 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 100
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN | DOWN | FORC |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: DOWN
+	AutoNego             	: Disable
+	AutoNego Ability     	: 1000F 
+	Force Mode Ability   	: 1000F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN | DOWN | FORC |   100 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 1000
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | FORC |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 1000F 
+	AutoNego             	: Disable
+	AutoNego Ability     	: 1000F 
+	Force Mode Ability   	: 1000F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | FORC |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed AUTO
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | FORC |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Disable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 1000F 
+	AutoNego             	: Disable
+	AutoNego Ability     	: 1000F 
+	Force Mode Ability   	: 1000F 
+	Flow Control (config)	: Enable
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_HOST_SPEED_SET
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+speed AUTO
+TiFRONT(config-if-ge10)# 
+exit
+TiFRONT(config)# 
+#E_HOST_SPEED_SET
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 10
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | AUTO |    10 | HALF | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Enable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 10H 
+	AutoNego             	: Enable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Enable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | FORC |    10 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 100
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | AUTO |   100 | HALF | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Enable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 100H 
+	AutoNego             	: Enable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Enable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | FORC |   100 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed 1000
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Enable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 1000F 
+	AutoNego             	: Enable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | FORC |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed AUTO
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SPEED_SHOW
+TiFRONT(config)# #S_SHELL_SPEED_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get auto-nego port 9 state
+Port  9 :
+	AutoNego              : Enable
+RTK.0> 
+port dump port 9
+Port  9 :
+	Media                	: Copper
+	Admin                	: Enable
+	Mac Tx               	: Enable
+	Mac Rx               	: Enable
+	Back Pressure        	: Enable
+	Link                 	: UP	Speed : 1000F 
+	AutoNego             	: Enable
+	AutoNego Ability     	: 10H 10F 100H 100F 1000F 
+	Giga-Lite            	: Disable
+	Flow Control (actual)	: Disable
+	Cross Over Mode      	: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SPEED_SHOW
+bash-4.4# #S_NBR1_SPEED_SHOW
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SPEED_SHOW
+TiFRONT(config)# #S_HOST_RECOVERY
+TiFRONT(config)# 
+interface range xg*
+TiFRONT(config-if-range)# 
+speed 10000
+% Interface xg1 does not support speed 10000M
+TiFRONT(config-if-range)# 
+exit
+TiFRONT(config)# 
+#E_HOST_RECOVERY
+TiFRONT(config)# #S_NBR1_RECOVERY
+TiFRONT(config)# 
+interface range xg*
+TiFRONT(config-if-range)# 
+speed 10000
+% Failed set interface xg1 speed 10000M
+TiFRONT(config-if-range)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_RECOVERY
+TiFRONT(config)# 

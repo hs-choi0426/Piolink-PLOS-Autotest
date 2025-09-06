@@ -1,0 +1,183 @@
+admin
+Password: 
+TiFRONT> 
+enable
+Password: 
+TiFRONT# 
+terminal length 0
+TiFRONT# 
+TiFRONT# 
+configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+vlan 100
+TiFRONT(config)# 
+vlan 200
+TiFRONT(config)# 
+vlan 300
+TiFRONT(config)# 
+vlan 400
+TiFRONT(config)# 
+vlan 1000
+TiFRONT(config)# 
+interface range all
+TiFRONT(config-if-range)# 
+shutdown
+% Can't shutdown interface ge1. Interface is not up
+TiFRONT(config-if-range)# 
+interface ge17
+TiFRONT(config-if-ge17)# 
+switchport mode access
+TiFRONT(config-if-ge17)# 
+no switch access vlan
+TiFRONT(config-if-ge17)# 
+no shut
+TiFRONT(config-if-ge17)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+switchport mode access
+TiFRONT(config-if-ge18)# 
+no switch access vlan
+TiFRONT(config-if-ge18)# 
+no shut
+TiFRONT(config-if-ge18)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed auto
+% Failed set interface ge19 speed auto
+TiFRONT(config-if-ge19)# 
+switchport mode access
+TiFRONT(config-if-ge19)# 
+switchport access vlan 100
+TiFRONT(config-if-ge19)# 
+no shut
+TiFRONT(config-if-ge19)# 
+interface ge21
+TiFRONT(config-if-ge21)# 
+speed auto
+% Failed set interface ge21 speed auto
+TiFRONT(config-if-ge21)# 
+switchport mode access
+TiFRONT(config-if-ge21)# 
+switchport access vlan 200
+TiFRONT(config-if-ge21)# 
+no shut
+TiFRONT(config-if-ge21)# 
+interface ge23
+TiFRONT(config-if-ge23)# 
+speed auto
+% Failed set interface ge23 speed auto
+TiFRONT(config-if-ge23)# 
+switchport mode access
+TiFRONT(config-if-ge23)# 
+switchport access vlan 300
+TiFRONT(config-if-ge23)# 
+no shut
+TiFRONT(config-if-ge23)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+speed auto
+% Failed set interface xg1 speed auto
+TiFRONT(config-if-xg1)# 
+switchport mode access
+TiFRONT(config-if-xg1)# 
+switchport access vlan 400
+TiFRONT(config-if-xg1)# 
+no shut
+TiFRONT(config-if-xg1)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed auto
+% Failed set interface ge19 speed auto
+TiFRONT(config-if-ge19)# 
+switchport mode access
+TiFRONT(config-if-ge19)# 
+switchport access vlan 100
+TiFRONT(config-if-ge19)# 
+no shut
+TiFRONT(config-if-ge19)# 
+interface ge21
+TiFRONT(config-if-ge21)# 
+speed auto
+% Failed set interface ge21 speed auto
+TiFRONT(config-if-ge21)# 
+switchport mode access
+TiFRONT(config-if-ge21)# 
+switchport access vlan 200
+TiFRONT(config-if-ge21)# 
+no shut
+TiFRONT(config-if-ge21)# 
+interface ge23
+TiFRONT(config-if-ge23)# 
+speed auto
+% Failed set interface ge23 speed auto
+TiFRONT(config-if-ge23)# 
+switchport mode access
+TiFRONT(config-if-ge23)# 
+switchport access vlan 300
+TiFRONT(config-if-ge23)# 
+no shut
+TiFRONT(config-if-ge23)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+speed auto
+% Failed set interface xg1 speed auto
+TiFRONT(config-if-xg1)# 
+switchport mode access
+TiFRONT(config-if-xg1)# 
+switchport access vlan 400
+TiFRONT(config-if-xg1)# 
+no shut
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+#S_UPLINK_PORT_SHUT
+TiFRONT(config)# 
+interface ge1
+TiFRONT(config-if-ge1)# 
+shutdown
+% Can't shutdown interface ge1. Interface is not up
+TiFRONT(config-if-ge1)# 
+switchport mode access
+TiFRONT(config-if-ge1)# 
+switchport access vlan 1000
+TiFRONT(config-if-ge1)# 
+exit
+TiFRONT(config)# 
+#E_UPLINK_PORT_SHUT
+TiFRONT(config)# 
+self-loop disable
+Already is disabled
+TiFRONT(config)# 
+interface range all
+TiFRONT(config-if-range)# 
+set lldp disable
+TiFRONT(config-if-range)# 
+end
+TiFRONT# 
+clear arp
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+line console 0
+TiFRONT(config-line)# 
+exec-timeout 10
+TiFRONT(config-line)# 
+end
+TiFRONT# 
+wr
+Building configuration...
+[OK].
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+exit
+TiFRONT# 

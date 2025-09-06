@@ -1,0 +1,91 @@
+#S_CLI_AUTO_SHOW
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+mdi-mdix auto
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+show mdi-mdix | include ge5 
+     ge5 |  AUTO |
+TiFRONT(config)# 
+show portstatus | include ge5
+      ge5 |  EN | DOWN | AUTO |     0 | HALF | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_AUTO_SHOW
+TiFRONT(config)# #S_SHELL_AUTO_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get cross-over port 32 mode
+Port 32 :
+	Cross Over Mode: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_AUTO_SHOW
+bash-4.4# #S_CLI_MDI_SHOW
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+mdi-mdix mdi
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+show mdi-mdix | include ge5 
+     ge5 |   MDI |
+TiFRONT(config)# 
+show portstatus | include ge5
+      ge5 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_MDI_SHOW
+TiFRONT(config)# #S_SHELL_MDI_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get cross-over port 32 mode
+Port 32 :
+	Cross Over Mode: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_MDI_SHOW
+bash-4.4# #S_CLI_MDIX_SHOW
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+mdi-mdix mdix
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+show mdi-mdix | include ge5 
+     ge5 |  MDIX |
+TiFRONT(config)# 
+show portstatus | include ge5
+      ge5 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_MDIX_SHOW
+TiFRONT(config)# #S_SHELL_MDIX_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get cross-over port 32 mode
+Port 32 :
+	Cross Over Mode: Auto MDI/MDIX
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_MDIX_SHOW
+bash-4.4# #S_CLI_RECOVERY
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+mdi-mdix auto
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+#E_CLI_RECOVERY
+TiFRONT(config)# 

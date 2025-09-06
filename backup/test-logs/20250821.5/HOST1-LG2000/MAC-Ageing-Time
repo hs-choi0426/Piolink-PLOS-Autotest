@@ -1,0 +1,188 @@
+#S_NBR1_MAC_AGEING_TIME_SET
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+shutdown
+TiFRONT(config-if-ge18)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_MAC_AGEING_TIME_SET
+TiFRONT(config)# #S_CLI_MAC_AGEING_TIME_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      8 |    1 |    ge2 | 0010.9400.0001 | FORWARD |  
+      9 |    1 |    ge2 | 0010.9400.0002 | FORWARD |  
+     10 |    1 |    ge2 | 0010.9400.0003 | FORWARD |  
+     11 |    1 |    ge2 | 0010.9400.0004 | FORWARD |  
+     12 |    1 |    ge2 | 0010.9400.0005 | FORWARD |  
+     13 |    1 |    ge2 | 0010.9400.0006 | FORWARD |  
+     14 |    1 |    ge2 | 0010.9400.0007 | FORWARD |  
+     15 |    1 |    ge2 | 0010.9400.0008 | FORWARD |  
+     16 |    1 |    ge2 | 0010.9400.0009 | FORWARD |  
+     17 |    1 |    ge2 | 0010.9400.000a | FORWARD |  
+     18 |    1 |    ge2 | 0010.9401.0010 | FORWARD |  
+     19 |    1 |    ge2 | 0010.9402.0001 | FORWARD |  
+     20 |    1 |   agg1 | 0010.9403.0001 | FORWARD |  
+ -----------------------------------------------------------
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+shutdown
+TiFRONT(config-if-ge2)# 
+exit
+TiFRONT(config)# 
+#E_CLI_MAC_AGEING_TIME_SHOW
+TiFRONT(config)# #S_CLI_MAC_AGEING_TIME_SET
+TiFRONT(config)# 
+mac ageing-time 10
+TiFRONT(config)# 
+end
+TiFRONT# 
+show mac-table
+  ageing-time 10
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_MAC_AGEING_TIME_SET
+TiFRONT(config)# #S_SHELL_MAC_AGEING_TIME_SET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+l2-table dump
+L2 Lookup Table Information :
+	Aging Time                                     : 10 seconds.
+	Aging Time for suspend entry                    : 10 seconds.
+	Invalidate Link Down                           : Enable
+	Source Port Egress Filter                      : 8,16,24-25,28-29,32-33,36-37,56
+	L2 Table Hash Algorithm                        :  Block0 -- ALGO-0, Block1 -- ALGO-1
+Exception Src Mac Configuration :
+	Broadcast/Multicast Src Mac Action             : Forward
+	Zero Src Mac Action             : Forward
+	Zero SA Learning                               : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_MAC_AGEING_TIME_SET
+bash-4.4# #S_NBR1_MAC_AGEING_TIME_UNSET
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+no shutdown
+TiFRONT(config-if-ge18)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_MAC_AGEING_TIME_UNSET
+TiFRONT(config)# #S_CLI_MAC_AGEING_TIME_UNSET
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+no shutdown
+TiFRONT(config-if-ge2)# 
+exit
+TiFRONT(config)# 
+no mac ageing-time
+TiFRONT(config)# 
+end
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      8 |    1 |    ge2 | 0010.9400.0001 | FORWARD |  
+      9 |    1 |    ge2 | 0010.9400.0002 | FORWARD |  
+     10 |    1 |    ge2 | 0010.9400.0003 | FORWARD |  
+     11 |    1 |    ge2 | 0010.9400.0004 | FORWARD |  
+     12 |    1 |    ge2 | 0010.9400.0005 | FORWARD |  
+     13 |    1 |    ge2 | 0010.9400.0006 | FORWARD |  
+     14 |    1 |    ge2 | 0010.9400.0007 | FORWARD |  
+     15 |    1 |    ge2 | 0010.9400.0008 | FORWARD |  
+     16 |    1 |    ge2 | 0010.9400.0009 | FORWARD |  
+     17 |    1 |    ge2 | 0010.9400.000a | FORWARD |  
+     18 |    1 |    ge3 | 0010.9401.0001 | FORWARD |  
+     19 |    1 |    ge3 | 0010.9401.0002 | FORWARD |  
+     20 |    1 |    ge3 | 0010.9401.0003 | FORWARD |  
+     21 |    1 |    ge3 | 0010.9401.0004 | FORWARD |  
+     22 |    1 |    ge3 | 0010.9401.0005 | FORWARD |  
+     23 |    1 |    ge3 | 0010.9401.0006 | FORWARD |  
+     24 |    1 |    ge3 | 0010.9401.0007 | FORWARD |  
+     25 |    1 |    ge3 | 0010.9401.0008 | FORWARD |  
+     26 |    1 |    ge3 | 0010.9401.0009 | FORWARD |  
+     27 |    1 |    ge3 | 0010.9401.000a | FORWARD |  
+     28 |    1 |    ge2 | 0010.9401.0010 | FORWARD |  
+     29 |    1 |    ge3 | 0010.9401.0020 | FORWARD |  
+     30 |    1 |    ge2 | 0010.9402.0001 | FORWARD |  
+     31 |    1 |    ge3 | 0010.9402.0002 | FORWARD |  
+     32 |    1 |    ge2 | 0010.9403.0001 | FORWARD |  
+     33 |    1 |    ge3 | 0010.9403.0002 | FORWARD |  
+ -----------------------------------------------------------
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_MAC_AGEING_TIME_UNSET
+TiFRONT(config)# #S_SHELL_MAC_AGEING_TIME_UNSET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+l2-table dump
+L2 Lookup Table Information :
+	Aging Time                                     : 300 seconds.
+	Aging Time for suspend entry                    : 300 seconds.
+	Invalidate Link Down                           : Enable
+	Source Port Egress Filter                      : 8,16,24-25,28-29,32-33,36-37,56
+	L2 Table Hash Algorithm                        :  Block0 -- ALGO-0, Block1 -- ALGO-1
+Exception Src Mac Configuration :
+	Broadcast/Multicast Src Mac Action             : Forward
+	Zero Src Mac Action             : Forward
+	Zero SA Learning                               : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_MAC_AGEING_TIME_UNSET
+bash-4.4# 

@@ -1,0 +1,108 @@
+===============================================
+=                 Port-Mapping                =
+===============================================
+[20250821_14:24:53] HOST1: LG2000
+-----------------------------------------------
+Port-Mapping Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action   Status    Result  
+SHELL 24   shutdown EN=Enable Abnormal
+SHELL 25   shutdown EN=Enable Abnormal
+SHELL 28   shutdown EN=Enable Abnormal
+SHELL 29   shutdown EN=Enable Abnormal
+SHELL 32   shutdown EN=Enable Abnormal
+SHELL 33   shutdown EN=Enable Abnormal
+SHELL 36   shutdown EN=Enable Abnormal
+SHELL 37   shutdown EN=Enable Abnormal
+
+===============================================
+=                   Shutdown                  =
+===============================================
+[20250821_14:25:42] HOST1: LG2000
+-----------------------------------------------
+Shutdown Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action   Status    Result  
+SHELL 32   shutdown EN=Enable Abnormal
+SHELL 36   shutdown EN=Enable Abnormal
+
+===============================================
+=                    Duplex                   =
+===============================================
+[20250821_14:25:47] HOST1: LG2000
+-----------------------------------------------
+Duplex Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action      Result  
+SHELL 32   half-duplex Abnormal
+SHELL 32   full-duplex Abnormal
+
+===============================================
+=                     Mdix                    =
+===============================================
+[20250821_14:25:54] HOST1: LG2000
+-----------------------------------------------
+Mdix Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action    Result  
+SHELL 32    mdix-mdi Abnormal
+SHELL 32   mdix-mdix Abnormal
+
+===============================================
+=                 Flow-control                =
+===============================================
+[20250821_14:26:00] HOST1: LG2000
+-----------------------------------------------
+Flow-control Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action      Result  
+SHELL 32   flowctrl-on Abnormal
+
+===============================================
+=                Storm-control                =
+===============================================
+[20250821_14:26:35] HOST1: LG2000
+-----------------------------------------------
+Storm-control Test Complete
+-----------------------------------------------
+Fail:
+
+Mode Port Action    Result  
+CLI  ge2  storm-set Abnormal
+
+===============================================
+=                     EEE                     =
+===============================================
+[20250821_14:26:46] HOST1: LG2000
+-----------------------------------------------
+EEE Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action    Result  
+  CLI ge5    eee-set Abnormal
+SHELL  32    eee-set Abnormal
+  CLI ge5  eee-unset Abnormal
+
+===============================================
+=                 Jumbo-Frame                 =
+===============================================
+[20250821_14:26:50] HOST1: LG2000
+-----------------------------------------------
+Jumbo-Frame Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action         Result  
+SHELL 32   jumboframe-set Abnormal
+

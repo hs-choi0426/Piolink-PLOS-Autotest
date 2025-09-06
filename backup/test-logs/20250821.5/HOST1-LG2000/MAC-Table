@@ -1,0 +1,75 @@
+#S_CLI_MAC_TABLE_SET
+TiFRONT(config)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+shutdown
+TiFRONT(config-if-ge3)# 
+end
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+clear arp
+TiFRONT# 
+show mac-table | include ge2 
+      8 |    1 |    ge2 | 0010.9400.0001 | FORWARD |  
+      9 |    1 |    ge2 | 0010.9400.0002 | FORWARD |  
+     10 |    1 |    ge2 | 0010.9400.0003 | FORWARD |  
+     11 |    1 |    ge2 | 0010.9400.0004 | FORWARD |  
+     12 |    1 |    ge2 | 0010.9400.0005 | FORWARD |  
+     13 |    1 |    ge2 | 0010.9400.0006 | FORWARD |  
+     14 |    1 |    ge2 | 0010.9400.0007 | FORWARD |  
+     15 |    1 |    ge2 | 0010.9400.0008 | FORWARD |  
+     16 |    1 |    ge2 | 0010.9400.0009 | FORWARD |  
+     17 |    1 |    ge2 | 0010.9400.000a | FORWARD |  
+     18 |    1 |    ge2 | 0010.9401.0010 | FORWARD |  
+     19 |    1 |    ge2 | 0010.9402.0001 | FORWARD |  
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_MAC_TABLE_SET
+TiFRONT(config)# #S_SHELL_MAC_TABLE_SET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+l2-table dump mac-ucast all
+ Index | VID | MAC Address       |TRK|DevID|SPA|SBlk|DBlk|Sttc|NH|Sus|Tag|APri|AVID|Tnl|ECID/Idx| Age
+-------+-----+-------------------+---+-----+---+----+----+----+--+---+---+----+----+---+--------+-----
+   344 | 100 | 00:06:C4:56:0B:FE | 0 |    0| 56|   0|   0|   1| 0|  0|  0|   0|   0| 0 |0x000000|   0
+   508 | 300 | 00:06:C4:56:0B:FE | 0 |    0| 56|   0|   0|   1| 0|  0|  0|   0|   0| 0 |0x000000|   0
+  2624 |   1 | 00:10:94:00:00:05 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2628 |   1 | 00:10:94:00:00:04 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2632 |   1 | 00:10:94:00:00:07 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2636 |   1 | 00:10:94:00:00:06 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2640 |   1 | 00:10:94:00:00:01 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2644 |   1 | 00:10:94:01:00:10 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2648 |   1 | 00:10:94:00:00:03 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2652 |   1 | 00:10:94:00:00:02 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2672 |   1 | 00:10:94:00:00:09 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2676 |   1 | 00:10:94:00:00:08 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2684 |   1 | 00:10:94:00:00:0A | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2704 |   1 | 00:10:94:03:00:01 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  2768 |   1 | 00:10:94:02:00:01 | 0 |    0| 24|   0|   0|   0| 0|  0|  0|   0|   0| 0 |0x000000|   7
+  8348 |1000 | 00:06:C4:56:0B:FE | 0 |    0| 56|   0|   0|   1| 0|  0|  0|   0|   0| 0 |0x000000|   0
+  8460 | 200 | 00:06:C4:56:0B:FE | 0 |    0| 56|   0|   0|   1| 0|  0|  0|   0|   0| 0 |0x000000|   0
+  8608 | 400 | 00:06:C4:56:0B:FE | 0 |    0| 56|   0|   0|   1| 0|  0|  0|   0|   0| 0 |0x000000|   0
+ 10600 |   1 | 00:06:C4:56:0B:FE | 0 |    0| 56|   0|   0|   1| 0|  0|  0|   0|   0| 0 |0x000000|   0
+ 11960 |4001 | 00:06:C4:56:0B:FE | 0 |    0| 56|   0|   0|   1| 0|  0|  0|   0|   0| 0 |0x000000|   0
+Total Number Of Entries : 20
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_MAC_TABLE_SET
+bash-4.4# #S_CLI_MAC_TABLE_UNSET
+TiFRONT(config)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+no shutdown
+TiFRONT(config-if-ge3)# 
+exit
+TiFRONT(config)# 
+#E_CLI_MAC_TABLE_UNSET
+TiFRONT(config)# 

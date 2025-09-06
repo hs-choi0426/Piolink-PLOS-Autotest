@@ -1,0 +1,121 @@
+#S_CLI_PRIVATE_VLAN_SET
+private-vlan 100 primary
+private-vlan 200 community
+private-vlan 300 isolated
+private-vlan 100 association add 200,300
+interface {input_port}
+switchport mode private-vlan promiscuous
+switchport private-vlan mapping 100 add 200,300
+interface range {dev_port1},{dev_port2}
+switchport mode private-vlan host
+switchport private-vlan host-association 100 add 200
+interface {dev_port3}
+switchport mode private-vlan host
+switchport private-vlan host-association 100 add 300
+end
+show vlan
+show vlan private-vlan
+conf
+#E_CLI_PRIVATE_VLAN_SET
+#S_SHELL_PRIVATE_VLAN_SET
+rtk_user_diag
+vlan get vlan-table vid 100
+vlan get vlan-table vid 200
+vlan get vlan-table vid 300
+port dump isolation vlan-based
+vlan get pvid inner port {sdk_port1}
+vlan get pvid inner port {sdk_port2}
+vlan get pvid inner port {sdk_port3}
+vlan get pvid inner port {sdk_port4}
+exit
+#E_SHELL_PRIVATE_VLAN_SET
+#S_CLI_PRIMARY_PORT_STATISTIC
+interface {output_port}
+shutdown
+end
+clear port statistic
+sleep 10
+show port-monitoring
+conf
+interface {output_port}
+no shutdown
+exit
+#E_CLI_PRIMARY_PORT_STATISTIC
+#S_NBR1_COMMON1_PORT_SET
+interface {(nbr1)output_port}
+switchport mode access
+switchport access vlan 100
+exit
+#E_NBR1_COMMON1_PORT_SET
+#S_CLI_COMMON1_PORT_STATISTIC
+end
+clear port statistic
+sleep 10
+show port-monitoring
+conf
+#E_CLI_COMMON1_PORT_STATISTIC
+#S_NBR1_COMMON2_PORT_SET
+interface {(nbr1)output_port}
+switchport mode access
+switchport access vlan 200
+exit
+#E_NBR1_COMMON2_PORT_SET
+#S_CLI_COMMON2_PORT_STATISTIC
+end
+clear port statistic
+sleep 10
+show port-monitoring
+conf
+#E_CLI_COMMON2_PORT_STATISTIC
+#S_NBR1_ISOLATED_PORT_SET
+interface {(nbr1)output_port}
+switchport mode access
+switchport access vlan 300
+exit
+#E_NBR1_ISOLATED_PORT_SET
+#S_CLI_ISOLATED_PORT_STATISTIC
+end
+clear port statistic
+sleep 10
+show port-monitoring
+conf
+#E_CLI_ISOLATED_PORT_STATISTIC
+#S_NBR1_PRIVATE_VLAN_UNSET
+interface {(nbr1)output_port}
+no switchport access vlan
+exit
+#E_NBR1_PRIVATE_VLAN_UNSET
+#S_CLI_PRIVATE_VLAN_UNSET
+interface {input_port}
+no switchport mode private-vlan promiscuous
+no switchport access vlan
+interface range {dev_port1},{dev_port2}
+no switchport mode private-vlan host
+interface {dev_port1}
+switchport access vlan 100
+interface {dev_port2}
+switchport access vlan 200
+interface {dev_port3}
+no switchport mode private-vlan host
+switchport access vlan 300
+exit
+no private-vlan 200 community
+no private-vlan 300 isolated
+no private-vlan 100 primary
+end
+show vlan
+show vlan private-vlan
+conf
+#E_CLI_PRIVATE_VLAN_UNSET
+#S_SHELL_PRIVATE_VLAN_UNSET
+rtk_user_diag
+vlan get vlan-table vid 100
+vlan get vlan-table vid 200
+vlan get vlan-table vid 300
+port dump isolation vlan-based
+vlan get pvid inner port {sdk_port1}
+vlan get pvid inner port {sdk_port2}
+vlan get pvid inner port {sdk_port3}
+vlan get pvid inner port {sdk_port4}
+exit
+#E_SHELL_PRIVATE_VLAN_UNSET

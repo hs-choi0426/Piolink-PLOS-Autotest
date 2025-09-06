@@ -1,0 +1,23 @@
+#S_UPDATE_SET
+int range {input_port},{output_port}
+shutdown
+int vlan1000
+ip addr {dev_ip}/24
+int {uplink_port}
+no shut
+exit
+ip route 0.0.0.0/0 {dev_gatewayip}
+sleep 10
+os update {osserverip} {osname}
+#E_UPDATE_SET
+#S_UPDATE_CLEAR
+int range {input_port},{output_port}
+no shutdown
+exit
+no ip route 0.0.0.0/0 {dev_gatewayip}
+int vlan1000
+no ip addr {dev_ip}/24
+int {uplink_port}
+shutdown
+exit
+#E_UPDATE_CLEAR

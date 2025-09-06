@@ -1,0 +1,278 @@
+#S_CLI_ARP_DYNAMIC_SHOW
+TiFRONT(config)# 
+ip forwarding
+TiFRONT(config)# 
+vlan 500
+TiFRONT(config)# 
+interface vlan500
+TiFRONT(config-if-vlan500)# 
+ip address 20.0.0.1/24
+TiFRONT(config-if-vlan500)# 
+interface range ge17,ge18
+TiFRONT(config-if-range)# 
+switchport access vlan 500
+TiFRONT(config-if-range)# 
+end
+TiFRONT# 
+show arp
+Address                 HWaddress              Interface      Type 
+20.0.0.2                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.3                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.4                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.5                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.6                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.7                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.8                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.9                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.10               00:10:94:03:00:02       vlan500       Dynamic  
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_ARP_DYNAMIC_SHOW
+TiFRONT(config)# #S_SHELL_ARP_DYNAMIC_SHOW
+bash-4.4# 
+arp -a
+? (20.0.0.4) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.6) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.8) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.10) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.3) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.7) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.5) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.9) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.2) at 00:10:94:03:00:02 [ether] PERM on vlan500
+bash-4.4# 
+#E_SHELL_ARP_DYNAMIC_SHOW
+bash-4.4# #S_NBR1_ARP_DYNAMIC_CLEAR_SET
+TiFRONT(config)# 
+interface ge41
+TiFRONT(config-if-ge41)# 
+shutdown
+TiFRONT(config-if-ge41)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_ARP_DYNAMIC_CLEAR_SET
+TiFRONT(config)# #S_CLI_ARP_DYNAMIC_CLEAR_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear arp
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show arp
+Address                 HWaddress              Interface      Type 
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_ARP_DYNAMIC_CLEAR_SHOW
+TiFRONT(config)# #S_SHELL_ARP_DYNAMIC_SHOW
+bash-4.4# 
+arp -a
+? (20.0.0.4) at <incomplete>  on vlan500
+? (20.0.0.6) at <incomplete>  on vlan500
+? (20.0.0.8) at <incomplete>  on vlan500
+? (20.0.0.10) at <incomplete>  on vlan500
+? (20.0.0.3) at <incomplete>  on vlan500
+? (20.0.0.7) at <incomplete>  on vlan500
+? (20.0.0.5) at <incomplete>  on vlan500
+? (20.0.0.9) at <incomplete>  on vlan500
+? (20.0.0.2) at <incomplete>  on vlan500
+bash-4.4# 
+#E_SHELL_ARP_DYNAMIC_SHOW
+bash-4.4# #S_NBR1_ARP_STATIC_SET
+TiFRONT(config)# 
+interface ge41
+TiFRONT(config-if-ge41)# 
+no shutdown
+TiFRONT(config-if-ge41)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_ARP_STATIC_SET
+TiFRONT(config)# #S_CLI_ARP_STATIC_SHOW
+TiFRONT(config)# 
+interface ge17
+TiFRONT(config-if-ge17)# 
+no shutdown
+TiFRONT(config-if-ge17)# 
+exit
+TiFRONT(config)# 
+arp 20.0.0.100 0010.9403.000f
+TiFRONT(config)# 
+exit
+TiFRONT# 
+show arp
+Address                 HWaddress              Interface      Type 
+20.0.0.2                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.3                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.9                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.10               00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.100              00:10:94:03:00:0f       vlan500       Static   
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_ARP_STATIC_SHOW
+TiFRONT(config)# #S_SHELL_ARP_STATIC_SHOW
+bash-4.4# 
+arp -a
+? (20.0.0.4) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.6) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.8) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.10) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.3) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.7) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.5) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.9) at 00:10:94:03:00:02 [ether] PERM on vlan500
+? (20.0.0.100) at 00:10:94:03:00:0f [ether] PERM on vlan500
+? (20.0.0.2) at 00:10:94:03:00:02 [ether] PERM on vlan500
+bash-4.4# 
+#E_SHELL_ARP_STATIC_SHOW
+bash-4.4# #S_NBR1_ARP_STATIC_CLEAR_SET
+TiFRONT(config)# 
+interface ge41
+TiFRONT(config-if-ge41)# 
+shutdown
+TiFRONT(config-if-ge41)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_ARP_STATIC_CLEAR_SET
+TiFRONT(config)# #S_CLI_ARP_STATIC_CLEAR_SHOW
+TiFRONT(config)# 
+no arp 20.0.0.100
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear arp
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show arp
+Address                 HWaddress              Interface      Type 
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_ARP_STATIC_CLEAR_SHOW
+TiFRONT(config)# #S_SHELL_ARP_STATIC_SHOW
+bash-4.4# 
+arp -a
+? (20.0.0.4) at <incomplete>  on vlan500
+? (20.0.0.6) at <incomplete>  on vlan500
+? (20.0.0.8) at <incomplete>  on vlan500
+? (20.0.0.10) at <incomplete>  on vlan500
+? (20.0.0.3) at <incomplete>  on vlan500
+? (20.0.0.7) at <incomplete>  on vlan500
+? (20.0.0.5) at <incomplete>  on vlan500
+? (20.0.0.9) at <incomplete>  on vlan500
+? (20.0.0.100) at <incomplete>  on vlan500
+? (20.0.0.2) at <incomplete>  on vlan500
+bash-4.4# 
+#E_SHELL_ARP_STATIC_SHOW
+bash-4.4# #S_NBR1_ARP_TIMEOUT_SET
+TiFRONT(config)# 
+interface ge41
+TiFRONT(config-if-ge41)# 
+no shutdown
+TiFRONT(config-if-ge41)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_ARP_TIMEOUT_SET
+TiFRONT(config)# #S_CLI_ARP_TIMEOUT_SHOW
+TiFRONT(config)# 
+no mac ageing-time 
+TiFRONT(config)# 
+interface vlan500
+TiFRONT(config-if-vlan500)# 
+arp-ageing-timeout 60
+TiFRONT(config-if-vlan500)# 
+end
+TiFRONT# 
+show arp
+Address                 HWaddress              Interface      Type 
+20.0.0.2                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.3                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.4                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.5                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.6                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.7                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.8                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.9                00:10:94:03:00:02       vlan500       Dynamic  
+20.0.0.10               00:10:94:03:00:02       vlan500       Dynamic  
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_ARP_TIMEOUT_SHOW
+TiFRONT(config)# #S_NBR1_ARP_TIMEOUT_SET
+TiFRONT(config)# 
+interface ge41
+TiFRONT(config-if-ge41)# 
+shutdown
+TiFRONT(config-if-ge41)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_ARP_TIMEOUT_SET
+TiFRONT(config)# #S_CLI_ARP_TIMEOUT_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show arp
+Address                 HWaddress              Interface      Type 
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_ARP_TIMEOUT_SHOW
+TiFRONT(config)# #S_CLI_RECOVERY
+TiFRONT(config)# 
+no ip forwarding
+TiFRONT(config)# 
+interface vlan500
+TiFRONT(config-if-vlan500)# 
+no arp-ageing-timeout
+TiFRONT(config-if-vlan500)# 
+interface range ge17,ge18
+TiFRONT(config-if-range)# 
+no shutdown
+TiFRONT(config-if-range)# 
+exit
+TiFRONT(config)# 
+no vlan 500
+TiFRONT(config)# 
+exit
+TiFRONT# 
+clear arp
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_RECOVERY
+TiFRONT(config)# #S_NBR1_RECOVERY
+TiFRONT(config)# 
+interface ge41
+TiFRONT(config-if-ge41)# 
+no shutdown
+TiFRONT(config-if-ge41)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_RECOVERY
+TiFRONT(config)# 

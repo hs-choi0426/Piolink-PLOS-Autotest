@@ -1,0 +1,84 @@
+#S_NBR1_LACP_SET
+vlan {vlan}
+interface range {(nbr1)nbr_port1},{(nbr1)nbr_port2}
+switchport access vlan {vlan}
+speed 100
+duplex full
+speed auto
+channel-group 1 mode active
+lacp timeout short
+interface {(nbr1)output_port}
+switchport access vlan {vlan}
+exit
+#E_NBR1_LACP_SET
+#S_CLI_LACP_SET
+vlan {vlan}
+interface range {dev_port1},{dev_port2}
+switchport access vlan {vlan}
+speed 100
+duplex full
+speed auto
+channel-group 1 mode active
+lacp timeout short
+interface {input_port}
+switchport access vlan {vlan}
+end
+sleep 5
+clear port statistic
+conf
+#E_CLI_LACP_SET
+#S_CLI_LACP_SET_SHOW
+end
+clear port statistic
+clear mac address-table dynamic
+sleep 10
+show portstatus | in agg1 
+show portstatus | in {dev_port1} 
+show portstatus | in {dev_port2} 
+show etherchannel detail
+show lacp statistics
+show port statistics
+show mac-table interface agg1
+show run interface {dev_port1} lacp
+show run interface {dev_port2} lacp
+conf
+#E_CLI_LACP_SET_SHOW
+#S_NBR1_LACP_UNSET
+interface {(nbr1)output_port}
+no switchport access vlan
+interface range {(nbr1)nbr_port1},{(nbr1)nbr_port2}
+no channel-group
+interface {(nbr1)nbr_port1}
+switchport access vlan 100
+interface {(nbr1)nbr_port2}
+switchport access vlan 200
+exit
+no vlan {vlan}
+#E_NBR1_LACP_UNSET
+#S_CLI_LACP_UNSET
+interface {input_port}
+no switchport access vlan
+interface range {dev_port1},{dev_port2}
+no channel-group
+interface {dev_port1}
+switchport access vlan 100
+interface {dev_port2}
+switchport access vlan 200
+exit
+no vlan {vlan}
+#E_CLI_LACP_UNSET
+#S_CLI_LACP_UNSET_SHOW
+no vlan {vlan}
+exit
+sleep 10
+clear port statistic
+clear mac address-table dynamic
+show portstatus | in agg1 
+show portstatus | in {dev_port1} 
+show portstatus | in {dev_port2} 
+show etherchannel detail
+show mac-table interface agg1
+show run interface {dev_port1} lacp
+show run interface {dev_port2} lacp
+conf
+#E_CLI_LACP_UNSET_SHOW

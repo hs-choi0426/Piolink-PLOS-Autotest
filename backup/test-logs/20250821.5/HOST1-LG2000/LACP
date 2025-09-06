@@ -1,0 +1,228 @@
+#S_NBR1_LACP_SET
+TiFRONT(config)# 
+vlan 500
+TiFRONT(config)# 
+interface range ge19,ge21
+TiFRONT(config-if-range)# 
+switchport access vlan 500
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+channel-group 1 mode active
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+switchport access vlan 500
+TiFRONT(config-if-ge18)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_LACP_SET
+TiFRONT(config)# #S_CLI_LACP_SET
+TiFRONT(config)# 
+vlan 500
+TiFRONT(config)# 
+interface range ge5,ge7
+TiFRONT(config-if-range)# 
+switchport access vlan 500
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+channel-group 1 mode active
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+switchport access vlan 500
+TiFRONT(config-if-ge2)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_LACP_SET
+TiFRONT(config)# #S_CLI_LACP_SET_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show portstatus | in agg1 
+     agg1 |  EN |  --  |  --  |   --  |  --  |  -- |   --  |  --   
+TiFRONT# 
+show portstatus | in ge5 
+      ge5 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT# 
+show portstatus | in ge7 
+      ge7 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT# 
+show etherchannel detail
+% Aggregator agg1 1000009
+%  Mac address: 00:06:c4:56:0b:ff
+%  Admin Key: 0001 - Oper Key 0001
+%  Receive link count: 1 - Transmit link count: 0
+%  Individual: 0 - Ready: 1
+%  Partner LAG- 0x8000,00-06-c4-55-00-88,0x0001
+%   Link: ge5 (11) sync: 1
+%   Link: ge7 (13) sync: 1
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |       23499 ----        23503 ----  |         0         0 |    0    0
+     ge5 |        6687( 28%)       16814( 71%) |         0         0 |    0    0
+     ge7 |       16812( 71%)        6689( 28%) |         0         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+show port statistics
+-----------------------------------------------------------------------
+ Inter | RX                         multi| TX                                   
+ -face |bytes    packets  errs drop -cast|bytes  packets  errs  drop 
+-----------------------------------------------------------------------
+   ge1 |       0      0     0     0     0|       0      0     0     0 
+   ge2 | 2497472  25572     0     0  1212| 2497472  25573     0     0 
+   ge3 |       0      0     0     0     0|       0      0     0     0 
+   ge4 |       0      0     0     0     0|       0      0     0     0 
+   ge5 |  544832   7288     0     0  1226| 1957440  18324     0     0 
+   ge6 |       0      0     0     0     0|       0      0     0     0 
+   ge7 | 1957440  18324     0     0    12|  545024   7291     0     0 
+   ge8 |       0      0     0     0     0|       0      0     0     0 
+   xg1 |       0      0     0     0     0|       0      0     0     0 
+   xg2 |       0      0     0     0     0|       0      0     0     0 
+-----------------------------------------------------------------------
+TiFRONT# 
+show mac-table interface agg1
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |  500 |   agg1 | 0006.c455.0088 | FORWARD |  
+      2 |  500 |   agg1 | 0010.9401.0001 | FORWARD |  
+      3 |  500 |   agg1 | 0010.9401.0002 | FORWARD |  
+      4 |  500 |   agg1 | 0010.9401.0003 | FORWARD |  
+      5 |  500 |   agg1 | 0010.9401.0004 | FORWARD |  
+      6 |  500 |   agg1 | 0010.9401.0005 | FORWARD |  
+      7 |  500 |   agg1 | 0010.9401.0006 | FORWARD |  
+      8 |  500 |   agg1 | 0010.9401.0007 | FORWARD |  
+      9 |  500 |   agg1 | 0010.9401.0008 | FORWARD |  
+     10 |  500 |   agg1 | 0010.9401.0009 | FORWARD |  
+     11 |  500 |   agg1 | 0010.9401.000a | FORWARD |  
+     12 |  500 |   agg1 | 0010.9401.0020 | FORWARD |  
+     13 |  500 |   agg1 | 0010.9402.0002 | FORWARD |  
+     14 |  500 |   agg1 | 0010.9403.0002 | FORWARD |  
+ -----------------------------------------------------------
+TiFRONT# 
+show run interface ge5 lacp
+!
+interface ge5
+ lacp timeout short
+!
+TiFRONT# 
+show run interface ge7 lacp
+!
+interface ge7
+ lacp timeout short
+!
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_LACP_SET_SHOW
+TiFRONT(config)# #S_NBR1_LACP_UNSET
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+no switchport access vlan
+TiFRONT(config-if-ge18)# 
+interface range ge19,ge21
+TiFRONT(config-if-range)# 
+no channel-group
+TiFRONT(config-if-range)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+switchport access vlan 100
+TiFRONT(config-if-ge19)# 
+interface ge21
+TiFRONT(config-if-ge21)# 
+switchport access vlan 200
+TiFRONT(config-if-ge21)# 
+exit
+TiFRONT(config)# 
+no vlan 500
+TiFRONT(config)# 
+#E_NBR1_LACP_UNSET
+TiFRONT(config)# #S_CLI_LACP_UNSET
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+no switchport access vlan
+TiFRONT(config-if-ge2)# 
+interface range ge5,ge7
+TiFRONT(config-if-range)# 
+no channel-group
+TiFRONT(config-if-range)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+switchport access vlan 100
+TiFRONT(config-if-ge5)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+switchport access vlan 200
+TiFRONT(config-if-ge7)# 
+exit
+TiFRONT(config)# 
+no vlan 500
+TiFRONT(config)# 
+#E_CLI_LACP_UNSET
+TiFRONT(config)# #S_CLI_LACP_UNSET_SHOW
+TiFRONT(config)# 
+no vlan 500
+TiFRONT(config)# 
+exit
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show portstatus | in agg1 
+TiFRONT# 
+show portstatus | in ge5 
+      ge5 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT# 
+show portstatus | in ge7 
+      ge7 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT# 
+show etherchannel detail
+TiFRONT# 
+show mac-table interface agg1
+% Interface not found
+TiFRONT# 
+show run interface ge5 lacp
+% Can't find interface ge5.
+TiFRONT# 
+show run interface ge7 lacp
+% Can't find interface ge7.
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_LACP_UNSET_SHOW
+TiFRONT(config)# 

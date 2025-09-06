@@ -1,0 +1,210 @@
+admin
+Password: 
+TiFRONT> 
+enable
+Password: 
+TiFRONT# 
+terminal length 0
+TiFRONT# 
+TiFRONT# 
+configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+vlan 100
+TiFRONT(config)# 
+vlan 200
+TiFRONT(config)# 
+vlan 300
+TiFRONT(config)# 
+vlan 400
+TiFRONT(config)# 
+vlan 1000
+TiFRONT(config)# 
+interface range all
+TiFRONT(config-if-range)# 
+shutdown
+% Can't shutdown interface ge1. Interface is not up
+TiFRONT(config-if-range)# 
+interface ge42
+TiFRONT(config-if-ge42)# 
+switchport mode access
+TiFRONT(config-if-ge42)# 
+no switch access vlan
+TiFRONT(config-if-ge42)# 
+no shut
+TiFRONT(config-if-ge42)# 
+interface ge41
+TiFRONT(config-if-ge41)# 
+switchport mode access
+TiFRONT(config-if-ge41)# 
+no switch access vlan
+TiFRONT(config-if-ge41)# 
+no shut
+TiFRONT(config-if-ge41)# 
+interface ge43
+TiFRONT(config-if-ge43)# 
+speed auto
+% Failed set interface ge43 speed auto
+TiFRONT(config-if-ge43)# 
+switchport mode access
+TiFRONT(config-if-ge43)# 
+switchport access vlan 100
+TiFRONT(config-if-ge43)# 
+no shut
+TiFRONT(config-if-ge43)# 
+interface ge45
+TiFRONT(config-if-ge45)# 
+speed auto
+% Failed set interface ge45 speed auto
+TiFRONT(config-if-ge45)# 
+switchport mode access
+TiFRONT(config-if-ge45)# 
+switchport access vlan 200
+TiFRONT(config-if-ge45)# 
+no shut
+TiFRONT(config-if-ge45)# 
+interface ge47
+TiFRONT(config-if-ge47)# 
+speed auto
+% Failed set interface ge47 speed auto
+TiFRONT(config-if-ge47)# 
+switchport mode access
+TiFRONT(config-if-ge47)# 
+switchport access vlan 300
+TiFRONT(config-if-ge47)# 
+no shut
+TiFRONT(config-if-ge47)# 
+interface ge36
+TiFRONT(config-if-ge36)# 
+speed auto
+% Failed set interface ge36 speed auto
+TiFRONT(config-if-ge36)# 
+switchport mode access
+TiFRONT(config-if-ge36)# 
+switchport access vlan 400
+TiFRONT(config-if-ge36)# 
+no shut
+TiFRONT(config-if-ge36)# 
+interface ge44
+TiFRONT(config-if-ge44)# 
+speed auto
+% Failed set interface ge44 speed auto
+TiFRONT(config-if-ge44)# 
+switchport mode access
+TiFRONT(config-if-ge44)# 
+switchport access vlan 100
+TiFRONT(config-if-ge44)# 
+no shut
+TiFRONT(config-if-ge44)# 
+interface ge46
+TiFRONT(config-if-ge46)# 
+speed auto
+% Failed set interface ge46 speed auto
+TiFRONT(config-if-ge46)# 
+switchport mode access
+TiFRONT(config-if-ge46)# 
+switchport access vlan 200
+TiFRONT(config-if-ge46)# 
+no shut
+TiFRONT(config-if-ge46)# 
+interface ge48
+TiFRONT(config-if-ge48)# 
+speed auto
+% Failed set interface ge48 speed auto
+TiFRONT(config-if-ge48)# 
+switchport mode access
+TiFRONT(config-if-ge48)# 
+switchport access vlan 300
+TiFRONT(config-if-ge48)# 
+no shut
+TiFRONT(config-if-ge48)# 
+interface ge36
+TiFRONT(config-if-ge36)# 
+speed auto
+% Failed set interface ge36 speed auto
+TiFRONT(config-if-ge36)# 
+switchport mode access
+TiFRONT(config-if-ge36)# 
+switchport access vlan 400
+TiFRONT(config-if-ge36)# 
+no shut
+TiFRONT(config-if-ge36)# 
+exit
+TiFRONT(config)# 
+#S_UPLINK_PORT_SHUT
+TiFRONT(config)# 
+interface ge1
+TiFRONT(config-if-ge1)# 
+shutdown
+% Can't shutdown interface ge1. Interface is not up
+TiFRONT(config-if-ge1)# 
+switchport mode access
+TiFRONT(config-if-ge1)# 
+switchport access vlan 1000
+TiFRONT(config-if-ge1)# 
+exit
+TiFRONT(config)# 
+#E_UPLINK_PORT_SHUT
+TiFRONT(config)# 
+self-loop disable
+Already is disabled
+TiFRONT(config)# 
+interface range all
+TiFRONT(config-if-range)# 
+set lldp disable
+TiFRONT(config-if-range)# 
+end
+TiFRONT# 
+clear arp
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+line console 0
+TiFRONT(config-line)# 
+exec-timeout 10
+TiFRONT(config-line)# 
+end
+TiFRONT# 
+wr
+Building configuration...
+[OK].
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+exit
+TiFRONT# 
+admin
+Password: 
+TiFRONT> 
+enable
+Password: 
+TiFRONT# 
+terminal length 0
+TiFRONT# 
+TiFRONT# 
+show system
+---------------------------------------------
+system information                           
+---------------------------------------------
+Product Name     : TiFRONT V3.2 CS2254GX
+Serial number    : PT54DA94C0000B
+OS version       : 3.2.17
+Memory size      : 512MB
+Mgmt MAC address : 00:06:c4:13:57:90
+Power type       : Single 
+---------------------------------------------
+TiFRONT# 
+TiFRONT# 
+#update
+TiFRONT# 
+TiFRONT# 
+#update
+TiFRONT# 

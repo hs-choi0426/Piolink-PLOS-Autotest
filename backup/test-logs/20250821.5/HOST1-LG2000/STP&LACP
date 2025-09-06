@@ -1,0 +1,894 @@
+#S_CLI_STP_SET
+TiFRONT(config)# 
+spanning-tree mode rpvst+
+TiFRONT(config)# 
+spanning-tree max-age 6
+TiFRONT(config)# 
+spanning-tree forward-time 4
+TiFRONT(config)# 
+spanning-tree hello-time 1
+TiFRONT(config)# 
+spanning-tree enable
+TiFRONT(config)# 
+spanning-tree priority 4096
+TiFRONT(config)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+shutdown
+TiFRONT(config-if-ge3)# 
+interface range ge5,ge7
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+channel-group 1 mode active
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-agg1)# 
+interface range xg1,xg2
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-range)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_SET
+TiFRONT(config)# #S_NBR1_STP_SET
+TiFRONT(config)# 
+spanning-tree mode rpvst+
+TiFRONT(config)# 
+spanning-tree max-age 6
+TiFRONT(config)# 
+spanning-tree forward-time 4
+TiFRONT(config)# 
+spanning-tree hello-time 1
+TiFRONT(config)# 
+spanning-tree enable
+TiFRONT(config)# 
+spanning-tree priority 8192
+TiFRONT(config)# 
+interface range ge17,ge18
+TiFRONT(config-if-range)# 
+shutdown
+TiFRONT(config-if-range)# 
+interface ge23
+TiFRONT(config-if-ge23)# 
+no switchport access vlan
+TiFRONT(config-if-ge23)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-ge23)# 
+exit
+TiFRONT(config)# 
+interface range ge19,ge21
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+channel-group 1 mode active
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-agg1)# 
+interface range ge20,ge22,ge24
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+static-channel-group 2
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface agg2
+TiFRONT(config-if-agg2)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-agg2)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_STP_SET
+TiFRONT(config)# #S_NBR2_STP_SET
+TiFRONT(config)# 
+spanning-tree mode rpvst+
+TiFRONT(config)# 
+spanning-tree max-age 6
+TiFRONT(config)# 
+spanning-tree forward-time 4
+TiFRONT(config)# 
+spanning-tree hello-time 1
+TiFRONT(config)# 
+spanning-tree enable
+TiFRONT(config)# 
+spanning-tree priority 12288
+TiFRONT(config)# 
+interface ge42
+TiFRONT(config-if-ge42)# 
+shutdown
+TiFRONT(config-if-ge42)# 
+interface ge36
+TiFRONT(config-if-ge36)# 
+no switchport access vlan
+TiFRONT(config-if-ge36)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-ge36)# 
+exit
+TiFRONT(config)# 
+interface range ge44,ge46,ge48
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+static-channel-group 2
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface agg2
+TiFRONT(config-if-agg2)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-agg2)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR2_STP_SET
+TiFRONT(config)# #S_CLI_STP_BRIDGE_CHANGE_ROOT_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  1001-0006c4560bff ( priority : 4096 )
+ root id      :  1001-0006c4560bff
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role Designated - Forwarding
+      ge2: portid 800c - path cost   20000 - role Designated - Forwarding
+      xg1: portid 8013 - path cost   20000 - role Designated - Forwarding
+      xg2: portid 8014 - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2109 |      1647104 |         2109 |      1646592 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            1 |         1024 |         1109 |       624640 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            1 |         1024 |         1109 |       624640 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |         2221 |      1249792 
+     xg2 |         2110 |      1648640 |         2110 |      1649152 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |      115208 ----       151733 ----  |       100         0 |    0    0
+     ge5 |       57144( 49%)       78069( 51%) |        52         0 |    0    0
+     ge7 |       58064( 50%)       73664( 48%) |        48         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_BRIDGE_CHANGE_ROOT_SHOW
+TiFRONT(config)# #S_CLI_STP_BRIDGE_CHANGE_NON_ROOT_SHOW
+TiFRONT(config)# 
+spanning-tree priority 16384
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4560bff ( priority : 16384 )
+ root id      :  2001-0006c4550088
+ root port  agg1		 /  path cost 20000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role   Rootport - Forwarding
+      ge2: portid 800c - path cost   20000 - role Designated - Forwarding
+      xg1: portid 8013 - path cost   20000 - role  Alternate - Discarding
+      xg2: portid 8014 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2110 |      1648640 |         2111 |      1649152 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |          602 |       359936 |         1510 |      1291264 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |         1511 |      1291264 |          601 |       359424 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |         2221 |      1249792 |            0 |            0 
+     xg2 |         2221 |      1249792 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |     5537696 ----      5565065 ----  |     12487         0 |    0    0
+     ge5 |     2375542( 42%)     3328564( 59%) |      5294         0 |    0    0
+     ge7 |     3162154( 57%)     2236501( 40%) |      7193         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_BRIDGE_CHANGE_NON_ROOT_SHOW
+TiFRONT(config)# #S_NBR1_STP_BRIDGE_CHANGE_ROOT_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4550088 ( priority : 8192 )
+ root id      :  2001-0006c4550088
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role Designated - Forwarding
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+     ge23: portid 8021 - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |            0 |            0 |            0 |            0 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |         1512 |      1291776 |          602 |       359936 
+    ge20 |          400 |       256000 |         1401 |      1280512 
+    ge21 |          601 |       359424 |         1512 |      1292288 
+    ge22 |          410 |       215040 |          500 |       256000 
+    ge23 |            0 |            0 |         2221 |      1249792 
+    ge24 |         1301 |      1178624 |          210 |       112640 
+     xg1 |            0 |            0 |            0 |            0 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |     5575235 ----      5547875 ----  |      7872         0 |    0    0
+    ge19 |     3335841( 59%)     2378441( 42%) |      3943         0 |    0    0
+    ge21 |     2239394( 40%)     3169434( 57%) |      3929         0 |    0    0
+ --------+-------------------------------------+---------------------+-----------
+    agg2 |     5435268 ----      5452767 ----  |      2480         0 |    0    0
+    ge20 |     2001601( 36%)     1200593( 22%) |       886         0 |    0    0
+    ge22 |     1714852( 31%)     1863673( 34%) |       933         0 |    0    0
+    ge24 |     1718815( 31%)     2388501( 43%) |       661         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_STP_BRIDGE_CHANGE_ROOT_SHOW
+TiFRONT(config)# #S_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree priority 32
+TiFRONT(config-if-agg1)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# #S_CLI_STP_PORT_PRIORITY_CHANGE_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4560bff ( priority : 16384 )
+ root id      :  2001-0006c4550088
+ root port  agg1		 /  path cost 20000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role   Rootport - Forwarding
+      ge2: portid 800c - path cost   20000 - role Designated - Forwarding
+      xg1: portid 8013 - path cost   20000 - role  Alternate - Discarding
+      xg2: portid 8014 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2110 |      1648128 |         2111 |      1648640 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |          602 |       359936 |         1511 |      1291264 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |         1510 |      1291264 |          601 |       359424 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |         2221 |      1249792 |            0 |            0 
+     xg2 |         2221 |      1249792 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |     5587991 ----      5615337 ----  |     12487         0 |    0    0
+     ge5 |     2389871( 42%)     3364530( 59%) |      5294         0 |    0    0
+     ge7 |     3198120( 57%)     2250807( 40%) |      7193         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_PORT_PRIORITY_CHANGE_SHOW
+TiFRONT(config)# #S_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# 
+interface ge23
+TiFRONT(config-if-ge23)# 
+spanning-tree priority 16
+TiFRONT(config-if-ge23)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# #S_CLI_STP_PORT_PRIORITY_CHANGE_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4560bff ( priority : 16384 )
+ root id      :  2001-0006c4550088
+ root port   xg1		 /  path cost 20000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role  Alternate - Discarding
+      ge2: portid 800c - path cost   20000 - role Designated - Forwarding
+      xg1: portid 8013 - path cost   20000 - role   Rootport - Forwarding
+      xg2: portid 8014 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2111 |      1648640 |         2112 |      1649152 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |         1202 |       718336 |            1 |         1024 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |         1022 |       534016 |            1 |         1024 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |         2111 |      1649152 |         2111 |      1649152 
+     xg2 |         2221 |      1249792 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |     5628724 ----      5618954 ----  |     49261         0 |    0    0
+     ge5 |     2410971( 42%)     3367111( 59%) |     25338         0 |    0    0
+     ge7 |     3217753( 57%)     2251843( 40%) |     23923         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_PORT_PRIORITY_CHANGE_SHOW
+TiFRONT(config)# #S_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+no spanning-tree priority
+TiFRONT(config-if-agg1)# 
+interface ge23
+TiFRONT(config-if-ge23)# 
+no spanning-tree priority
+TiFRONT(config-if-ge23)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# #S_CLI_STP_PATH_COST_CHANGE_SHOW
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree path-cost 15000
+TiFRONT(config-if-agg1)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4560bff ( priority : 16384 )
+ root id      :  2001-0006c4550088
+ root port  agg1		 /  path cost 15000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   15000 - role   Rootport - Forwarding
+      ge2: portid 800c - path cost   20000 - role Designated - Forwarding
+      xg1: portid 8013 - path cost   20000 - role  Alternate - Discarding
+      xg2: portid 8014 - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2111 |      1648640 |         2112 |      1649664 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |          603 |       359936 |         1511 |      1291264 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |         1512 |      1291264 |          601 |       359424 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |         2221 |      1249792 |            0 |            0 
+     xg2 |            0 |            0 |         2221 |      1249792 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |     5968539 ----      5962124 ----  |     55715         0 |    0    0
+     ge5 |     2560242( 42%)     3550564( 59%) |     28866         0 |    0    0
+     ge7 |     3408297( 57%)     2411560( 40%) |     26849         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_PATH_COST_CHANGE_SHOW
+TiFRONT(config)# #S_CLI_STP_PATH_COST_CHANGE_SHOW
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree path-cost 25000
+TiFRONT(config-if-agg1)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4560bff ( priority : 16384 )
+ root id      :  2001-0006c4550088
+ root port   xg1		 /  path cost 20000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   25000 - role  Alternate - Discarding
+      ge2: portid 800c - path cost   20000 - role Designated - Forwarding
+      xg1: portid 8013 - path cost   20000 - role   Rootport - Forwarding
+      xg2: portid 8014 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2110 |      1648640 |         2111 |      1648640 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |         1202 |       718336 |            1 |         1024 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |         1021 |       533504 |            1 |         1024 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |         2111 |      1649152 |         2109 |      1648640 
+     xg2 |         2221 |      1249792 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |     6077430 ----      5966044 ----  |    160311         0 |    0    0
+     ge5 |     2614627( 43%)     3553228( 59%) |     82096         0 |    0    0
+     ge7 |     3462803( 56%)     2412816( 40%) |     78215         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_PATH_COST_CHANGE_SHOW
+TiFRONT(config)# #S_CLI_STP_FAILOVER_SHOW
+TiFRONT(config)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+shutdown
+TiFRONT(config-if-xg1)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4560bff ( priority : 16384 )
+ root id      :  2001-0006c4550088
+ root port  agg1		 /  path cost 25000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   25000 - role   Rootport - Forwarding
+      ge2: portid 800c - path cost   20000 - role Designated - Forwarding
+      xg2: portid 8014 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2110 |      1648640 |         2111 |      1649152 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |          602 |       359936 |         1511 |      1291264 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |         1511 |      1291264 |          601 |       359424 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |            0 |            0 
+     xg2 |         2221 |      1249792 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |     6115078 ----      5999898 ----  |    164054         0 |    0    0
+     ge5 |     2626317( 42%)     3577447( 59%) |     84138         0 |    0    0
+     ge7 |     3488761( 57%)     2422451( 40%) |     79916         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_FAILOVER_SHOW
+TiFRONT(config)# #S_CLI_STP_FAILOVER_SHOW
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+shutdown
+TiFRONT(config-if-agg1)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4560bff ( priority : 16384 )
+ root id      :  2001-0006c4550088
+ root port   xg2		 /  path cost 40000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+      ge2: portid 800c - path cost   20000 - role Designated - Forwarding
+      xg2: portid 8014 - path cost   20000 - role   Rootport - Forwarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2110 |      1647616 |         2111 |      1649152 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |            0 |            0 
+     xg2 |         2111 |      1649152 |         2110 |      1648128 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_FAILOVER_SHOW
+TiFRONT(config)# #S_CLI_STP_RECOVERY
+TiFRONT(config)# 
+interface range ge3,xg1
+TiFRONT(config-if-range)# 
+no shutdown
+TiFRONT(config-if-range)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+no shutdown
+TiFRONT(config-if-agg1)# 
+no spanning-tree priority
+TiFRONT(config-if-agg1)# 
+no spanning-tree path-cost
+TiFRONT(config-if-agg1)# 
+interface range ge5,ge7
+TiFRONT(config-if-range)# 
+no channel-group
+TiFRONT(config-if-range)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+switchport access vlan 100
+TiFRONT(config-if-ge5)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+switchport access vlan 200
+TiFRONT(config-if-ge7)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+switchport access vlan 300
+TiFRONT(config-if-xg1)# 
+no spanning-tree priority
+TiFRONT(config-if-xg1)# 
+no spanning-tree path-cost
+TiFRONT(config-if-xg1)# 
+interface xg2
+TiFRONT(config-if-xg2)# 
+switchport access vlan 400
+TiFRONT(config-if-xg2)# 
+no spanning-tree priority
+TiFRONT(config-if-xg2)# 
+no spanning-tree path-cost
+TiFRONT(config-if-xg2)# 
+exit
+TiFRONT(config)# 
+no spanning-tree forward-time
+TiFRONT(config)# 
+no spanning-tree max-age
+TiFRONT(config)# 
+no spanning-tree hello-time
+TiFRONT(config)# 
+no spanning-tree priority
+TiFRONT(config)# 
+spanning-tree disable
+TiFRONT(config)# 
+#E_CLI_STP_RECOVERY
+TiFRONT(config)# #S_NBR1_STP_RECOVERY
+TiFRONT(config)# 
+interface range ge17,ge18
+TiFRONT(config-if-range)# 
+no shutdown
+TiFRONT(config-if-range)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+no spanning-tree priority
+TiFRONT(config-if-agg1)# 
+no spanning-tree path-cost
+TiFRONT(config-if-agg1)# 
+interface agg2
+TiFRONT(config-if-agg2)# 
+no spanning-tree priority
+TiFRONT(config-if-agg2)# 
+no spanning-tree path-cost
+TiFRONT(config-if-agg2)# 
+interface range ge19,ge21
+TiFRONT(config-if-range)# 
+no channel-group
+TiFRONT(config-if-range)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+switchport access vlan 100
+TiFRONT(config-if-ge19)# 
+interface ge21
+TiFRONT(config-if-ge21)# 
+switchport access vlan 200
+TiFRONT(config-if-ge21)# 
+interface range ge20,ge22,ge24
+TiFRONT(config-if-range)# 
+no static-channel-group
+TiFRONT(config-if-range)# 
+interface ge20
+TiFRONT(config-if-ge20)# 
+switchport access vlan 100
+TiFRONT(config-if-ge20)# 
+interface ge22
+TiFRONT(config-if-ge22)# 
+switchport access vlan 200
+TiFRONT(config-if-ge22)# 
+interface ge24
+TiFRONT(config-if-ge24)# 
+switchport access vlan 300
+TiFRONT(config-if-ge24)# 
+interface ge23
+TiFRONT(config-if-ge23)# 
+switchport access vlan 300
+TiFRONT(config-if-ge23)# 
+no spanning-tree priority
+TiFRONT(config-if-ge23)# 
+no spanning-tree path-cost
+TiFRONT(config-if-ge23)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+switchport access vlan 400
+TiFRONT(config-if-xg1)# 
+no spanning-tree priority
+TiFRONT(config-if-xg1)# 
+no spanning-tree path-cost
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+no spanning-tree forward-time
+TiFRONT(config)# 
+no spanning-tree max-age
+TiFRONT(config)# 
+no spanning-tree hello-time
+TiFRONT(config)# 
+no spanning-tree priority
+TiFRONT(config)# 
+spanning-tree disable
+TiFRONT(config)# 
+#E_NBR1_STP_RECOVERY
+TiFRONT(config)# #S_NBR2_STP_RECOVERY
+TiFRONT(config)# 
+interface ge42
+TiFRONT(config-if-ge42)# 
+no shutdown
+TiFRONT(config-if-ge42)# 
+interface agg2
+TiFRONT(config-if-agg2)# 
+no spanning-tree priority
+TiFRONT(config-if-agg2)# 
+no spanning-tree path-cost
+TiFRONT(config-if-agg2)# 
+interface range ge44,ge46,ge48
+TiFRONT(config-if-range)# 
+no static-channel-group
+TiFRONT(config-if-range)# 
+interface ge44
+TiFRONT(config-if-ge44)# 
+switchport access vlan 100
+TiFRONT(config-if-ge44)# 
+interface ge46
+TiFRONT(config-if-ge46)# 
+switchport access vlan 200
+TiFRONT(config-if-ge46)# 
+interface ge48
+TiFRONT(config-if-ge48)# 
+switchport access vlan 300
+TiFRONT(config-if-ge48)# 
+interface ge36
+TiFRONT(config-if-ge36)# 
+no spanning-tree priority
+TiFRONT(config-if-ge36)# 
+no spanning-tree path-cost
+TiFRONT(config-if-ge36)# 
+switchport access vlan 400
+TiFRONT(config-if-ge36)# 
+exit
+TiFRONT(config)# 
+no spanning-tree forward-time
+TiFRONT(config)# 
+no spanning-tree max-age
+TiFRONT(config)# 
+no spanning-tree hello-time
+TiFRONT(config)# 
+no spanning-tree priority
+TiFRONT(config)# 
+spanning-tree disable
+TiFRONT(config)# 
+#E_NBR2_STP_RECOVERY
+TiFRONT(config)# 

@@ -1,0 +1,189 @@
+#S_CLI_IGMP_SNOOPING_SET
+TiFRONT(config)# 
+ip igmp snooping
+TiFRONT(config)# 
+end
+TiFRONT# 
+show ip igmp snooping mrouter
+TiFRONT# 
+show ip igmp snooping mrouter vlan1
+VLAN    Interface
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_IGMP_SNOOPING_SET
+TiFRONT(config)# #S_CLI_IGMP_MAC_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show mac-table interface ge2
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    ge2 | 0010.9400.000f | FORWARD |  
+      2 |    1 |    ge2 | 0010.9400.00f0 | FORWARD |  
+ -----------------------------------------------------------
+TiFRONT# 
+show mac-table interface ge3
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    ge3 | 0006.c455.0087 | FORWARD |  
+      2 |    1 |    ge3 | 0006.c455.0088 | FORWARD |  
+      3 |    1 |    ge3 | 0010.9400.0001 | FORWARD |  
+      4 |    1 |    ge3 | 0010.9400.0002 | FORWARD |  
+      5 |    1 |    ge3 | 0010.9400.0003 | FORWARD |  
+      6 |    1 |    ge3 | 0010.9400.0004 | FORWARD |  
+      7 |    1 |    ge3 | 0010.9400.0005 | FORWARD |  
+      8 |    1 |    ge3 | 0010.9400.0006 | FORWARD |  
+      9 |    1 |    ge3 | 0010.9400.0007 | FORWARD |  
+     10 |    1 |    ge3 | 0010.9400.0008 | FORWARD |  
+     11 |    1 |    ge3 | 0010.9400.0009 | FORWARD |  
+     12 |    1 |    ge3 | 0010.9400.000a | FORWARD |  
+ -----------------------------------------------------------
+TiFRONT# 
+show ip igmp groups
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_IGMP_MAC_SHOW
+TiFRONT(config)# #S_SHELL_IGMP_MAC_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+l2-table dump mac-mcast
+ Index | VID  | MAC address       | Port                 | NH | Group ID 
+-------+------+-------------------+----------------------+----+------------
+Entry is not exist
+Total Number Of Entries : 0
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_IGMP_MAC_SHOW
+bash-4.4# #S_NBR1_IGMP_GROUP_MEMBERSHIP_TIMEOUT
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+shutdown
+TiFRONT(config-if-ge18)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_MEMBERSHIP_TIMEOUT
+TiFRONT(config)# #S_CLI_IGMP_GROUP_MEMBERSHIP_TIMEOUT
+TiFRONT(config)# 
+end
+TiFRONT# 
+show ip igmp groups
+TiFRONT# 
+show mac-table interface ge3
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    ge3 | 0010.9400.0001 | FORWARD |  
+      2 |    1 |    ge3 | 0010.9400.0002 | FORWARD |  
+      3 |    1 |    ge3 | 0010.9400.0003 | FORWARD |  
+      4 |    1 |    ge3 | 0010.9400.0004 | FORWARD |  
+      5 |    1 |    ge3 | 0010.9400.0005 | FORWARD |  
+      6 |    1 |    ge3 | 0010.9400.0006 | FORWARD |  
+      7 |    1 |    ge3 | 0010.9400.0007 | FORWARD |  
+      8 |    1 |    ge3 | 0010.9400.0008 | FORWARD |  
+      9 |    1 |    ge3 | 0010.9400.0009 | FORWARD |  
+     10 |    1 |    ge3 | 0010.9400.000a | FORWARD |  
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_IGMP_GROUP_MEMBERSHIP_TIMEOUT
+TiFRONT(config)# #S_NBR1_IGMP_SNOOPING_UNSET
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+no shutdown
+TiFRONT(config-if-ge18)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_IGMP_SNOOPING_UNSET
+TiFRONT(config)# #S_CLI_IGMP_SNOOPING_UNSET
+TiFRONT(config)# 
+no ip igmp snooping
+TiFRONT(config)# 
+end
+TiFRONT# 
+show ip igmp snooping mrouter
+TiFRONT# 
+show ip igmp snooping mrouter vlan1
+VLAN    Interface
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c456.0bfe | FORWARD | STATIC
+      8 |    1 |    ge3 | 0010.9400.0001 | FORWARD |  
+      9 |    1 |    ge3 | 0010.9400.0002 | FORWARD |  
+     10 |    1 |    ge3 | 0010.9400.0003 | FORWARD |  
+     11 |    1 |    ge3 | 0010.9400.0004 | FORWARD |  
+     12 |    1 |    ge3 | 0010.9400.0005 | FORWARD |  
+     13 |    1 |    ge3 | 0010.9400.0006 | FORWARD |  
+     14 |    1 |    ge3 | 0010.9400.0007 | FORWARD |  
+     15 |    1 |    ge3 | 0010.9400.0008 | FORWARD |  
+     16 |    1 |    ge3 | 0010.9400.0009 | FORWARD |  
+     17 |    1 |    ge3 | 0010.9400.000a | FORWARD |  
+     18 |    1 |    ge2 | 0010.9400.000f | FORWARD |  
+     19 |    1 |    ge2 | 0010.9400.00f0 | FORWARD |  
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_IGMP_SNOOPING_UNSET
+TiFRONT(config)# #S_SHELL_IGMP_MAC_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+l2-table dump mac-mcast
+ Index | VID  | MAC address       | Port                 | NH | Group ID 
+-------+------+-------------------+----------------------+----+------------
+Entry is not exist
+Total Number Of Entries : 0
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_IGMP_MAC_SHOW
+bash-4.4# #S_CLI_RECOVERY
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+clear arp
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_RECOVERY
+TiFRONT(config)# #S_NBR1_RECOVERY
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+clear arp
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_RECOVERY
+TiFRONT(config)# 

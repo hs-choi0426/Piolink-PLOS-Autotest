@@ -1,0 +1,89 @@
+testtype:
+    Port-Mapping: 0
+    Shutdown: 0
+    Speed: 1
+    Duplex: 0
+    Mdix: 0
+    Flow-control: 0
+    Storm-control: 0
+    EEE: 0
+    Jumbo-Frame: 0
+    Cable-Diagnostics: 0
+    Mirroring: 0
+    LLDP: 0
+    UDLD: 1
+    Switch-Mode: 0
+    LACP: 0
+    STP: 0
+    STP&LACP: 0
+    Private-Vlan: 0
+    Voice-Vlan: 0
+    Ping: 0
+    Static-Route: 0
+    IGMP-Snooping: 0
+    L2-Smoke: 0
+    MAC-Table: 0
+    MAC-Address-Limit: 0
+    Static-Mac-ADDRESS: 0
+    MAC-Ageing-Time: 0
+    ARP: 0
+test-args-set:
+    LACP:
+        vlan: 500
+    Ping:
+        vlan: 100
+        neighbor_ip: 10.10.10.2
+        host_ip: 10.10.10.3
+        prefix: 24
+    Voice-Vlan:
+        acl_phase: 1
+        st_entry: 25
+        ed_entry: 26
+        9300_bit: 32
+        9310_bit: 64
+        id: 100
+        dscp: 36
+        prio: 7
+        oui_addr: 0006.C400.0000
+        oui_mask: FFFF.FF00.0000
+        oui_vender: piolink
+        default_oui_addr: 0000.0000.0000
+        default_oui_mask: 0000.0000.0000
+        default_dscp: 46
+        default_prio: 5
+    Static-Route:
+        vlan: 1000
+        host_ip: 192.168.197.201
+        host_ip_prefix: 24
+        gatewayip: 192.168.197.1
+        route_ip: 0.0.0.0
+        route_ip_prefix: 0
+        dst_ip: 192.168.203.100
+    MAC-Table:
+        vlan: 100
+        max_addr: 13
+    MAC-Address-Limit:
+        limit: 5
+    Static-Mac-ADDRESS:
+        cli_static: 0010.9400.0001
+        sdk_static: 00:10:94:00:00:01
+    MAC-Ageing-Time:
+        ageing_time: 10
+        default_ageing_time: 300
+        max_addr: 13
+    ARP:
+        vlan: 500
+        ip: 20.0.0.1/24
+        static_ip: 20.0.0.100
+        static_mac: 0010.9403.000f
+        cstatic_mac: 00:10:94:03:00:0f
+        dynamic_ip: 20.0.0.x
+        dynamic_mac: 0010.9403.0002
+        cdynamic_mac: 00:10:94:03:00:02
+        last_ip: 10.0.0.1/24
+        last_static_ip: 10.0.0.100
+        last_static_mac: 0010.9403.00f0
+        last_cstatic_mac: 00:10:94:03:00:f0
+        last_dynamic_ip: 10.0.0.x
+        last_dynamic_mac: 0010.9403.0001
+        last_cdynamic_mac: 00:10:94:03:00:01

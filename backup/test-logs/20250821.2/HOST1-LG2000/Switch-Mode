@@ -1,0 +1,451 @@
+#S_CLI_ACCESS_SET
+TiFRONT(config)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+shutdown
+TiFRONT(config-if-ge3)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+switchport mode hybrid
+TiFRONT(config-if-ge2)# 
+switchport hybrid allowed vlan add 100 e d
+TiFRONT(config-if-ge2)# 
+switchport hybrid vlan 100
+TiFRONT(config-if-ge2)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2001 |      1024512 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |         2002 |      1025024 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |            0 |            0 
+     xg2 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show vlan
+ ---------------------------------------------
+  PORT            | ge              | xg  
+                  |                 |     
+                  | 1 2 3 4 5 6 7 8 | 1 2 
+ -----------------+-----------------+-------
+  SWITCH MODE     | A H A A A A A A | A A 
+ -----------------+-----------------+-------
+  default  (   1) | . u U . . . . . | . . 
+  VLAN0100 ( 100) | . U . U U . . . | . . 
+  VLAN0200 ( 200) | . . . . . U U . | . . 
+  VLAN0300 ( 300) | . . . . . . . U | U . 
+  VLAN0400 ( 400) | . . . . . . . . | . U 
+  VLAN1000 (1000) | U . . . . . . . | . . 
+ ---------------------------------------------
+  SWITCHPORT      : A(Access) / H(Hybrid) / T(Trunk) / P(Private-Vlan)
+      A - All frame receive.
+      T - Only VLAN Tagged frame receive.
+      U - Only VLAN Untagged frame receive.
+      U - Untagged VLAN (PVID)
+      u - Untagged shared VLAN (VID)
+      T - Tagged VLAN (PVID)
+      t - Tagged shared VLAN (VID)
+  VLANNAME ( VID) : IEEE 802.1q Port based VLAN information
+TiFRONT# 
+show port statistic
+-----------------------------------------------------------------------
+ Inter | RX                         multi| TX                                   
+ -face |bytes    packets  errs drop -cast|bytes  packets  errs  drop 
+-----------------------------------------------------------------------
+   ge1 |       0      0     0     0     0|       0      0     0     0 
+   ge2 | 1580032  24689     0     0 12345|     570      5     0     0 
+   ge3 |       0      0     0     0     0|       0      0     0     0 
+   ge4 |       0      0     0     0     0|       0      0     0     0 
+   ge5 |       0      0     0     0     0| 1580928  24703     0     0 
+   ge6 |       0      0     0     0     0|       0      0     0     0 
+   ge7 |       0      0     0     0     0|       0      0     0     0 
+   ge8 |       0      0     0     0     0|       0      0     0     0 
+   xg1 |       0      0     0     0     0|       0      0     0     0 
+   xg2 |       0      0     0     0     0|       0      0     0     0 
+-----------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+switchport mode access
+TiFRONT(config-if-ge2)# 
+exit
+TiFRONT(config)# 
+#E_CLI_ACCESS_SET
+TiFRONT(config)# #S_SHELL_ACCESS_SET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+vlan get vlan-table vid 1
+Vlan 1 
+  Member Ports	: 24,29 
+  Untag Ports	: 24,29 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get vlan-table vid 100
+Vlan 100 
+  Member Ports	: 28,33 
+  Untag Ports	: 28,33 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get pvid inner port 32
+Port based vlan configuration 
+Port 32 : 200
+RTK.0> 
+vlan get pvid outer port 32
+Outer tag port based vlan configuration 
+Port 32 : 1
+RTK.0> 
+vlan get accept-frame-type inner port 32
+Accept frame type of ports
+Port 32 : accept untag frame only
+RTK.0> 
+vlan get ingress-filter port 32
+Ingress filter configuration
+Port 32 : Drop
+RTK.0> 
+vlan get egress-filter port 32
+Egress filter status of ports
+Port 32 : ENABLE
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_ACCESS_SET
+bash-4.4# #S_CLI_HYBRID_SET
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+switchport mode hybrid
+TiFRONT(config-if-ge5)# 
+switchport hybrid allowed vlan add 100 e d
+TiFRONT(config-if-ge5)# 
+switchport hybrid vlan 100
+TiFRONT(config-if-ge5)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+switchport mode hybrid
+TiFRONT(config-if-ge7)# 
+switchport hybrid allowed vlan add 200 e d
+TiFRONT(config-if-ge7)# 
+switchport hybrid vlan 200
+TiFRONT(config-if-ge7)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+switchport mode hybrid
+TiFRONT(config-if-xg1)# 
+switchport hybrid allowed vlan add 300 e d
+TiFRONT(config-if-xg1)# 
+switchport hybrid vlan 300
+TiFRONT(config-if-xg1)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2000 |      1023488 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |         1999 |      1024000 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |         2000 |      1024000 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |         2000 |      1023488 
+     xg2 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show vlan
+ ---------------------------------------------
+  PORT            | ge              | xg  
+                  |                 |     
+                  | 1 2 3 4 5 6 7 8 | 1 2 
+ -----------------+-----------------+-------
+  SWITCH MODE     | A A A A H A H A | H A 
+ -----------------+-----------------+-------
+  default  (   1) | . U U . u . u . | u . 
+  VLAN0100 ( 100) | . . . U U . . . | . . 
+  VLAN0200 ( 200) | . . . . . U U . | . . 
+  VLAN0300 ( 300) | . . . . . . . U | U . 
+  VLAN0400 ( 400) | . . . . . . . . | . U 
+  VLAN1000 (1000) | U . . . . . . . | . . 
+ ---------------------------------------------
+  SWITCHPORT      : A(Access) / H(Hybrid) / T(Trunk) / P(Private-Vlan)
+      A - All frame receive.
+      T - Only VLAN Tagged frame receive.
+      U - Only VLAN Untagged frame receive.
+      U - Untagged VLAN (PVID)
+      u - Untagged shared VLAN (VID)
+      T - Tagged VLAN (PVID)
+      t - Tagged shared VLAN (VID)
+  VLANNAME ( VID) : IEEE 802.1q Port based VLAN information
+TiFRONT# 
+show port statistic
+-----------------------------------------------------------------------
+ Inter | RX                         multi| TX                                   
+ -face |bytes    packets  errs drop -cast|bytes  packets  errs  drop 
+-----------------------------------------------------------------------
+   ge1 |       0      0     0     0     0|       0      0     0     0 
+   ge2 | 1581952  24718     0     0 12360|       0      0     0     0 
+   ge3 |       0      0     0     0     0|       0      0     0     0 
+   ge4 |       0      0     0     0     0|       0      0     0     0 
+   ge5 |       0      0     0     0     0| 1583076  24735     0     0 
+   ge6 |       0      0     0     0     0|       0      0     0     0 
+   ge7 |       0      0     0     0     0| 1583944  24747     0     0 
+   ge8 |       0      0     0     0     0|       0      0     0     0 
+   xg1 |       0      0     0     0     0| 1584794  24761     0     0 
+   xg2 |       0      0     0     0     0|       0      0     0     0 
+-----------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_HYBRID_SET
+TiFRONT(config)# #S_SHELL_HYBRID_SET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+vlan get vlan-table vid 1
+Vlan 1 
+  Member Ports	: 8,24,29,33,37 
+  Untag Ports	: 8,24,29,33,37 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get vlan-table vid 100
+Vlan 100 
+  Member Ports	: 28,33 
+  Untag Ports	: 28,33 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get pvid inner port 32
+Port based vlan configuration 
+Port 32 : 200
+RTK.0> 
+vlan get pvid outer port 32
+Outer tag port based vlan configuration 
+Port 32 : 1
+RTK.0> 
+vlan get accept-frame-type inner port 32
+Accept frame type of ports
+Port 32 : accept untag frame only
+RTK.0> 
+vlan get ingress-filter port 32
+Ingress filter configuration
+Port 32 : Drop
+RTK.0> 
+vlan get egress-filter port 32
+Egress filter status of ports
+Port 32 : ENABLE
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_HYBRID_SET
+bash-4.4# #S_CLI_TRUNK_SET
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+switchport mode trunk
+TiFRONT(config-if-ge5)# 
+switchport trunk allowed vlan add 100
+TiFRONT(config-if-ge5)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+switchport mode trunk
+TiFRONT(config-if-ge7)# 
+switchport trunk allowed vlan add 200
+TiFRONT(config-if-ge7)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+switchport mode trunk
+TiFRONT(config-if-xg1)# 
+switchport trunk allowed vlan add 300
+TiFRONT(config-if-xg1)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2000 |      1024000 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |         2000 |      1088000 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |         2000 |      1088000 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |         2001 |      1088000 
+     xg2 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show vlan
+ ---------------------------------------------
+  PORT            | ge              | xg  
+                  |                 |     
+                  | 1 2 3 4 5 6 7 8 | 1 2 
+ -----------------+-----------------+-------
+  SWITCH MODE     | A A A A T A T A | T A 
+ -----------------+-----------------+-------
+  default  (   1) | . U U . T . T . | T . 
+  VLAN0100 ( 100) | . . . U t . . . | . . 
+  VLAN0200 ( 200) | . . . . . U t . | . . 
+  VLAN0300 ( 300) | . . . . . . . U | t . 
+  VLAN0400 ( 400) | . . . . . . . . | . U 
+  VLAN1000 (1000) | U . . . . . . . | . . 
+ ---------------------------------------------
+  SWITCHPORT      : A(Access) / H(Hybrid) / T(Trunk) / P(Private-Vlan)
+      A - All frame receive.
+      T - Only VLAN Tagged frame receive.
+      U - Only VLAN Untagged frame receive.
+      U - Untagged VLAN (PVID)
+      u - Untagged shared VLAN (VID)
+      T - Tagged VLAN (PVID)
+      t - Tagged shared VLAN (VID)
+  VLANNAME ( VID) : IEEE 802.1q Port based VLAN information
+TiFRONT# 
+show port statistic
+-----------------------------------------------------------------------
+ Inter | RX                         multi| TX                                   
+ -face |bytes    packets  errs drop -cast|bytes  packets  errs  drop 
+-----------------------------------------------------------------------
+   ge1 |       0      0     0     0     0|       0      0     0     0 
+   ge2 | 1580672  24699     0     0 12350|       0      0     0     0 
+   ge3 |       0      0     0     0     0|       0      0     0     0 
+   ge4 |       0      0     0     0     0|       0      0     0     0 
+   ge5 |       0      0     0     0     0| 1680888  24717     0     0 
+   ge6 |       0      0     0     0     0|       0      0     0     0 
+   ge7 |       0      0     0     0     0| 1681618  24727     0     0 
+   ge8 |       0      0     0     0     0|       0      0     0     0 
+   xg1 |       0      0     0     0     0| 1682384  24738     0     0 
+   xg2 |       0      0     0     0     0|       0      0     0     0 
+-----------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_TRUNK_SET
+TiFRONT(config)# #S_SHELL_TRUNK_SET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+vlan get vlan-table vid 1
+Vlan 1 
+  Member Ports	: 8,24,29,33,37 
+  Untag Ports	: 24,29 
+  Tag Ports	: 8,33,37 
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get vlan-table vid 100
+Vlan 100 
+  Member Ports	: 28,33 
+  Untag Ports	: 28 
+  Tag Ports	: 33 
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get pvid inner port 32
+Port based vlan configuration 
+Port 32 : 200
+RTK.0> 
+vlan get pvid outer port 32
+Outer tag port based vlan configuration 
+Port 32 : 1
+RTK.0> 
+vlan get accept-frame-type inner port 32
+Accept frame type of ports
+Port 32 : accept untag frame only
+RTK.0> 
+vlan get ingress-filter port 32
+Ingress filter configuration
+Port 32 : Drop
+RTK.0> 
+vlan get egress-filter port 32
+Egress filter status of ports
+Port 32 : ENABLE
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_TRUNK_SET
+bash-4.4# #S_CLI_RECOVERY
+TiFRONT(config)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+no shutdown
+TiFRONT(config-if-ge3)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+switchport mode access
+TiFRONT(config-if-ge5)# 
+switchport access vlan 100
+TiFRONT(config-if-ge5)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+switchport mode access
+TiFRONT(config-if-ge7)# 
+switchport access vlan 200
+TiFRONT(config-if-ge7)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+switchport mode access
+TiFRONT(config-if-xg1)# 
+switchport access vlan 300
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+#E_CLI_RECOVERY
+TiFRONT(config)# 

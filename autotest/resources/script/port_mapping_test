@@ -1,0 +1,52 @@
+#S_CLI_INIT
+interface range all
+no shutdown
+exit
+#E_CLI_INIT
+#S_CLI_SHUTDOWN
+interface {v_cli_port}
+shutdown
+exit
+show portstatus | include {v_cli_port} 
+#E_CLI_SHUTDOWN
+#S_SHELL_SHUTDOWN
+rtk_user_diag
+port get port {v_sdk_port} state
+exit
+#E_SHELL_SHUTDOWN
+#S_CLI_NO_SHUTDOWN
+interface {v_cli_port}
+no shutdown
+exit
+show portstatus | include {v_cli_port} 
+#E_CLI_NO_SHUTDOWN
+#S_SHELL_NO_SHUTDOWN
+rtk_user_diag
+port get port {v_sdk_port} state
+exit
+#E_SHELL_NO_SHUTDOWN
+#S_CLI_RECOVERY
+interface range all
+shutdown
+interface {input_port}
+no shut
+interface {output_port}
+no shut
+interface {dev_port1}
+no shut
+interface {dev_port2}
+no shut
+interface {dev_port3}
+no shut
+interface {dev_port4}
+no shut
+interface {nbr_port1}
+no shut
+interface {nbr_port2}
+no shut
+interface {nbr_port3}
+no shut
+interface {nbr_port4}
+no shut
+exit
+#E_CLI_RECOVERY

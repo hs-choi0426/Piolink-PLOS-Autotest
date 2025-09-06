@@ -1,0 +1,109 @@
+#S_CLI_ARP_DYNAMIC_SHOW
+ip forwarding
+vlan {vlan}
+interface vlan{vlan}
+ip address {ip}
+interface range {input_port},{output_port}
+switchport access vlan {vlan}
+end
+sleep 5
+show arp
+configure terminal force
+#E_CLI_ARP_DYNAMIC_SHOW
+#S_SHELL_ARP_DYNAMIC_SHOW
+arp -a
+#E_SHELL_ARP_DYNAMIC_SHOW
+#S_NBR1_ARP_DYNAMIC_CLEAR_SET
+interface {(nbr1)output_port}
+shutdown
+exit
+#E_NBR1_ARP_DYNAMIC_CLEAR_SET
+#S_CLI_ARP_DYNAMIC_CLEAR_SHOW
+end
+clear arp
+clear mac address-table dynamic
+sleep 3
+show arp
+configure terminal force
+#E_CLI_ARP_DYNAMIC_CLEAR_SHOW
+#S_SHELL_ARP_DYNAMIC_SHOW
+arp -a
+#E_SHELL_ARP_DYNAMIC_SHOW
+#S_NBR1_ARP_STATIC_SET
+interface {(nbr1)output_port}
+no shutdown
+exit
+#E_NBR1_ARP_STATIC_SET
+#S_CLI_ARP_STATIC_SHOW
+interface {input_port}
+no shutdown
+exit
+arp {static_ip} {static_mac}
+exit
+sleep 2
+show arp
+configure terminal force
+#E_CLI_ARP_STATIC_SHOW
+#S_SHELL_ARP_STATIC_SHOW
+arp -a
+#E_SHELL_ARP_STATIC_SHOW
+#S_NBR1_ARP_STATIC_CLEAR_SET
+interface {(nbr1)output_port}
+shutdown
+exit
+#E_NBR1_ARP_STATIC_CLEAR_SET
+#S_CLI_ARP_STATIC_CLEAR_SHOW
+no arp {static_ip}
+end
+clear arp
+clear mac address-table dynamic
+sleep 3
+show arp
+configure terminal force
+#E_CLI_ARP_STATIC_CLEAR_SHOW
+#S_SHELL_ARP_STATIC_SHOW
+arp -a
+#E_SHELL_ARP_STATIC_SHOW
+#S_NBR1_ARP_TIMEOUT_SET
+interface {(nbr1)output_port}
+no shutdown
+exit
+#E_NBR1_ARP_TIMEOUT_SET
+#S_CLI_ARP_TIMEOUT_SHOW
+no mac ageing-time 
+interface vlan{vlan}
+arp-ageing-timeout 60
+end
+sleep 10
+show arp
+configure terminal force
+#E_CLI_ARP_TIMEOUT_SHOW
+#S_NBR1_ARP_TIMEOUT_SET
+interface {(nbr1)output_port}
+shutdown
+exit
+#E_NBR1_ARP_TIMEOUT_SET
+#S_CLI_ARP_TIMEOUT_SHOW
+end
+sleep 120
+show arp
+configure terminal force
+#E_CLI_ARP_TIMEOUT_SHOW
+#S_CLI_RECOVERY
+no ip forwarding
+interface vlan{vlan}
+no arp-ageing-timeout
+interface range {input_port},{output_port}
+no shutdown
+exit
+no vlan {vlan}
+exit
+clear arp
+clear mac address-table dynamic
+configure terminal force
+#E_CLI_RECOVERY
+#S_NBR1_RECOVERY
+interface {(nbr1)output_port}
+no shutdown
+exit
+#E_NBR1_RECOVERY

@@ -1,0 +1,51 @@
+#S_CLI_MAC_FORWARD_SET
+mac address {cli_static} forward {input_port}
+end
+clear mac address-table dynamic
+clear arp
+clear port statistic
+sleep 15
+show mac-table
+show port statistics
+show port-monitoring
+configure terminal force
+#E_CLI_MAC_FORWARD_SET
+#S_SHELL_MAC_FORWARD_SET
+rtk_user_diag
+l2-table dump mac-ucast static
+exit
+#E_SHELL_MAC_FORWARD_SET
+#S_CLI_MAC_DISCARD_SET
+mac address {cli_static} discard {input_port}
+end
+clear mac address-table dynamic
+clear arp
+clear port statistic
+sleep 15
+show mac-table
+show port statistics
+show port-monitoring
+configure terminal force
+#E_CLI_MAC_DISCARD_SET
+#S_SHELL_MAC_DISCARD_SET
+rtk_user_diag
+l2-table dump mac-ucast static
+exit
+#E_SHELL_MAC_DISCARD_SET
+#S_CLI_MAC_STATIC_UNSET
+no mac address {cli_static} {input_port}
+end
+clear mac address-table dynamic
+clear arp
+clear port statistic
+sleep 15
+show mac-table
+show port statistics
+show port-monitoring
+configure terminal force
+#E_CLI_MAC_STATIC_UNSET
+#S_SHELL_MAC_STATIC_UNSET
+rtk_user_diag
+l2-table dump mac-ucast static
+exit
+#E_SHELL_MAC_STATIC_UNSET

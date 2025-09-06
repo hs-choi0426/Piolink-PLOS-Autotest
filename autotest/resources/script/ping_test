@@ -1,0 +1,36 @@
+#S_NBR1_PING_SET
+interface range {(nbr1)input_port},{(nbr1)output_port}
+shutdown
+interface vlan{vlan}
+ip addr {neighbor_ip}/{prefix}
+end
+show ip interface vlan{vlan} brief
+con
+#E_NBR1_PING_SET
+#S_CLI_PING_SET
+interface range {input_port},{output_port}
+shutdown
+interface vlan{vlan}
+ip addr {host_ip}/{prefix}
+end
+show ip interface vlan{vlan} brief
+con
+#E_CLI_PING_SET
+#S_SHELL_PING_SET
+sleep 5
+ping {neighbor_ip} -c 10
+#E_SHELL_PING_SET
+#S_NBR1_PING_UNSET
+interface range {(nbr1)input_port},{(nbr1)output_port}
+no shutdown
+interface vlan{vlan}
+no ip addr {neighbor_ip}/{prefix} 
+exit
+#E_NBR1_PING_UNSET
+#S_CLI_PING_UNSET
+interface range {input_port},{output_port}
+no shutdown
+interface vlan{vlan}
+no ip addr {host_ip}/{prefix}
+exit
+#E_CLI_PING_UNSET

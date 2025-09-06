@@ -1,0 +1,141 @@
+#S_CLI_MIRRORING_SET_SHOW
+TiFRONT(config)# 
+mirror ge20 mirrored ge17 in
+TiFRONT(config)# 
+show mirror
+ ----------------------------------------------------
+               Mirroring configuration
+ ----------------------------------------------------
+  Monitor Port = ge20
+    Mirrored Port : ge17 (in)
+ ----------------------------------------------------
+TiFRONT(config)# 
+show portstatus | include ge20
+     ge20 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_MIRRORING_SET_SHOW
+TiFRONT(config)# #S_SHELL_MIRRORING_SET_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+mirror get mirror-id 0
+Mirror Index : 0
+	Mirror Type : Port-Based Mirror
+	MTP Port Type : Not Trunk Port
+	Unit ID         : 0
+	Port ID         : 18
+	Mirroring Ingress Port : 17
+	Mirroring Egress Port  : 
+	Oper of Igr & Egr Port : OR
+	Mirror Original Packet : Disable
+	MTP Self Filter        : Disable
+	Mirroring Port TX Packets : All Packets
+	Duplicate Filter       : Disable
+	Mirror VLAN Mode       : Depend On Mirrored Packet
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_MIRRORING_SET_SHOW
+bash-4.4# #S_CLI_MIRRORING_SET_STATISTIC_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |         2110 |      1648640 |         2110 |      1648640 
+    ge18 |         2110 |      1648640 |         2110 |      1648640 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |            0 |            0 |         2109 |      1648128 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |            0 |            0 |            0 |            0 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |            0 |            0 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show portstatus | include ge20
+     ge20 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_MIRRORING_SET_STATISTIC_SHOW
+TiFRONT(config)# #S_CLI_MIRRORING_UNSET_SHOW
+TiFRONT(config)# 
+no mirror ge20
+TiFRONT(config)# 
+show mirror
+ ----------------------------------------------------
+               Mirroring configuration
+ ----------------------------------------------------
+ ----------------------------------------------------
+TiFRONT(config)# 
+show portstatus | include ge20
+     ge20 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_MIRRORING_UNSET_SHOW
+TiFRONT(config)# #S_SHELL_MIRRORING_UNSET_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+mirror get mirror-id 0
+Mirror Index : 0
+	Mirror Type : Disable
+	MTP Port Type : Not Trunk Port
+	Unit ID         : 0
+	Port ID         : 0
+	Mirroring Ingress Port : 
+	Mirroring Egress Port  : 
+	Oper of Igr & Egr Port : OR
+	Mirror Original Packet : Disable
+	MTP Self Filter        : Disable
+	Mirroring Port TX Packets : All Packets
+	Duplicate Filter       : Disable
+	Mirror VLAN Mode       : Depend On Mirrored Packet
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_MIRRORING_UNSET_SHOW
+bash-4.4# #S_CLI_MIRRORING_UNSET_STATISTIC_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+show port-monitoring | include ge20 
+    ge20 |            0 |            0 |            0 |            0 
+TiFRONT# 
+show portstatus | include ge20
+     ge20 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_MIRRORING_UNSET_STATISTIC_SHOW
+TiFRONT(config)# 

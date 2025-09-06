@@ -1,0 +1,159 @@
+#S_CLI_LLDP_SET
+TiFRONT(config)# 
+interface ge20
+TiFRONT(config-if-ge20)# 
+set lldp enable txrx
+TiFRONT(config-if-ge20)# 
+end
+TiFRONT# 
+show run interface ge20
+!
+interface ge20
+ no shutdown
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ flowcontrol send off
+ flowcontrol receive off
+ jumbo-frame off
+ set lldp enable txrx
+ lldp tlv chassis-id port-id ttl 
+!
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_LLDP_SET
+TiFRONT(config)# #S_NBR1_LLDP_SET
+TiFRONT(config)# 
+interface ge44
+TiFRONT(config-if-ge44)# 
+set lldp enable txrx
+TiFRONT(config-if-ge44)# 
+end
+TiFRONT# 
+show run interface ge44
+!
+interface ge44
+ no shutdown
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ flowcontrol send off
+ flowcontrol receive off
+ jumbo-frame off
+ set lldp enable txrx
+ lldp tlv chassis-id port-id ttl 
+!
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_LLDP_SET
+TiFRONT(config)# #S_CLI_LLDP_SET_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show lldp port ge20
+================
+Remote LLDP
+================
+Chassis MAC Address: 0 6 c4 13 57 90
+TTL: 120
+Interface Name: ge44
+Interface Number: 0
+Port Vlan ID: 0
+AutoNego Support: 
+AutoNego Capability: 0
+Operational MAU Type: 0
+Link Aggregation Capability: 
+Link Aggregation Status:  Disabled
+Link Aggregation Port ID: 0
+Max Frame Size: 0
+System Capabilities: 
+System Capabilities Enabled: 
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_LLDP_SET_SHOW
+TiFRONT(config)# #S_NBR1_LLDP_SET_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show lldp port ge44
+================
+Remote LLDP
+================
+Chassis MAC Address: 0 6 c4 55 0 87
+TTL: 120
+Interface Name: ge20
+Interface Number: 0
+Port Vlan ID: 0
+AutoNego Support: 
+AutoNego Capability: 0
+Operational MAU Type: 0
+Link Aggregation Capability: 
+Link Aggregation Status:  Disabled
+Link Aggregation Port ID: 0
+Max Frame Size: 0
+System Capabilities: 
+System Capabilities Enabled: 
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_LLDP_SET_SHOW
+TiFRONT(config)# #S_CLI_LLDP_UNSET_SHOW
+TiFRONT(config)# 
+interface ge20
+TiFRONT(config-if-ge20)# 
+set lldp disable
+TiFRONT(config-if-ge20)# 
+end
+TiFRONT# 
+show lldp port ge20
+TiFRONT# 
+show run interface ge20
+!
+interface ge20
+ no shutdown
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ flowcontrol send off
+ flowcontrol receive off
+ jumbo-frame off
+!
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_LLDP_UNSET_SHOW
+TiFRONT(config)# #S_NBR1_LLDP_UNSET_SHOW
+TiFRONT(config)# 
+interface ge44
+TiFRONT(config-if-ge44)# 
+set lldp disable
+TiFRONT(config-if-ge44)# 
+end
+TiFRONT# 
+show lldp port ge44
+TiFRONT# 
+show run interface ge44
+!
+interface ge44
+ no shutdown
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ flowcontrol send off
+ flowcontrol receive off
+ jumbo-frame off
+!
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_LLDP_UNSET_SHOW
+TiFRONT(config)# 

@@ -1,0 +1,299 @@
+===============================================
+=                 Port-Mapping                =
+===============================================
+[20250821_14:50:23] HOST1: LG2000
+-----------------------------------------------
+Port-Mapping Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action   Status    Result  
+SHELL 24   shutdown EN=Enable Abnormal
+SHELL 25   shutdown EN=Enable Abnormal
+SHELL 28   shutdown EN=Enable Abnormal
+SHELL 29   shutdown EN=Enable Abnormal
+SHELL 32   shutdown EN=Enable Abnormal
+SHELL 33   shutdown EN=Enable Abnormal
+SHELL 36   shutdown EN=Enable Abnormal
+SHELL 37   shutdown EN=Enable Abnormal
+
+===============================================
+=                   Shutdown                  =
+===============================================
+[20250821_14:51:11] HOST1: LG2000
+-----------------------------------------------
+Shutdown Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action   Status    Result  
+SHELL 32   shutdown EN=Enable Abnormal
+SHELL 36   shutdown EN=Enable Abnormal
+
+===============================================
+=                    Duplex                   =
+===============================================
+[20250821_14:51:17] HOST1: LG2000
+-----------------------------------------------
+Duplex Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action      Result  
+SHELL 32   half-duplex Abnormal
+SHELL 32   full-duplex Abnormal
+
+===============================================
+=                     Mdix                    =
+===============================================
+[20250821_14:51:23] HOST1: LG2000
+-----------------------------------------------
+Mdix Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action    Result  
+SHELL 32    mdix-mdi Abnormal
+SHELL 32   mdix-mdix Abnormal
+
+===============================================
+=                 Flow-control                =
+===============================================
+[20250821_14:51:30] HOST1: LG2000
+-----------------------------------------------
+Flow-control Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action      Result  
+SHELL 32   flowctrl-on Abnormal
+
+===============================================
+=                Storm-control                =
+===============================================
+[20250821_14:52:04] HOST1: LG2000
+-----------------------------------------------
+Storm-control Test Complete
+
+===============================================
+=                     EEE                     =
+===============================================
+[20250821_14:52:15] HOST1: LG2000
+-----------------------------------------------
+EEE Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action    Result  
+  CLI ge5    eee-set Abnormal
+SHELL  32    eee-set Abnormal
+  CLI ge5  eee-unset Abnormal
+
+===============================================
+=                 Jumbo-Frame                 =
+===============================================
+[20250821_14:52:19] HOST1: LG2000
+-----------------------------------------------
+Jumbo-Frame Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action         Result  
+SHELL 32   jumboframe-set Abnormal
+
+===============================================
+=                  Mirroring                  =
+===============================================
+[20250821_14:52:32] HOST1: LG2000
+-----------------------------------------------
+Mirroring Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action        Result  
+SHELL 32   mirroring-set Abnormal
+
+===============================================
+=                     LLDP                    =
+===============================================
+[20250821_14:53:40] HOST1: LG2000
+-----------------------------------------------
+LLDP Test Complete
+
+===============================================
+=                     UDLD                    =
+===============================================
+[20250821_14:54:09] HOST1: LG2000
+-----------------------------------------------
+UDLD Test Complete
+-----------------------------------------------
+Fail:
+
+Mode Port Action         Result  
+NBR1 ge19 udld-advertise Abnormal
+
+===============================================
+=                 Switch-Mode                 =
+===============================================
+[20250821_14:55:03] HOST1: LG2000
+-----------------------------------------------
+Switch-Mode Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action     Result  
+SHELL 32   access-set Abnormal
+SHELL 32   hybrid-set Abnormal
+SHELL 32    trunk-set Abnormal
+
+===============================================
+=                     LACP                    =
+===============================================
+[20250821_14:55:45] HOST1: LG2000
+-----------------------------------------------
+LACP Test Complete
+
+===============================================
+=                     STP                     =
+===============================================
+[20250821_14:58:36] HOST1: LG2000
+-----------------------------------------------
+STP Test Complete
+
+===============================================
+=                   STP&LACP                  =
+===============================================
+[20250821_15:01:45] HOST1: LG2000
+-----------------------------------------------
+STP&LACP Test Complete
+
+===============================================
+=                 Private-Vlan                =
+===============================================
+[20250821_15:02:50] HOST1: LG2000
+-----------------------------------------------
+Private-Vlan Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port       Action             Result  
+SHELL 25,32,36,8   private-vlan-set Abnormal
+SHELL 25,32,36,8 private-vlan-unset Abnormal
+
+===============================================
+=                  Voice-Vlan                 =
+===============================================
+[20250821_15:03:02] HOST1: LG2000
+-----------------------------------------------
+Voice-Vlan Test Complete
+
+===============================================
+=                     Ping                    =
+===============================================
+[20250821_15:03:23] HOST1: LG2000
+-----------------------------------------------
+Ping Test Complete
+
+===============================================
+=                 Static-Route                =
+===============================================
+[20250821_15:03:50] HOST1: LG2000
+-----------------------------------------------
+Static-Route Test Complete
+
+===============================================
+=                IGMP-Snooping                =
+===============================================
+[20250821_15:08:35] HOST1: LG2000
+-----------------------------------------------
+IGMP-Snooping Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port    Action              Result  
+  CLI ge2,ge3   igmp-snooping-set Abnormal
+  CLI ge2,ge3 igmp-group-mac-show Abnormal
+SHELL   25,28 igmp-group-mac-show Abnormal
+
+===============================================
+=                   L2-Smoke                  =
+===============================================
+[20250821_15:12:58] HOST1: LG2000
+-----------------------------------------------
+L2-Smoke Test Complete
+-----------------------------------------------
+Fail:
+
+Mode Port                Action          Result  
+NBR1 ge17,agg1,ge23,agg2 igmp-group-show Abnormal
+NBR1 ge17,agg1,ge23,agg2 igmp-group-show Abnormal
+NBR1 ge17,agg1,ge23,agg2 igmp-group-show Abnormal
+NBR1 ge17,agg1,ge23,agg2 igmp-group-show Abnormal
+NBR1 ge17,agg1,ge23,agg2 igmp-group-show Abnormal
+NBR1 ge17,agg1,ge23,agg2 igmp-group-show Abnormal
+NBR1 ge17,agg1,ge23,agg2 igmp-group-show Abnormal
+NBR1 ge17,agg1,ge23,agg2 igmp-group-show Abnormal
+NBR1 ge17,agg1,ge23,agg2 igmp-group-show Abnormal
+
+===============================================
+=                  MAC-Table                  =
+===============================================
+[20250821_15:13:13] HOST1: LG2000
+-----------------------------------------------
+MAC-Table Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action        Result  
+  CLI ge2  mac-table-set Abnormal
+SHELL  25  mac-table-set Abnormal
+
+===============================================
+=              MAC-Address-Limit              =
+===============================================
+[20250821_15:13:42] HOST1: LG2000
+-----------------------------------------------
+MAC-Address-Limit Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action               Result  
+  CLI ge2    mac-addr-limit-set Abnormal
+SHELL  25    mac-addr-limit-set Abnormal
+  CLI ge2  mac-addr-limit-unset Abnormal
+SHELL  25  mac-addr-limit-unset Abnormal
+
+===============================================
+=              Static-Mac-ADDRESS             =
+===============================================
+[20250821_15:14:33] HOST1: LG2000
+-----------------------------------------------
+Static-Mac-ADDRESS Test Complete
+
+===============================================
+=               MAC-Ageing-Time               =
+===============================================
+[20250821_15:15:29] HOST1: LG2000
+-----------------------------------------------
+MAC-Ageing-Time Test Complete
+-----------------------------------------------
+Fail:
+
+Mode Port Action            Result  
+CLI  ge2   ageing-time-show Abnormal
+CLI  ge2  ageing-time-unset Abnormal
+
+===============================================
+=                     ARP                     =
+===============================================
+[20250821_15:18:09] HOST1: LG2000
+-----------------------------------------------
+ARP Test Complete
+-----------------------------------------------
+Fail:
+
+Mode  Port Action          Result  
+  CLI ge2      arp-dynamic Abnormal
+SHELL ge2      arp-dynamic Abnormal
+  CLI ge2  pre-arp-timeout Abnormal
+

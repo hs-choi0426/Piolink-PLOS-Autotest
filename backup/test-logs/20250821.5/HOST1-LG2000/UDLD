@@ -1,0 +1,147 @@
+#S_CLI_UDLD_UPLINK_SHOW
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+udld port
+TiFRONT(config-if-ge5)# 
+end
+TiFRONT# 
+show udld ge5
+ Interface ge5
+----------------------------------------------------
+ Port administrative configuration setting : Enable
+ Current bidirectional state : Unknown
+ Current operational state   : Link UP
+ Message interval  : 7
+ Time out interval : 5
+ No neighbor cache information stored
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+no udld port
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+#E_CLI_UDLD_UPLINK_SHOW
+TiFRONT(config)# #S_NBR1_UDLD_UPLINK_SHOW
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+udld port
+TiFRONT(config-if-ge19)# 
+end
+TiFRONT# 
+show udld ge19
+ Interface ge19
+----------------------------------------------------
+ Port administrative configuration setting : Enable
+ Current bidirectional state : Unknown
+ Current operational state   : Link UP
+ Message interval  : 7
+ Time out interval : 5
+ No neighbor cache information stored
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_UDLD_UPLINK_SHOW
+TiFRONT(config)# #S_CLI_UDLD_ADVERTISE_SHOW
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+udld port
+TiFRONT(config-if-ge5)# 
+end
+TiFRONT# 
+show udld ge5
+ Interface ge5
+----------------------------------------------------
+ Port administrative configuration setting : Enable
+ Current bidirectional state : Bidirectional
+ Current operational state   : Advertisement
+ Message interval  : 7
+ Time out interval : 5
+   Cache Entry 1
+   -------------------------------------------
+   Expiration time        : 39
+   Device name            : TiFRONT
+   Device ID              : TS928F94C00087
+   Port ID                : ge19
+   Neighbor echo 1 device : R217C5600A03380
+   Neighbor echo 1 port   : ge5
+   Message interval       : 15
+   Time out interval      : 5
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_UDLD_ADVERTISE_SHOW
+TiFRONT(config)# #S_NBR1_UDLD_ADVERTISE_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show udld ge19
+ Interface ge19
+----------------------------------------------------
+ Port administrative configuration setting : Enable
+ Current bidirectional state : Bidirectional
+ Current operational state   : Advertisement
+ Message interval  : 7
+ Time out interval : 5
+   Cache Entry 1
+   -------------------------------------------
+   Expiration time        : 41
+   Device name            : TiFRONT
+   Device ID              : R217C5600A03380
+   Port ID                : ge5
+   Neighbor echo 1 device : TS928F94C00087
+   Neighbor echo 1 port   : ge19
+   Message interval       : 15
+   Time out interval      : 5
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_UDLD_ADVERTISE_SHOW
+TiFRONT(config)# #S_CLI_UDLD_UNSET_SHOW
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+no udld port
+TiFRONT(config-if-ge5)# 
+end
+TiFRONT# 
+show udld ge5
+ Interface ge5
+----------------------------------------------------
+ Port administrative configuration setting : Disable
+ Current bidirectional state : Unknown
+ No neighbor cache information stored
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_UDLD_UNSET_SHOW
+TiFRONT(config)# #S_NBR1_UDLD_UNSET_SHOW
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+no udld port
+TiFRONT(config-if-ge19)# 
+end
+TiFRONT# 
+show udld ge19
+ Interface ge19
+----------------------------------------------------
+ Port administrative configuration setting : Disable
+ Current bidirectional state : Unknown
+ No neighbor cache information stored
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_UDLD_UNSET_SHOW
+TiFRONT(config)# 

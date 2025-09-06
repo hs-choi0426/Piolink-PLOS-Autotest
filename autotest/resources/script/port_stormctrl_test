@@ -1,0 +1,30 @@
+#S_CLI_STORM_SET
+interface {input_port}
+storm-control broadcast pps 100
+storm-control broadcast action shutdown
+storm-control multicast pps 100
+storm-control multicast action shutdown
+storm-control dlf pps 100
+end
+show storm-control {input_port}
+conf
+sleep 15
+show portstatus | include {input_port} 
+show portstatus | include {dev_port1}
+#E_CLI_STORM_SET
+#S_CLI_STORM_UNSET
+interface {input_port}
+no storm-control broadcast
+no storm-control broadcast action shutdown
+no storm-control multicast
+no storm-control multicast action shutdown
+no storm-control dlf
+no shutdown
+end
+show storm-control {input_port}
+sleep 15
+show portstatus | include {input_port} 
+show portstatus | include {dev_port1}
+clear mac address-table
+conf
+#E_CLI_STORM_UNSET

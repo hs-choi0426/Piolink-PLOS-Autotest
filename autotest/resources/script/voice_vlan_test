@@ -1,0 +1,40 @@
+#S_CLI_VOICE_VLAN_SET
+voice vlan mode global
+voice vlan {id}
+voice vlan dscp {dscp}
+voice vlan priority {prio}
+voice vlan oui {oui_addr} mask {oui_mask} vender {oui_vender}
+interface {dev_port1}
+voice vlan enable
+end
+show voice vlan
+show run interface {dev_port1}
+configure terminal force
+#E_CLI_VOICE_VLAN_SET
+#S_SHELL_VOICE_VLAN_SET
+rtk_user_diag
+acl dump entry phase {acl_phase} entry {st_entry} {ed_entry}
+acl get entry phase {acl_phase} entry {st_entry} action
+acl get entry phase {acl_phase} entry {ed_entry} action
+exit
+#E_SHELL_VOICE_VLAN_SET
+#S_CLI_VOICE_VLAN_UNSET
+interface {dev_port1}
+no voice vlan enable
+exit
+no voice vlan {id}
+no voice vlan oui {oui_addr}
+voice vlan dscp {default_dscp}
+voice vlan priority {default_prio}
+end
+show voice vlan
+show run interface {dev_port1}
+configure terminal force
+#E_CLI_VOICE_VLAN_UNSET
+#S_SHELL_VOICE_VLAN_UNSET
+rtk_user_diag
+acl dump entry phase {acl_phase} entry {st_entry} {ed_entry}
+acl get entry phase {acl_phase} entry {st_entry} action
+acl get entry phase {acl_phase} entry {ed_entry} action
+exit
+#E_SHELL_VOICE_VLAN_UNSET

@@ -1,0 +1,114 @@
+#S_NBR1_SPEED_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+speed auto
+% Failed set interface ge19 speed auto
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_SPEED_SET
+TiFRONT(config)# #S_CLI_2PAIR_SHOW
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+speed 100
+TiFRONT(config-if-ge10)# 
+end
+TiFRONT# 
+show cable-diagnostic ge10
+ ----------------------------------------------------------
+  Port/      | Cable State/ | Pair  |   Fuzz   |   Cable   
+  Port(Pair) | Pair State   | Count |          |   Length  
+ ------------+--------------+-------+----------+-----------
+     ge10    |        OPEN  |   4   |  +/-( 1) |   0 Meter 
+   ge10(A)   |          OK  |   -   |  +/-( 1) |   0 Meter 
+   ge10(B)   |          OK  |   -   |  +/-( 1) |   0 Meter 
+   ge10(C)   |        OPEN  |   -   |  +/-( 1) |   0 Meter 
+   ge10(D)   |        OPEN  |   -   |  +/-( 1) |   0 Meter 
+ ------------+--------------+-------+----------+-----------
+  Cable Pair   : A(1,2) / B(3,6) / C(4,5) / D(7,8)
+  Cable State  : Ok / Open / Short / Open-Short / Crosstalk / Unknown
+  Pair Count   : 1 / 2 / 3 / 4
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_2PAIR_SHOW
+TiFRONT(config)# #S_SHELL_2PAIR_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+diag get cable-doctor port 9
+Port  9 (type FE):
+  Rx channel : 
+    Status : [Normal]
+    Cable Length : 0.00 (m)
+  Tx channel : 
+    Status : [Normal]
+    Cable Length : 0.00 (m)
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_2PAIR_SHOW
+bash-4.4# #S_CLI_4PAIR_SHOW
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+speed 1000
+TiFRONT(config-if-ge10)# 
+end
+TiFRONT# 
+show cable-diagnostic ge10
+ ----------------------------------------------------------
+  Port/      | Cable State/ | Pair  |   Fuzz   |   Cable   
+  Port(Pair) | Pair State   | Count |          |   Length  
+ ------------+--------------+-------+----------+-----------
+     ge10    |          OK  |   4   |  +/-( 1) |   0 Meter 
+   ge10(A)   |          OK  |   -   |  +/-( 1) |   0 Meter 
+   ge10(B)   |          OK  |   -   |  +/-( 1) |   0 Meter 
+   ge10(C)   |          OK  |   -   |  +/-( 1) |   0 Meter 
+   ge10(D)   |          OK  |   -   |  +/-( 1) |   0 Meter 
+ ------------+--------------+-------+----------+-----------
+  Cable Pair   : A(1,2) / B(3,6) / C(4,5) / D(7,8)
+  Cable State  : Ok / Open / Short / Open-Short / Crosstalk / Unknown
+  Pair Count   : 1 / 2 / 3 / 4
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_4PAIR_SHOW
+TiFRONT(config)# #S_SHELL_4PAIR_SHOW
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+diag get cable-doctor port 9
+Port  9 (type GE):
+  channel A: 
+    Status : [Normal]
+    Cable Length : 0.00 (m)
+  channel B: 
+    Status : [Normal]
+    Cable Length : 0.00 (m)
+  channel C: 
+    Status : [Normal]
+    Cable Length : 0.00 (m)
+  channel D: 
+    Status : [Normal]
+    Cable Length : 0.00 (m)
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_4PAIR_SHOW
+bash-4.4# #S_HOST_RECOVERY
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+speed auto
+TiFRONT(config-if-ge10)# 
+exit
+TiFRONT(config)# 
+#E_HOST_RECOVERY
+TiFRONT(config)# 

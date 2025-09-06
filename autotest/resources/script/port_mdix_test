@@ -1,0 +1,41 @@
+#S_CLI_AUTO_SHOW
+interface {dev_port1}
+mdi-mdix auto
+exit
+show mdi-mdix | include {dev_port1} 
+show portstatus | include {dev_port1}
+#E_CLI_AUTO_SHOW
+#S_SHELL_AUTO_SHOW
+rtk_user_diag
+port get cross-over port {sdk_port1} mode
+exit
+#E_SHELL_AUTO_SHOW
+#S_CLI_MDI_SHOW
+interface {dev_port1}
+mdi-mdix mdi
+exit
+show mdi-mdix | include {dev_port1} 
+show portstatus | include {dev_port1}
+#E_CLI_MDI_SHOW
+#S_SHELL_MDI_SHOW
+rtk_user_diag
+port get cross-over port {sdk_port1} mode
+exit
+#E_SHELL_MDI_SHOW
+#S_CLI_MDIX_SHOW
+interface {dev_port1}
+mdi-mdix mdix
+exit
+show mdi-mdix | include {dev_port1} 
+show portstatus | include {dev_port1}
+#E_CLI_MDIX_SHOW
+#S_SHELL_MDIX_SHOW
+rtk_user_diag
+port get cross-over port {sdk_port1} mode
+exit
+#E_SHELL_MDIX_SHOW
+#S_CLI_RECOVERY
+interface {dev_port1}
+mdi-mdix auto
+exit
+#E_CLI_RECOVERY

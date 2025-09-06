@@ -1,0 +1,19 @@
+#S_HOST_SPEED_SET
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+speed 10
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+#E_HOST_SPEED_SET
+TiFRONT(config)# #S_HOST_SPEED_SET
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+speed AUTO
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+#E_HOST_SPEED_SET
+TiFRONT(config)# 

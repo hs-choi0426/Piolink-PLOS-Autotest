@@ -1,0 +1,36 @@
+#S_CLI_EEE_SET
+interface {dev_port1}
+speed auto
+eee enable
+end
+show eee | include {dev_port1} 
+conf
+#E_CLI_EEE_SET
+#S_NBR1_EEE_SET
+interface {(nbr1)nbr_port1}
+eee enable
+exit
+#E_NBR1_EEE_SET
+#S_SHELL_EEE_SET
+rtk_user_diag
+sleep 5
+eee get port {sdk_port1} state
+exit
+#E_SHELL_EEE_SET
+#S_CLI_EEE_UNSET
+interface {dev_port1}
+eee disable
+end
+show eee | include {dev_port1} 
+conf
+#E_CLI_EEE_UNSET
+#S_SHELL_EEE_UNSET
+rtk_user_diag
+eee get port {sdk_port1} state
+exit
+#E_SHELL_EEE_UNSET
+#S_NBR1_RECOVERY
+interface {(nbr1)nbr_port1}
+eee disable
+exit
+#E_NBR1_RECOVERY

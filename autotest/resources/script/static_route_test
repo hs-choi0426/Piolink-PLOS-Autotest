@@ -1,0 +1,39 @@
+#S_CLI_ROUTE_SET
+interface vlan{vlan}
+ip addr {host_ip}/{host_ip_prefix}
+interface {uplink_port}
+no shutdown
+exit
+ip route {route_ip}/{route_ip_prefix} {gatewayip}
+exit
+sleep 10
+show ip interface vlan{vlan} brief
+show ip route
+configure terminal force
+#E_CLI_ROUTE_SET
+#S_SHELL_ROUTE_SET
+ping {dst_ip} -c 10
+rtk_user_diag
+l3 dump host ip from begin to end
+l3 dump route ip from begin to end
+exit
+#E_SHELL_ROUTE_SET
+#S_CLI_ROUTE_UNSET
+interface vlan{vlan}
+no ip addr {host_ip}/{host_ip_prefix}
+interface {uplink_port}
+shutdown
+exit
+no ip route {route_ip}/{route_ip_prefix} {gatewayip}
+exit
+show ip interface vlan{vlan} brief
+show ip route
+configure terminal force
+#E_CLI_ROUTE_UNSET
+#S_SHELL_ROUTE_UNSET
+ping {dst_ip} -c 10
+rtk_user_diag
+l3 dump host ip from begin to end
+l3 dump route ip from begin to end
+exit
+#E_SHELL_ROUTE_UNSET

@@ -1,0 +1,426 @@
+#S_CLI_PRIVATE_VLAN_SET
+TiFRONT(config)# 
+private-vlan 100 primary
+TiFRONT(config)# 
+private-vlan 200 community
+TiFRONT(config)# 
+private-vlan 300 isolated
+TiFRONT(config)# 
+private-vlan 100 association add 200,300
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+switchport mode private-vlan promiscuous
+TiFRONT(config-if-ge2)# 
+switchport private-vlan mapping 100 add 200,300
+TiFRONT(config-if-ge2)# 
+interface range ge5,ge7
+TiFRONT(config-if-range)# 
+switchport mode private-vlan host
+TiFRONT(config-if-range)# 
+switchport private-vlan host-association 100 add 200
+TiFRONT(config-if-range)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+switchport mode private-vlan host
+TiFRONT(config-if-xg1)# 
+switchport private-vlan host-association 100 add 300
+TiFRONT(config-if-xg1)# 
+end
+TiFRONT# 
+show vlan
+ ---------------------------------------------
+  PORT            | ge              | xg  
+                  |                 |     
+                  | 1 2 3 4 5 6 7 8 | 1 2 
+ -----------------+-----------------+-------
+  SWITCH MODE     | A P A A P A P A | P A 
+ -----------------+-----------------+-------
+  default  (   1) | . . U . . . . . | . . 
+  VLAN0100 ( 100) | . U . U . . . . | . . 
+  VLAN0200 ( 200) | . . . . U U U . | . . 
+  VLAN0300 ( 300) | . . . . . . . U | U . 
+  VLAN0400 ( 400) | . . . . . . . . | . U 
+  VLAN1000 (1000) | U . . . . . . . | . . 
+ ---------------------------------------------
+  SWITCHPORT      : A(Access) / H(Hybrid) / T(Trunk) / P(Private-Vlan)
+      A - All frame receive.
+      T - Only VLAN Tagged frame receive.
+      U - Only VLAN Untagged frame receive.
+      U - Untagged VLAN (PVID)
+      u - Untagged shared VLAN (VID)
+      T - Tagged VLAN (PVID)
+      t - Tagged shared VLAN (VID)
+  VLANNAME ( VID) : IEEE 802.1q Port based VLAN information
+TiFRONT# 
+show vlan private-vlan
+ PRIMARY       SECONDARY           TYPE                INTERFACES
+ -------       ---------       -----------      -----------------------
+     100             200         community       ge2,  ge5,  ge7
+     100             300          isolated       ge2,  xg1
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_PRIVATE_VLAN_SET
+TiFRONT(config)# #S_SHELL_PRIVATE_VLAN_SET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+vlan get vlan-table vid 100
+Vlan 100 
+  Member Ports	: 8,24,28,33,37 
+  Untag Ports	: 8,24,28,33,37 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get vlan-table vid 200
+Vlan 200 
+  Member Ports	: 24,32-33,37 
+  Untag Ports	: 24,32-33,37 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get vlan-table vid 300
+Vlan 300 
+  Member Ports	: 8,24,36 
+  Untag Ports	: 8,24,36 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+port dump isolation vlan-based
+Index |Lo-VID |Up-VID |Trust Port list       |State
+------+-------+-------+----------------------+--------
+   0  |   100 |   100 |                   24 |Enable 
+Total Number Of Entries : 1
+RTK.0> 
+vlan get pvid inner port 32
+Port based vlan configuration 
+Port 32 : 200
+RTK.0> 
+vlan get pvid inner port 36
+Port based vlan configuration 
+Port 36 : 300
+RTK.0> 
+vlan get pvid inner port 8
+Port based vlan configuration 
+Port 8 : 100
+RTK.0> 
+vlan get pvid inner port 16
+Port based vlan configuration 
+Port 16 : 400
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_PRIVATE_VLAN_SET
+bash-4.4# #S_CLI_PRIMARY_PORT_STATISTIC
+TiFRONT(config)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+shutdown
+TiFRONT(config-if-ge3)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2000 |      1023488 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |         1999 |      1024000 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |         2000 |      1024000 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |         1999 |      1023488 
+     xg2 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+no shutdown
+TiFRONT(config-if-ge3)# 
+exit
+TiFRONT(config)# 
+#E_CLI_PRIMARY_PORT_STATISTIC
+TiFRONT(config)# #S_NBR1_COMMON1_PORT_SET
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+switchport mode access
+TiFRONT(config-if-ge18)# 
+switchport access vlan 100
+TiFRONT(config-if-ge18)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_COMMON1_PORT_SET
+TiFRONT(config)# #S_CLI_COMMON1_PORT_STATISTIC
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2002 |      1025024 |           10 |         5120 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |           10 |         5120 |         2005 |      1026048 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |         2016 |      1032192 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |         2001 |      1024512 
+     xg2 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_COMMON1_PORT_STATISTIC
+TiFRONT(config)# #S_NBR1_COMMON2_PORT_SET
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+switchport mode access
+TiFRONT(config-if-ge18)# 
+switchport access vlan 200
+TiFRONT(config-if-ge18)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_COMMON2_PORT_SET
+TiFRONT(config)# #S_CLI_COMMON2_PORT_STATISTIC
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         2000 |      1024000 |           10 |         5120 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |         2010 |      1029120 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |           10 |         5120 |         1999 |      1024000 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |            0 |            0 |         2000 |      1024000 
+     xg2 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_COMMON2_PORT_STATISTIC
+TiFRONT(config)# #S_NBR1_ISOLATED_PORT_SET
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+switchport mode access
+TiFRONT(config-if-ge18)# 
+switchport access vlan 300
+TiFRONT(config-if-ge18)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_ISOLATED_PORT_SET
+TiFRONT(config)# #S_CLI_ISOLATED_PORT_STATISTIC
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |         1999 |      1024000 |           10 |         5120 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |         2000 |      1024000 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |         2000 |      1024000 
+     ge8 |            0 |            0 |            0 |            0 
+     xg1 |           10 |         5120 |         2000 |      1024000 
+     xg2 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_ISOLATED_PORT_STATISTIC
+TiFRONT(config)# #S_NBR1_PRIVATE_VLAN_UNSET
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+no switchport access vlan
+TiFRONT(config-if-ge18)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_PRIVATE_VLAN_UNSET
+TiFRONT(config)# #S_CLI_PRIVATE_VLAN_UNSET
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+no switchport mode private-vlan promiscuous
+TiFRONT(config-if-ge2)# 
+no switchport access vlan
+TiFRONT(config-if-ge2)# 
+interface range ge5,ge7
+TiFRONT(config-if-range)# 
+no switchport mode private-vlan host
+TiFRONT(config-if-range)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+switchport access vlan 100
+TiFRONT(config-if-ge5)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+switchport access vlan 200
+TiFRONT(config-if-ge7)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+no switchport mode private-vlan host
+TiFRONT(config-if-xg1)# 
+switchport access vlan 300
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+no private-vlan 200 community
+TiFRONT(config)# 
+no private-vlan 300 isolated
+TiFRONT(config)# 
+no private-vlan 100 primary
+TiFRONT(config)# 
+end
+TiFRONT# 
+show vlan
+ ---------------------------------------------
+  PORT            | ge              | xg  
+                  |                 |     
+                  | 1 2 3 4 5 6 7 8 | 1 2 
+ -----------------+-----------------+-------
+  SWITCH MODE     | A A A A A A A A | A A 
+ -----------------+-----------------+-------
+  default  (   1) | . U U . . . . . | . . 
+  VLAN0100 ( 100) | . . . U U . . . | . . 
+  VLAN0200 ( 200) | . . . . . U U . | . . 
+  VLAN0300 ( 300) | . . . . . . . U | U . 
+  VLAN0400 ( 400) | . . . . . . . . | . U 
+  VLAN1000 (1000) | U . . . . . . . | . . 
+ ---------------------------------------------
+  SWITCHPORT      : A(Access) / H(Hybrid) / T(Trunk) / P(Private-Vlan)
+      A - All frame receive.
+      T - Only VLAN Tagged frame receive.
+      U - Only VLAN Untagged frame receive.
+      U - Untagged VLAN (PVID)
+      u - Untagged shared VLAN (VID)
+      T - Tagged VLAN (PVID)
+      t - Tagged shared VLAN (VID)
+  VLANNAME ( VID) : IEEE 802.1q Port based VLAN information
+TiFRONT# 
+show vlan private-vlan
+ PRIMARY       SECONDARY           TYPE                INTERFACES
+ -------       ---------       -----------      -----------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_PRIVATE_VLAN_UNSET
+TiFRONT(config)# #S_SHELL_PRIVATE_VLAN_UNSET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+vlan get vlan-table vid 100
+Vlan 100 
+  Member Ports	: 28,33 
+  Untag Ports	: 28,33 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get vlan-table vid 200
+Vlan 200 
+  Member Ports	: 32,37 
+  Untag Ports	: 32,37 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+vlan get vlan-table vid 300
+Vlan 300 
+  Member Ports	: 8,36 
+  Untag Ports	: 8,36 
+  Tag Ports	:  
+  mcast group	: 0x0
+  Stg		: 0
+  UBCAST hkey	: UC_LOOKUP_ON_VID 
+  MCAST hkey	: MC_LOOKUP_ON_VID 
+  VLAN GroupMask	: 0
+  Profile index	: 0
+RTK.0> 
+port dump isolation vlan-based
+Index |Lo-VID |Up-VID |Trust Port list       |State
+------+-------+-------+----------------------+--------
+Total Number Of Entries : 0
+RTK.0> 
+vlan get pvid inner port 32
+Port based vlan configuration 
+Port 32 : 200
+RTK.0> 
+vlan get pvid inner port 36
+Port based vlan configuration 
+Port 36 : 300
+RTK.0> 
+vlan get pvid inner port 8
+Port based vlan configuration 
+Port 8 : 300
+RTK.0> 
+vlan get pvid inner port 16
+Port based vlan configuration 
+Port 16 : 400
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_PRIVATE_VLAN_UNSET
+bash-4.4# 

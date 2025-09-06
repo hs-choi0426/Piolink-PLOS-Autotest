@@ -1,0 +1,74 @@
+#S_CLI_STORM_SET
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+storm-control broadcast pps 100
+TiFRONT(config-if-ge2)# 
+storm-control broadcast action shutdown
+TiFRONT(config-if-ge2)# 
+storm-control multicast pps 100
+TiFRONT(config-if-ge2)# 
+storm-control multicast action shutdown
+TiFRONT(config-if-ge2)# 
+storm-control dlf pps 100
+TiFRONT(config-if-ge2)# 
+end
+TiFRONT# 
+show storm-control ge2
+        Storm-Control Status Table       
+ ----------------------------------------
+    Port  |  BcastPPS  McastPPS  DlfPPS  
+ ----------------------------------------
+      ge2 |      100       100       100 
+ 10000000(PPS):Storm Control disable state
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+show portstatus | include ge2 
+      ge2 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+show portstatus | include ge5
+      ge5 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_STORM_SET
+TiFRONT(config)# #S_CLI_STORM_UNSET
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+no storm-control broadcast
+TiFRONT(config-if-ge2)# 
+no storm-control broadcast action shutdown
+TiFRONT(config-if-ge2)# 
+no storm-control multicast
+TiFRONT(config-if-ge2)# 
+no storm-control multicast action shutdown
+TiFRONT(config-if-ge2)# 
+no storm-control dlf
+TiFRONT(config-if-ge2)# 
+no shutdown
+TiFRONT(config-if-ge2)# 
+end
+TiFRONT# 
+show storm-control ge2
+        Storm-Control Status Table       
+ ----------------------------------------
+    Port  |  BcastPPS  McastPPS  DlfPPS  
+ ----------------------------------------
+      ge2 |  Disable   Disable   Disable 
+ 10000000(PPS):Storm Control disable state
+TiFRONT# 
+show portstatus | include ge2 
+      ge2 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT# 
+show portstatus | include ge5
+      ge5 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT# 
+clear mac address-table
+% Incomplete command.
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STORM_UNSET
+TiFRONT(config)# 

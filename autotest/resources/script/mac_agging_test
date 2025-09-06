@@ -1,0 +1,47 @@
+#S_NBR1_MAC_AGEING_TIME_SET
+interface {(nbr1)output_port}
+shutdown
+exit
+#E_NBR1_MAC_AGEING_TIME_SET
+#S_CLI_MAC_AGEING_TIME_SHOW
+end
+clear mac address-table dynamic
+sleep 15
+show mac-table
+configure terminal force
+interface {input_port}
+shutdown
+exit
+#E_CLI_MAC_AGEING_TIME_SHOW
+#S_CLI_MAC_AGEING_TIME_SET
+mac ageing-time {ageing_time}
+end
+sleep 20
+show mac-table
+configure terminal force
+#E_CLI_MAC_AGEING_TIME_SET
+#S_SHELL_MAC_AGEING_TIME_SET
+rtk_user_diag
+l2-table dump
+exit
+#E_SHELL_MAC_AGEING_TIME_SET
+#S_NBR1_MAC_AGEING_TIME_UNSET
+interface {(nbr1)output_port}
+no shutdown
+exit
+#E_NBR1_MAC_AGEING_TIME_UNSET
+#S_CLI_MAC_AGEING_TIME_UNSET
+interface {input_port}
+no shutdown
+exit
+no mac ageing-time
+end
+sleep 15
+show mac-table
+configure terminal force
+#E_CLI_MAC_AGEING_TIME_UNSET
+#S_SHELL_MAC_AGEING_TIME_UNSET
+rtk_user_diag
+l2-table dump
+exit
+#E_SHELL_MAC_AGEING_TIME_UNSET

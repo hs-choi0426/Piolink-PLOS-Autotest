@@ -1,0 +1,683 @@
+#S_CLI_INIT
+TiFRONT(config)# 
+interface range all
+TiFRONT(config-if-range)# 
+no shutdown
+TiFRONT(config-if-range)# 
+exit
+TiFRONT(config)# 
+#E_CLI_INIT
+TiFRONT(config)# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge1
+TiFRONT(config-if-ge1)# 
+shutdown
+TiFRONT(config-if-ge1)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge1 
+      ge1 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 0 state
+Port  0 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge1
+TiFRONT(config-if-ge1)# 
+no shutdown
+TiFRONT(config-if-ge1)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge1 
+      ge1 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 0 state
+Port  0 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+shutdown
+TiFRONT(config-if-ge2)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge2 
+      ge2 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 1 state
+Port  1 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+no shutdown
+TiFRONT(config-if-ge2)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge2 
+      ge2 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 1 state
+Port  1 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+shutdown
+TiFRONT(config-if-ge3)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge3 
+      ge3 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 2 state
+Port  2 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+no shutdown
+TiFRONT(config-if-ge3)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge3 
+      ge3 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 2 state
+Port  2 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge4
+TiFRONT(config-if-ge4)# 
+shutdown
+TiFRONT(config-if-ge4)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge4 
+      ge4 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 3 state
+Port  3 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge4
+TiFRONT(config-if-ge4)# 
+no shutdown
+TiFRONT(config-if-ge4)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge4 
+      ge4 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 3 state
+Port  3 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+shutdown
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge5 
+      ge5 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 4 state
+Port  4 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+no shutdown
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge5 
+      ge5 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 4 state
+Port  4 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge6
+TiFRONT(config-if-ge6)# 
+shutdown
+TiFRONT(config-if-ge6)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge6 
+      ge6 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 5 state
+Port  5 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge6
+TiFRONT(config-if-ge6)# 
+no shutdown
+TiFRONT(config-if-ge6)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge6 
+      ge6 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 5 state
+Port  5 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+shutdown
+TiFRONT(config-if-ge7)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge7 
+      ge7 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 6 state
+Port  6 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+no shutdown
+TiFRONT(config-if-ge7)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge7 
+      ge7 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 6 state
+Port  6 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge8
+TiFRONT(config-if-ge8)# 
+shutdown
+TiFRONT(config-if-ge8)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge8 
+      ge8 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 7 state
+Port  7 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge8
+TiFRONT(config-if-ge8)# 
+no shutdown
+TiFRONT(config-if-ge8)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge8 
+      ge8 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 7 state
+Port  7 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge9
+TiFRONT(config-if-ge9)# 
+shutdown
+TiFRONT(config-if-ge9)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge9 
+      ge9 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 8 state
+Port  8 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge9
+TiFRONT(config-if-ge9)# 
+no shutdown
+TiFRONT(config-if-ge9)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge9 
+      ge9 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 8 state
+Port  8 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+shutdown
+TiFRONT(config-if-ge10)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 9 state
+Port  9 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+no shutdown
+TiFRONT(config-if-ge10)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge10 
+     ge10 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 9 state
+Port  9 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge11
+TiFRONT(config-if-ge11)# 
+shutdown
+TiFRONT(config-if-ge11)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge11 
+     ge11 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 10 state
+Port 10 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge11
+TiFRONT(config-if-ge11)# 
+no shutdown
+TiFRONT(config-if-ge11)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge11 
+     ge11 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 10 state
+Port 10 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge12
+TiFRONT(config-if-ge12)# 
+shutdown
+TiFRONT(config-if-ge12)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge12 
+     ge12 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 11 state
+Port 11 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge12
+TiFRONT(config-if-ge12)# 
+no shutdown
+TiFRONT(config-if-ge12)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge12 
+     ge12 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 11 state
+Port 11 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+shutdown
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+show portstatus | include xg1 
+      xg1 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 16 state
+Port 16 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+no shutdown
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+show portstatus | include xg1 
+      xg1 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 16 state
+Port 16 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_CLI_RECOVERY
+TiFRONT(config)# 
+interface range all
+TiFRONT(config-if-range)# 
+shutdown
+TiFRONT(config-if-range)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+no shut
+TiFRONT(config-if-ge7)# 
+interface ge8
+TiFRONT(config-if-ge8)# 
+no shut
+TiFRONT(config-if-ge8)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+no shut
+TiFRONT(config-if-ge10)# 
+interface ge12
+TiFRONT(config-if-ge12)# 
+no shut
+TiFRONT(config-if-ge12)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+no shut
+TiFRONT(config-if-xg1)# 
+interface xg2
+TiFRONT(config-if-xg2)# 
+no shut
+TiFRONT(config-if-xg2)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+no shut
+TiFRONT(config-if-ge5)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+no shut
+TiFRONT(config-if-ge7)# 
+interface ge9
+TiFRONT(config-if-ge9)# 
+no shut
+TiFRONT(config-if-ge9)# 
+interface xg2
+TiFRONT(config-if-xg2)# 
+no shut
+TiFRONT(config-if-xg2)# 
+exit
+TiFRONT(config)# 
+#E_CLI_RECOVERY
+TiFRONT(config)# 

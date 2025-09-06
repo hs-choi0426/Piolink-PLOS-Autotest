@@ -1,0 +1,45 @@
+#S_CLI_UDLD_UPLINK_SHOW
+interface {dev_port1}
+udld port
+end
+show udld {dev_port1}
+conf
+interface {dev_port1}
+no udld port
+exit
+#E_CLI_UDLD_UPLINK_SHOW
+#S_NBR1_UDLD_UPLINK_SHOW
+interface {(nbr1)nbr_port1}
+udld port
+end
+show udld {(nbr1)nbr_port1}
+conf
+#E_NBR1_UDLD_UPLINK_SHOW
+#S_CLI_UDLD_ADVERTISE_SHOW
+interface {dev_port1}
+udld port
+end
+sleep 10
+show udld {dev_port1}
+conf
+#E_CLI_UDLD_ADVERTISE_SHOW
+#S_NBR1_UDLD_ADVERTISE_SHOW
+end
+sleep 10
+show udld {(nbr1)nbr_port1}
+conf
+#E_NBR1_UDLD_ADVERTISE_SHOW
+#S_CLI_UDLD_UNSET_SHOW
+interface {dev_port1}
+no udld port
+end
+show udld {dev_port1}
+conf
+#E_CLI_UDLD_UNSET_SHOW
+#S_NBR1_UDLD_UNSET_SHOW
+interface {(nbr1)nbr_port1}
+no udld port
+end
+show udld {(nbr1)nbr_port1}
+conf
+#E_NBR1_UDLD_UNSET_SHOW

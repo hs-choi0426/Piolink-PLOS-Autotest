@@ -1,0 +1,37 @@
+#S_CLI_FLOW_SEND_RECEIVE_ON
+interface {dev_port1}
+flowcontrol send on
+flowcontrol receive on
+exit
+show flowcontrol | include {dev_port1} 
+show portstatus | include {dev_port1}
+#E_CLI_FLOW_SEND_RECEIVE_ON
+#S_SHELL_FLOW_SEND_RECEIVE_ON
+rtk_user_diag
+port get phy-force port {sdk_port1}
+exit
+#E_SHELL_FLOW_SEND_RECEIVE_ON
+#S_CLI_FLOW_SEND_RECEIVE_OFF
+interface {dev_port1}
+flowcontrol send off
+flowcontrol receive off
+exit
+show flowcontrol | include {dev_port1} 
+show portstatus | include {dev_port1}
+#E_CLI_FLOW_SEND_RECEIVE_OFF
+#S_SHELL_FLOW_SEND_RECEIVE_OFF
+rtk_user_diag
+port get phy-force port {sdk_port1}
+exit
+#E_SHELL_FLOW_SEND_RECEIVE_OFF
+#S_CLI_1G_RECOVERY
+interface range ge*
+flowcontrol send off
+flowcontrol receive off
+#E_CLI_1G_RECOVERY
+#S_CLI_10G_RECOVERY
+interface range xg*
+flowcontrol send off
+flowcontrol receive off
+exit
+#E_CLI_10G_RECOVERY

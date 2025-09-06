@@ -1,0 +1,1928 @@
+#S_CLI_STP_SET
+TiFRONT(config)# 
+spanning-tree mode rpvst+
+TiFRONT(config)# 
+spanning-tree max-age 6
+TiFRONT(config)# 
+spanning-tree forward-time 4
+TiFRONT(config)# 
+spanning-tree hello-time 1
+TiFRONT(config)# 
+spanning-tree enable
+TiFRONT(config)# 
+spanning-tree priority 4096
+TiFRONT(config)# 
+interface ge18
+TiFRONT(config-if-ge18)# 
+shutdown
+TiFRONT(config-if-ge18)# 
+interface range ge20,ge22
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+channel-group 1 mode active
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-agg1)# 
+interface range ge24,xg1
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-range)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_SET
+TiFRONT(config)# #S_NBR1_STP_SET
+TiFRONT(config)# 
+spanning-tree mode rpvst+
+TiFRONT(config)# 
+spanning-tree max-age 6
+TiFRONT(config)# 
+spanning-tree forward-time 4
+TiFRONT(config)# 
+spanning-tree hello-time 1
+TiFRONT(config)# 
+spanning-tree enable
+TiFRONT(config)# 
+spanning-tree priority 8192
+TiFRONT(config)# 
+interface range ge42,ge41
+TiFRONT(config-if-range)# 
+shutdown
+TiFRONT(config-if-range)# 
+interface ge48
+TiFRONT(config-if-ge48)# 
+no switchport access vlan
+TiFRONT(config-if-ge48)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-ge48)# 
+exit
+TiFRONT(config)# 
+interface range ge44,ge46
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+channel-group 1 mode active
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-agg1)# 
+interface range ge43,ge45,ge47
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+static-channel-group 2
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface agg2
+TiFRONT(config-if-agg2)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-agg2)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+ip igmp snooping
+TiFRONT(config)# 
+#E_NBR1_STP_SET
+TiFRONT(config)# #S_NBR2_STP_SET
+TiFRONT(config)# 
+spanning-tree mode rpvst+
+TiFRONT(config)# 
+spanning-tree max-age 6
+TiFRONT(config)# 
+spanning-tree forward-time 4
+TiFRONT(config)# 
+spanning-tree hello-time 1
+TiFRONT(config)# 
+spanning-tree enable
+TiFRONT(config)# 
+spanning-tree priority 12288
+TiFRONT(config)# 
+interface ge17
+TiFRONT(config-if-ge17)# 
+shutdown
+TiFRONT(config-if-ge17)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+no switchport access vlan
+TiFRONT(config-if-xg1)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+interface range ge19,ge21,ge23
+TiFRONT(config-if-range)# 
+no switchport access vlan
+TiFRONT(config-if-range)# 
+speed 100
+TiFRONT(config-if-range)# 
+duplex full
+TiFRONT(config-if-range)# 
+speed auto
+TiFRONT(config-if-range)# 
+static-channel-group 2
+TiFRONT(config-if-range)# 
+lacp timeout short
+TiFRONT(config-if-range)# 
+interface agg2
+TiFRONT(config-if-agg2)# 
+spanning-tree path-cost 20000
+TiFRONT(config-if-agg2)# 
+end
+TiFRONT# 
+clear port statistic
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR2_STP_SET
+TiFRONT(config)# #S_CLI_STP_BRIDGE_CHANGE_ROOT_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  1001-0006c4550088 ( priority : 4096 )
+ root id      :  1001-0006c4550088
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role Designated - Forwarding
+     ge17: portid 801b - path cost   20000 - role Designated - Forwarding
+     ge24: portid 8022 - path cost   20000 - role Designated - Forwarding
+      xg1: portid 8023 - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |         2110 |      1648640 |         2230 |      1710080 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |          121 |        62464 |         1202 |       718336 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |            1 |         1024 |         1021 |       533504 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |            0 |            0 |         2341 |      1311232 
+     xg1 |         2109 |      1647616 |         2231 |      1710592 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |     1886773 ----      1937572 ----  |         6         0 |    0    0
+    ge20 |      906605( 48%)      826194( 42%) |         6         0 |    0    0
+    ge22 |      980168( 51%)     1111378( 57%) |         0         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_BRIDGE_CHANGE_ROOT_SHOW
+TiFRONT(config)# #S_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table static
+TiFRONT# 
+clear mac address-table multicast
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4135791 ( priority : 8192 )
+ root id      :  1001-0006c4550088
+ root port  agg1		 /  path cost 20000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role   Rootport - Forwarding
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+     ge48: portid 803a - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show ip igmp snooping mrouter
+VLAN 1
+Mrouter--> agg1 (Dynamic)
+TiFRONT# 
+show ip igmp groups
+IGMP Connected Group Membership
+Group Address    Interface            Uptime   Expires  Last Reporter
+224.0.1.1        agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.2        agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.3        agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.4        agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.5        agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.6        agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.7        agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.8        agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.9        agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.10       agg1  (vlan1)        00:00:04 00:04:19 10.10.10.12
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      8 |    1 |   agg1 | 0006.c455.0088 | FORWARD |  
+      9 |    1 |   agg1 | 0010.9400.0001 | FORWARD |  
+     10 |    1 |   agg1 | 0010.9400.0002 | FORWARD |  
+     11 |    1 |   agg1 | 0010.9400.0003 | FORWARD |  
+     12 |    1 |   agg1 | 0010.9400.0004 | FORWARD |  
+     13 |    1 |   agg1 | 0010.9400.0005 | FORWARD |  
+     14 |    1 |   agg1 | 0010.9400.0006 | FORWARD |  
+     15 |    1 |   agg1 | 0010.9400.0007 | FORWARD |  
+     16 |    1 |   agg1 | 0010.9400.0008 | FORWARD |  
+     17 |    1 |   agg1 | 0010.9400.0009 | FORWARD |  
+     18 |    1 |   agg1 | 0010.9400.000a | FORWARD |  
+     19 |    1 |   agg1 | 0010.9401.0001 | FORWARD |  
+     20 |    1 |   agg1 | 0010.9401.0002 | FORWARD |  
+     21 |    1 |   agg1 | 0010.9401.0003 | FORWARD |  
+     22 |    1 |   agg1 | 0010.9401.0004 | FORWARD |  
+     23 |    1 |   agg1 | 0010.9401.0005 | FORWARD |  
+     24 |    1 |   agg1 | 0010.9401.0006 | FORWARD |  
+     25 |    1 |   agg1 | 0010.9401.0007 | FORWARD |  
+     26 |    1 |   agg1 | 0010.9401.0008 | FORWARD |  
+     27 |    1 |   agg1 | 0010.9401.0009 | FORWARD |  
+     28 |    1 |   agg1 | 0010.9401.000a | FORWARD |  
+     29 |    1 |   agg1 | 0010.9401.0010 | FORWARD |  
+     30 |    1 |   agg1 | 0010.9401.0020 | FORWARD |  
+     31 |    1 |   agg1 | 0010.9403.0001 | FORWARD |  
+     32 |    1 |   agg1 | 0010.9403.0002 | FORWARD |  
+     33 |    1 |   agg1 | 0100.5e00.0101 | FORWARD | STATIC
+     34 |    1 |   agg1 | 0100.5e00.0102 | FORWARD | STATIC
+     35 |    1 |   agg1 | 0100.5e00.0103 | FORWARD | STATIC
+     36 |    1 |   agg1 | 0100.5e00.0104 | FORWARD | STATIC
+     37 |    1 |   agg1 | 0100.5e00.0105 | FORWARD | STATIC
+     38 |    1 |   agg1 | 0100.5e00.0106 | FORWARD | STATIC
+     39 |    1 |   agg1 | 0100.5e00.0107 | FORWARD | STATIC
+     40 |    1 |   agg1 | 0100.5e00.0108 | FORWARD | STATIC
+     41 |    1 |   agg1 | 0100.5e00.0109 | FORWARD | STATIC
+     42 |    1 |   agg1 | 0100.5e00.010a | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# #S_CLI_STP_BRIDGE_CHANGE_NON_ROOT_SHOW
+TiFRONT(config)# 
+spanning-tree priority 16384
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4550088 ( priority : 16384 )
+ root id      :  2001-0006c4135791
+ root port  agg1		 /  path cost 20000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role   Rootport - Forwarding
+     ge17: portid 801b - path cost   20000 - role Designated - Forwarding
+     ge24: portid 8022 - path cost   20000 - role  Alternate - Discarding
+      xg1: portid 8023 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |         2111 |      1649664 |         2161 |      1623552 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |          652 |       334336 |         1601 |      1383424 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |         1512 |      1291776 |          511 |       267264 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |         2122 |      1096192 |            0 |            0 
+     xg1 |         2221 |      1198592 |            0 |            0 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |    11088300 ----     11232627 ----  |      5647         0 |    0    0
+    ge20 |     5487870( 49%)     5480588( 48%) |      2051         0 |    0    0
+    ge22 |     5600430( 50%)     5752039( 51%) |      3596         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_BRIDGE_CHANGE_NON_ROOT_SHOW
+TiFRONT(config)# #S_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table static
+TiFRONT# 
+clear mac address-table multicast
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4135791 ( priority : 8192 )
+ root id      :  2001-0006c4135791
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role Designated - Forwarding
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+     ge48: portid 803a - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show ip igmp snooping mrouter
+VLAN 1
+Mrouter--> agg2 (Dynamic)
+Mrouter--> agg1 (Dynamic)
+TiFRONT# 
+show ip igmp groups
+IGMP Connected Group Membership
+Group Address    Interface            Uptime   Expires  Last Reporter
+224.0.1.1        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.2        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.3        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.4        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.5        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.6        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.7        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.8        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.9        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.10       agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      8 |    1 |   agg1 | 0006.c455.0088 | FORWARD |  
+      9 |    1 |   agg1 | 0010.9400.0001 | FORWARD |  
+     10 |    1 |   agg1 | 0010.9400.0002 | FORWARD |  
+     11 |    1 |   agg1 | 0010.9400.0003 | FORWARD |  
+     12 |    1 |   agg1 | 0010.9400.0004 | FORWARD |  
+     13 |    1 |   agg1 | 0010.9400.0005 | FORWARD |  
+     14 |    1 |   agg1 | 0010.9400.0006 | FORWARD |  
+     15 |    1 |   agg1 | 0010.9400.0007 | FORWARD |  
+     16 |    1 |   agg1 | 0010.9400.0008 | FORWARD |  
+     17 |    1 |   agg1 | 0010.9400.0009 | FORWARD |  
+     18 |    1 |   agg1 | 0010.9400.000a | FORWARD |  
+     19 |    1 |   agg2 | 0010.9401.0001 | FORWARD |  
+     20 |    1 |   agg2 | 0010.9401.0002 | FORWARD |  
+     21 |    1 |   agg2 | 0010.9401.0003 | FORWARD |  
+     22 |    1 |   agg2 | 0010.9401.0004 | FORWARD |  
+     23 |    1 |   agg2 | 0010.9401.0005 | FORWARD |  
+     24 |    1 |   agg2 | 0010.9401.0006 | FORWARD |  
+     25 |    1 |   agg2 | 0010.9401.0007 | FORWARD |  
+     26 |    1 |   agg2 | 0010.9401.0008 | FORWARD |  
+     27 |    1 |   agg2 | 0010.9401.0009 | FORWARD |  
+     28 |    1 |   agg2 | 0010.9401.000a | FORWARD |  
+     29 |    1 |   agg1 | 0010.9401.0010 | FORWARD |  
+     30 |    1 |   agg2 | 0010.9401.0020 | FORWARD |  
+     31 |    1 |   agg1 | 0010.9402.0001 | FORWARD |  
+     32 |    1 |   agg2 | 0010.9402.0002 | FORWARD |  
+     33 |    1 |   agg1 | 0010.9403.0001 | FORWARD |  
+     34 |    1 |   agg2 | 0010.9403.0002 | FORWARD |  
+     35 |    1 |   agg2 | 0100.5e00.0101 | FORWARD | STATIC
+     36 |    1 |   agg2 | 0100.5e00.0102 | FORWARD | STATIC
+     37 |    1 |   agg2 | 0100.5e00.0103 | FORWARD | STATIC
+     38 |    1 |   agg2 | 0100.5e00.0104 | FORWARD | STATIC
+     39 |    1 |   agg2 | 0100.5e00.0105 | FORWARD | STATIC
+     40 |    1 |   agg2 | 0100.5e00.0106 | FORWARD | STATIC
+     41 |    1 |   agg2 | 0100.5e00.0107 | FORWARD | STATIC
+     42 |    1 |   agg2 | 0100.5e00.0108 | FORWARD | STATIC
+     43 |    1 |   agg2 | 0100.5e00.0109 | FORWARD | STATIC
+     44 |    1 |   agg2 | 0100.5e00.010a | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# #S_NBR1_STP_BRIDGE_CHANGE_ROOT_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4135791 ( priority : 8192 )
+ root id      :  2001-0006c4135791
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role Designated - Forwarding
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+     ge48: portid 803a - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |            0 |            0 |            0 |            0 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |            0 |            0 |            0 |            0 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |            0 |            0 |            0 |            0 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |            0 |            0 |            0 |            0 
+    ge25 |            0 |            0 |            0 |            0 
+    ge26 |            0 |            0 |            0 |            0 
+    ge27 |            0 |            0 |            0 |            0 
+    ge28 |            0 |            0 |            0 |            0 
+    ge29 |            0 |            0 |            0 |            0 
+    ge30 |            0 |            0 |            0 |            0 
+    ge31 |            0 |            0 |            0 |            0 
+    ge32 |            0 |            0 |            0 |            0 
+    ge33 |            0 |            0 |            0 |            0 
+    ge34 |            0 |            0 |            0 |            0 
+    ge35 |            0 |            0 |            0 |            0 
+    ge36 |            0 |            0 |            0 |            0 
+    ge37 |            0 |            0 |            0 |            0 
+    ge38 |            0 |            0 |            0 |            0 
+    ge39 |            0 |            0 |            0 |            0 
+    ge40 |            0 |            0 |            0 |            0 
+    ge41 |            0 |            0 |            0 |            0 
+    ge42 |            0 |            0 |            0 |            0 
+    ge43 |          301 |       154112 |         1509 |      1288784 
+    ge44 |         1610 |      1391184 |          515 |       264272 
+    ge45 |          402 |       205832 |          300 |       153600 
+    ge46 |          509 |       266240 |         1504 |      1285120 
+    ge47 |         1405 |      1285632 |          307 |       162304 
+    ge48 |            0 |            0 |         2112 |      1091584 
+     xg1 |            0 |            0 |            0 |            0 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+     xg5 |            0 |            0 |            0 |            0 
+     xg6 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |    11265391 ----     11120608 ----  |     12739         0 |    0    0
+    ge44 |     5505425( 48%)     5496729( 49%) |      6568         0 |    0    0
+    ge46 |     5759966( 51%)     5623879( 50%) |      6171         0 |    0    0
+ --------+-------------------------------------+---------------------+-----------
+    agg2 |    11129635 ----     10687826 ----  |    575837         0 |    0    0
+    ge43 |     2827415( 25%)     1809059( 16%) |      1985         0 |    0    0
+    ge45 |     4513264( 40%)     4680586( 43%) |    571985         0 |    0    0
+    ge47 |     3788956( 34%)     4198181( 39%) |      1867         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_STP_BRIDGE_CHANGE_ROOT_SHOW
+TiFRONT(config)# #S_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table static
+TiFRONT# 
+clear mac address-table multicast
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show ip igmp snooping mrouter
+VLAN 1
+Mrouter--> agg2 (Dynamic)
+Mrouter--> agg1 (Dynamic)
+TiFRONT# 
+show ip igmp groups
+IGMP Connected Group Membership
+Group Address    Interface            Uptime   Expires  Last Reporter
+224.0.1.1        agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+224.0.1.2        agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+224.0.1.3        agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+224.0.1.4        agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+224.0.1.5        agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+224.0.1.6        agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+224.0.1.7        agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+224.0.1.8        agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+224.0.1.9        agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+224.0.1.10       agg2  (vlan1)        00:00:03 00:04:19 10.10.10.12
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      8 |    1 |   agg1 | 0006.c455.0088 | FORWARD |  
+      9 |    1 |   agg1 | 0010.9400.0001 | FORWARD |  
+     10 |    1 |   agg1 | 0010.9400.0002 | FORWARD |  
+     11 |    1 |   agg1 | 0010.9400.0003 | FORWARD |  
+     12 |    1 |   agg1 | 0010.9400.0004 | FORWARD |  
+     13 |    1 |   agg1 | 0010.9400.0005 | FORWARD |  
+     14 |    1 |   agg1 | 0010.9400.0006 | FORWARD |  
+     15 |    1 |   agg1 | 0010.9400.0007 | FORWARD |  
+     16 |    1 |   agg1 | 0010.9400.0008 | FORWARD |  
+     17 |    1 |   agg1 | 0010.9400.0009 | FORWARD |  
+     18 |    1 |   agg1 | 0010.9400.000a | FORWARD |  
+     19 |    1 |   agg2 | 0010.9401.0001 | FORWARD |  
+     20 |    1 |   agg2 | 0010.9401.0002 | FORWARD |  
+     21 |    1 |   agg2 | 0010.9401.0003 | FORWARD |  
+     22 |    1 |   agg2 | 0010.9401.0004 | FORWARD |  
+     23 |    1 |   agg2 | 0010.9401.0005 | FORWARD |  
+     24 |    1 |   agg2 | 0010.9401.0006 | FORWARD |  
+     25 |    1 |   agg2 | 0010.9401.0007 | FORWARD |  
+     26 |    1 |   agg2 | 0010.9401.0008 | FORWARD |  
+     27 |    1 |   agg2 | 0010.9401.0009 | FORWARD |  
+     28 |    1 |   agg2 | 0010.9401.000a | FORWARD |  
+     29 |    1 |   agg1 | 0010.9401.0010 | FORWARD |  
+     30 |    1 |   agg2 | 0010.9401.0020 | FORWARD |  
+     31 |    1 |   agg1 | 0010.9402.0001 | FORWARD |  
+     32 |    1 |   agg2 | 0010.9402.0002 | FORWARD |  
+     33 |    1 |   agg1 | 0010.9403.0001 | FORWARD |  
+     34 |    1 |   agg2 | 0010.9403.0002 | FORWARD |  
+     35 |    1 |   agg2 | 0100.5e00.0101 | FORWARD | STATIC
+     36 |    1 |   agg2 | 0100.5e00.0102 | FORWARD | STATIC
+     37 |    1 |   agg2 | 0100.5e00.0103 | FORWARD | STATIC
+     38 |    1 |   agg2 | 0100.5e00.0104 | FORWARD | STATIC
+     39 |    1 |   agg2 | 0100.5e00.0105 | FORWARD | STATIC
+     40 |    1 |   agg2 | 0100.5e00.0106 | FORWARD | STATIC
+     41 |    1 |   agg2 | 0100.5e00.0107 | FORWARD | STATIC
+     42 |    1 |   agg2 | 0100.5e00.0108 | FORWARD | STATIC
+     43 |    1 |   agg2 | 0100.5e00.0109 | FORWARD | STATIC
+     44 |    1 |   agg2 | 0100.5e00.010a | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# #S_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree priority 32
+TiFRONT(config-if-agg1)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# #S_CLI_STP_PORT_PRIORITY_CHANGE_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4550088 ( priority : 16384 )
+ root id      :  2001-0006c4135791
+ root port  agg1		 /  path cost 20000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role   Rootport - Forwarding
+     ge17: portid 801b - path cost   20000 - role Designated - Forwarding
+     ge24: portid 8022 - path cost   20000 - role  Alternate - Discarding
+      xg1: portid 8023 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |         2110 |      1648640 |         2162 |      1624576 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |          652 |       334336 |         1601 |      1383424 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |         1511 |      1291264 |          511 |       267264 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |         2121 |      1096192 |            0 |            0 
+     xg1 |         2221 |      1198592 |            0 |            0 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |    11181334 ----     11327196 ----  |      5647         0 |    0    0
+    ge20 |     5513248( 49%)     5552276( 49%) |      2051         0 |    0    0
+    ge22 |     5668086( 50%)     5774920( 50%) |      3596         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_PORT_PRIORITY_CHANGE_SHOW
+TiFRONT(config)# #S_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table static
+TiFRONT# 
+clear mac address-table multicast
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4135791 ( priority : 8192 )
+ root id      :  2001-0006c4135791
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 2001 - path cost   20000 - role Designated - Forwarding
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+     ge48: portid 803a - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show ip igmp snooping mrouter
+VLAN 1
+Mrouter--> agg2 (Dynamic)
+Mrouter--> agg1 (Dynamic)
+TiFRONT# 
+show ip igmp groups
+IGMP Connected Group Membership
+Group Address    Interface            Uptime   Expires  Last Reporter
+224.0.1.1        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.2        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.3        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.4        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.5        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.6        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.7        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.8        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.9        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.10       agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      8 |    1 |   agg1 | 0006.c455.0088 | FORWARD |  
+      9 |    1 |   agg1 | 0010.9400.0001 | FORWARD |  
+     10 |    1 |   agg1 | 0010.9400.0002 | FORWARD |  
+     11 |    1 |   agg1 | 0010.9400.0003 | FORWARD |  
+     12 |    1 |   agg1 | 0010.9400.0004 | FORWARD |  
+     13 |    1 |   agg1 | 0010.9400.0005 | FORWARD |  
+     14 |    1 |   agg1 | 0010.9400.0006 | FORWARD |  
+     15 |    1 |   agg1 | 0010.9400.0007 | FORWARD |  
+     16 |    1 |   agg1 | 0010.9400.0008 | FORWARD |  
+     17 |    1 |   agg1 | 0010.9400.0009 | FORWARD |  
+     18 |    1 |   agg1 | 0010.9400.000a | FORWARD |  
+     19 |    1 |   agg2 | 0010.9401.0001 | FORWARD |  
+     20 |    1 |   agg2 | 0010.9401.0002 | FORWARD |  
+     21 |    1 |   agg2 | 0010.9401.0003 | FORWARD |  
+     22 |    1 |   agg2 | 0010.9401.0004 | FORWARD |  
+     23 |    1 |   agg2 | 0010.9401.0005 | FORWARD |  
+     24 |    1 |   agg2 | 0010.9401.0006 | FORWARD |  
+     25 |    1 |   agg2 | 0010.9401.0007 | FORWARD |  
+     26 |    1 |   agg2 | 0010.9401.0008 | FORWARD |  
+     27 |    1 |   agg2 | 0010.9401.0009 | FORWARD |  
+     28 |    1 |   agg2 | 0010.9401.000a | FORWARD |  
+     29 |    1 |   agg1 | 0010.9401.0010 | FORWARD |  
+     30 |    1 |   agg2 | 0010.9401.0020 | FORWARD |  
+     31 |    1 |   agg1 | 0010.9402.0001 | FORWARD |  
+     32 |    1 |   agg2 | 0010.9402.0002 | FORWARD |  
+     33 |    1 |   agg1 | 0010.9403.0001 | FORWARD |  
+     34 |    1 |   agg2 | 0010.9403.0002 | FORWARD |  
+     35 |    1 |   agg2 | 0100.5e00.0101 | FORWARD | STATIC
+     36 |    1 |   agg2 | 0100.5e00.0102 | FORWARD | STATIC
+     37 |    1 |   agg2 | 0100.5e00.0103 | FORWARD | STATIC
+     38 |    1 |   agg2 | 0100.5e00.0104 | FORWARD | STATIC
+     39 |    1 |   agg2 | 0100.5e00.0105 | FORWARD | STATIC
+     40 |    1 |   agg2 | 0100.5e00.0106 | FORWARD | STATIC
+     41 |    1 |   agg2 | 0100.5e00.0107 | FORWARD | STATIC
+     42 |    1 |   agg2 | 0100.5e00.0108 | FORWARD | STATIC
+     43 |    1 |   agg2 | 0100.5e00.0109 | FORWARD | STATIC
+     44 |    1 |   agg2 | 0100.5e00.010a | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# #S_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# 
+interface ge48
+TiFRONT(config-if-ge48)# 
+spanning-tree priority 16
+TiFRONT(config-if-ge48)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# #S_CLI_STP_PORT_PRIORITY_CHANGE_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4550088 ( priority : 16384 )
+ root id      :  2001-0006c4135791
+ root port  ge24		 /  path cost 20000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role  Alternate - Discarding
+     ge17: portid 801b - path cost   20000 - role Designated - Forwarding
+     ge24: portid 8022 - path cost   20000 - role   Rootport - Forwarding
+      xg1: portid 8023 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |         2108 |      1647104 |         2079 |      1581056 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |         1101 |       564224 |            1 |         1024 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |         1021 |       533504 |            1 |         1024 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |         2079 |      1581056 |         2109 |      1648128 
+     xg1 |         2219 |      1197568 |            0 |            0 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |    11243519 ----     11349368 ----  |     45686         0 |    0    0
+    ge20 |     5540125( 49%)     5569073( 49%) |     23026         0 |    0    0
+    ge22 |     5703394( 50%)     5780295( 50%) |     22660         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_PORT_PRIORITY_CHANGE_SHOW
+TiFRONT(config)# #S_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table static
+TiFRONT# 
+clear mac address-table multicast
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4135791 ( priority : 8192 )
+ root id      :  2001-0006c4135791
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 2001 - path cost   20000 - role Designated - Forwarding
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+     ge48: portid 103a - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show ip igmp snooping mrouter
+VLAN 1
+Mrouter--> agg2 (Dynamic)
+Mrouter--> ge48 (Dynamic)
+Mrouter--> agg1 (Dynamic)
+TiFRONT# 
+show ip igmp groups
+IGMP Connected Group Membership
+Group Address    Interface            Uptime   Expires  Last Reporter
+224.0.1.1        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.2        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.3        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.4        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.5        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.6        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.7        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.8        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.9        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.10       agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      8 |    1 |   agg1 | 0006.c455.0088 | FORWARD |  
+      9 |    1 |   ge48 | 0010.9400.0001 | FORWARD |  
+     10 |    1 |   ge48 | 0010.9400.0002 | FORWARD |  
+     11 |    1 |   ge48 | 0010.9400.0003 | FORWARD |  
+     12 |    1 |   ge48 | 0010.9400.0004 | FORWARD |  
+     13 |    1 |   ge48 | 0010.9400.0005 | FORWARD |  
+     14 |    1 |   ge48 | 0010.9400.0006 | FORWARD |  
+     15 |    1 |   ge48 | 0010.9400.0007 | FORWARD |  
+     16 |    1 |   ge48 | 0010.9400.0008 | FORWARD |  
+     17 |    1 |   ge48 | 0010.9400.0009 | FORWARD |  
+     18 |    1 |   ge48 | 0010.9400.000a | FORWARD |  
+     19 |    1 |   agg2 | 0010.9401.0001 | FORWARD |  
+     20 |    1 |   agg2 | 0010.9401.0002 | FORWARD |  
+     21 |    1 |   agg2 | 0010.9401.0003 | FORWARD |  
+     22 |    1 |   agg2 | 0010.9401.0004 | FORWARD |  
+     23 |    1 |   agg2 | 0010.9401.0005 | FORWARD |  
+     24 |    1 |   agg2 | 0010.9401.0006 | FORWARD |  
+     25 |    1 |   agg2 | 0010.9401.0007 | FORWARD |  
+     26 |    1 |   agg2 | 0010.9401.0008 | FORWARD |  
+     27 |    1 |   agg2 | 0010.9401.0009 | FORWARD |  
+     28 |    1 |   agg2 | 0010.9401.000a | FORWARD |  
+     29 |    1 |   ge48 | 0010.9401.0010 | FORWARD |  
+     30 |    1 |   agg2 | 0010.9401.0020 | FORWARD |  
+     31 |    1 |   ge48 | 0010.9402.0001 | FORWARD |  
+     32 |    1 |   agg2 | 0010.9402.0002 | FORWARD |  
+     33 |    1 |   ge48 | 0010.9403.0001 | FORWARD |  
+     34 |    1 |   agg2 | 0010.9403.0002 | FORWARD |  
+     35 |    1 |   agg2 | 0100.5e00.0101 | FORWARD | STATIC
+     36 |    1 |   agg2 | 0100.5e00.0102 | FORWARD | STATIC
+     37 |    1 |   agg2 | 0100.5e00.0103 | FORWARD | STATIC
+     38 |    1 |   agg2 | 0100.5e00.0104 | FORWARD | STATIC
+     39 |    1 |   agg2 | 0100.5e00.0105 | FORWARD | STATIC
+     40 |    1 |   agg2 | 0100.5e00.0106 | FORWARD | STATIC
+     41 |    1 |   agg2 | 0100.5e00.0107 | FORWARD | STATIC
+     42 |    1 |   agg2 | 0100.5e00.0108 | FORWARD | STATIC
+     43 |    1 |   agg2 | 0100.5e00.0109 | FORWARD | STATIC
+     44 |    1 |   agg2 | 0100.5e00.010a | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# #S_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+no spanning-tree priority
+TiFRONT(config-if-agg1)# 
+interface ge48
+TiFRONT(config-if-ge48)# 
+no spanning-tree priority
+TiFRONT(config-if-ge48)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_STP_PORT_PRIORITY_CHANGE
+TiFRONT(config)# #S_CLI_STP_PATH_COST_CHANGE_SHOW
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree path-cost 15000
+TiFRONT(config-if-agg1)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4550088 ( priority : 16384 )
+ root id      :  2001-0006c4135791
+ root port  agg1		 /  path cost 15000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   15000 - role   Rootport - Forwarding
+     ge17: portid 801b - path cost   20000 - role Designated - Forwarding
+     ge24: portid 8022 - path cost   20000 - role  Alternate - Discarding
+      xg1: portid 8023 - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |         2110 |      1648640 |         2021 |      1551872 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |          512 |       262656 |         1601 |      1383424 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |         1511 |      1291264 |          511 |       267264 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |         2121 |      1096192 |            0 |            0 
+     xg1 |            0 |            0 |         2131 |      1152512 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |    11418286 ----     11504734 ----  |     69956         0 |    0    0
+    ge20 |     5617302( 49%)     5658137( 49%) |     35733         0 |    0    0
+    ge22 |     5800984( 50%)     5846597( 50%) |     34223         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_PATH_COST_CHANGE_SHOW
+TiFRONT(config)# #S_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table static
+TiFRONT# 
+clear mac address-table multicast
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4135791 ( priority : 8192 )
+ root id      :  2001-0006c4135791
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role Designated - Forwarding
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+     ge48: portid 803a - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show ip igmp snooping mrouter
+VLAN 1
+Mrouter--> agg2 (Dynamic)
+Mrouter--> agg1 (Dynamic)
+TiFRONT# 
+show ip igmp groups
+IGMP Connected Group Membership
+Group Address    Interface            Uptime   Expires  Last Reporter
+224.0.1.1        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.2        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.3        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.4        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.5        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.6        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.7        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.8        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.9        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.10       agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      8 |    1 |   agg1 | 0006.c455.0088 | FORWARD |  
+      9 |    1 |   agg1 | 0010.9400.0001 | FORWARD |  
+     10 |    1 |   agg1 | 0010.9400.0002 | FORWARD |  
+     11 |    1 |   agg1 | 0010.9400.0003 | FORWARD |  
+     12 |    1 |   agg1 | 0010.9400.0004 | FORWARD |  
+     13 |    1 |   agg1 | 0010.9400.0005 | FORWARD |  
+     14 |    1 |   agg1 | 0010.9400.0006 | FORWARD |  
+     15 |    1 |   agg1 | 0010.9400.0007 | FORWARD |  
+     16 |    1 |   agg1 | 0010.9400.0008 | FORWARD |  
+     17 |    1 |   agg1 | 0010.9400.0009 | FORWARD |  
+     18 |    1 |   agg1 | 0010.9400.000a | FORWARD |  
+     19 |    1 |   agg2 | 0010.9401.0001 | FORWARD |  
+     20 |    1 |   agg2 | 0010.9401.0002 | FORWARD |  
+     21 |    1 |   agg2 | 0010.9401.0003 | FORWARD |  
+     22 |    1 |   agg2 | 0010.9401.0004 | FORWARD |  
+     23 |    1 |   agg2 | 0010.9401.0005 | FORWARD |  
+     24 |    1 |   agg2 | 0010.9401.0006 | FORWARD |  
+     25 |    1 |   agg2 | 0010.9401.0007 | FORWARD |  
+     26 |    1 |   agg2 | 0010.9401.0008 | FORWARD |  
+     27 |    1 |   agg2 | 0010.9401.0009 | FORWARD |  
+     28 |    1 |   agg2 | 0010.9401.000a | FORWARD |  
+     29 |    1 |   agg1 | 0010.9401.0010 | FORWARD |  
+     30 |    1 |   agg2 | 0010.9401.0020 | FORWARD |  
+     31 |    1 |   agg1 | 0010.9402.0001 | FORWARD |  
+     32 |    1 |   agg2 | 0010.9402.0002 | FORWARD |  
+     33 |    1 |   agg1 | 0010.9403.0001 | FORWARD |  
+     34 |    1 |   agg2 | 0010.9403.0002 | FORWARD |  
+     35 |    1 |   agg2 | 0100.5e00.0101 | FORWARD | STATIC
+     36 |    1 |   agg2 | 0100.5e00.0102 | FORWARD | STATIC
+     37 |    1 |   agg2 | 0100.5e00.0103 | FORWARD | STATIC
+     38 |    1 |   agg2 | 0100.5e00.0104 | FORWARD | STATIC
+     39 |    1 |   agg2 | 0100.5e00.0105 | FORWARD | STATIC
+     40 |    1 |   agg2 | 0100.5e00.0106 | FORWARD | STATIC
+     41 |    1 |   agg2 | 0100.5e00.0107 | FORWARD | STATIC
+     42 |    1 |   agg2 | 0100.5e00.0108 | FORWARD | STATIC
+     43 |    1 |   agg2 | 0100.5e00.0109 | FORWARD | STATIC
+     44 |    1 |   agg2 | 0100.5e00.010a | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# #S_CLI_STP_PATH_COST_CHANGE_SHOW
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+spanning-tree path-cost 25000
+TiFRONT(config-if-agg1)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4550088 ( priority : 16384 )
+ root id      :  2001-0006c4135791
+ root port  ge24		 /  path cost 20000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   25000 - role  Alternate - Discarding
+     ge17: portid 801b - path cost   20000 - role Designated - Forwarding
+     ge24: portid 8022 - path cost   20000 - role   Rootport - Forwarding
+      xg1: portid 8023 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |         2110 |      1648640 |         2121 |      1603072 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |         1102 |       564736 |            1 |         1024 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |         1021 |       533504 |            1 |         1024 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |         2121 |      1603072 |         2109 |      1648128 
+     xg1 |         2221 |      1198592 |            0 |            0 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |    20692027 ----     11526965 ----  |   9318229         0 |    0    0
+    ge20 |    10246067( 49%)     5674974( 49%) |   4657293         0 |    0    0
+    ge22 |    10445960( 50%)     5851991( 50%) |   4660936         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_PATH_COST_CHANGE_SHOW
+TiFRONT(config)# #S_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table static
+TiFRONT# 
+clear mac address-table multicast
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4135791 ( priority : 8192 )
+ root id      :  2001-0006c4135791
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role Designated - Forwarding
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+     ge48: portid 803a - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show ip igmp snooping mrouter
+VLAN 1
+Mrouter--> agg2 (Dynamic)
+Mrouter--> agg1 (Dynamic)
+Mrouter--> ge48 (Dynamic)
+TiFRONT# 
+show ip igmp groups
+IGMP Connected Group Membership
+Group Address    Interface            Uptime   Expires  Last Reporter
+224.0.1.1        agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+224.0.1.2        agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+224.0.1.3        agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+224.0.1.4        agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+224.0.1.5        agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+224.0.1.6        agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+224.0.1.7        agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+224.0.1.8        agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+224.0.1.9        agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+224.0.1.10       agg2  (vlan1)        00:00:05 00:04:19 10.10.10.12
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      8 |    1 |   agg1 | 0006.c455.0088 | FORWARD |  
+      9 |    1 |   ge48 | 0010.9400.0001 | FORWARD |  
+     10 |    1 |   ge48 | 0010.9400.0002 | FORWARD |  
+     11 |    1 |   ge48 | 0010.9400.0003 | FORWARD |  
+     12 |    1 |   ge48 | 0010.9400.0004 | FORWARD |  
+     13 |    1 |   ge48 | 0010.9400.0005 | FORWARD |  
+     14 |    1 |   ge48 | 0010.9400.0006 | FORWARD |  
+     15 |    1 |   ge48 | 0010.9400.0007 | FORWARD |  
+     16 |    1 |   ge48 | 0010.9400.0008 | FORWARD |  
+     17 |    1 |   ge48 | 0010.9400.0009 | FORWARD |  
+     18 |    1 |   ge48 | 0010.9400.000a | FORWARD |  
+     19 |    1 |   agg2 | 0010.9401.0001 | FORWARD |  
+     20 |    1 |   agg2 | 0010.9401.0002 | FORWARD |  
+     21 |    1 |   agg2 | 0010.9401.0003 | FORWARD |  
+     22 |    1 |   agg2 | 0010.9401.0004 | FORWARD |  
+     23 |    1 |   agg2 | 0010.9401.0005 | FORWARD |  
+     24 |    1 |   agg2 | 0010.9401.0006 | FORWARD |  
+     25 |    1 |   agg2 | 0010.9401.0007 | FORWARD |  
+     26 |    1 |   agg2 | 0010.9401.0008 | FORWARD |  
+     27 |    1 |   agg2 | 0010.9401.0009 | FORWARD |  
+     28 |    1 |   agg2 | 0010.9401.000a | FORWARD |  
+     29 |    1 |   ge48 | 0010.9401.0010 | FORWARD |  
+     30 |    1 |   agg2 | 0010.9401.0020 | FORWARD |  
+     31 |    1 |   ge48 | 0010.9402.0001 | FORWARD |  
+     32 |    1 |   agg2 | 0010.9402.0002 | FORWARD |  
+     33 |    1 |   ge48 | 0010.9403.0001 | FORWARD |  
+     34 |    1 |   agg2 | 0010.9403.0002 | FORWARD |  
+     35 |    1 |   agg2 | 0100.5e00.0101 | FORWARD | STATIC
+     36 |    1 |   agg2 | 0100.5e00.0102 | FORWARD | STATIC
+     37 |    1 |   agg2 | 0100.5e00.0103 | FORWARD | STATIC
+     38 |    1 |   agg2 | 0100.5e00.0104 | FORWARD | STATIC
+     39 |    1 |   agg2 | 0100.5e00.0105 | FORWARD | STATIC
+     40 |    1 |   agg2 | 0100.5e00.0106 | FORWARD | STATIC
+     41 |    1 |   agg2 | 0100.5e00.0107 | FORWARD | STATIC
+     42 |    1 |   agg2 | 0100.5e00.0108 | FORWARD | STATIC
+     43 |    1 |   agg2 | 0100.5e00.0109 | FORWARD | STATIC
+     44 |    1 |   agg2 | 0100.5e00.010a | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# #S_CLI_STP_FAILOVER_SHOW
+TiFRONT(config)# 
+interface ge24
+TiFRONT(config-if-ge24)# 
+shutdown
+TiFRONT(config-if-ge24)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4550088 ( priority : 16384 )
+ root id      :  2001-0006c4135791
+ root port  agg1		 /  path cost 25000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   25000 - role   Rootport - Forwarding
+     ge17: portid 801b - path cost   20000 - role Designated - Forwarding
+      xg1: portid 8023 - path cost   20000 - role  Alternate - Discarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |         2110 |      1648640 |         2120 |      1602560 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |          612 |       313856 |         1601 |      1383424 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |         1511 |      1291264 |          511 |       267264 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |            0 |            0 |            0 |            0 
+     xg1 |         2221 |      1198592 |            0 |            0 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+    agg1 |    20752762 ----     11565757 ----  |   9340388         0 |    0    0
+    ge20 |    10268300( 49%)     5704375( 49%) |   4668903         0 |    0    0
+    ge22 |    10484462( 50%)     5861382( 50%) |   4671485         0 |    0    0
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_FAILOVER_SHOW
+TiFRONT(config)# #S_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table static
+TiFRONT# 
+clear mac address-table multicast
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4135791 ( priority : 8192 )
+ root id      :  2001-0006c4135791
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg1: portid 8001 - path cost   20000 - role Designated - Forwarding
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show ip igmp snooping mrouter
+VLAN 1
+Mrouter--> agg2 (Dynamic)
+Mrouter--> agg1 (Dynamic)
+TiFRONT# 
+show ip igmp groups
+IGMP Connected Group Membership
+Group Address    Interface            Uptime   Expires  Last Reporter
+224.0.1.1        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.2        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.3        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.4        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.5        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.6        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.7        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.8        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.9        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.10       agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      8 |    1 |   agg1 | 0006.c455.0088 | FORWARD |  
+      9 |    1 |   agg1 | 0010.9400.0001 | FORWARD |  
+     10 |    1 |   agg1 | 0010.9400.0002 | FORWARD |  
+     11 |    1 |   agg1 | 0010.9400.0003 | FORWARD |  
+     12 |    1 |   agg1 | 0010.9400.0004 | FORWARD |  
+     13 |    1 |   agg1 | 0010.9400.0005 | FORWARD |  
+     14 |    1 |   agg1 | 0010.9400.0006 | FORWARD |  
+     15 |    1 |   agg1 | 0010.9400.0007 | FORWARD |  
+     16 |    1 |   agg1 | 0010.9400.0008 | FORWARD |  
+     17 |    1 |   agg1 | 0010.9400.0009 | FORWARD |  
+     18 |    1 |   agg1 | 0010.9400.000a | FORWARD |  
+     19 |    1 |   agg2 | 0010.9401.0001 | FORWARD |  
+     20 |    1 |   agg2 | 0010.9401.0002 | FORWARD |  
+     21 |    1 |   agg2 | 0010.9401.0003 | FORWARD |  
+     22 |    1 |   agg2 | 0010.9401.0004 | FORWARD |  
+     23 |    1 |   agg2 | 0010.9401.0005 | FORWARD |  
+     24 |    1 |   agg2 | 0010.9401.0006 | FORWARD |  
+     25 |    1 |   agg2 | 0010.9401.0007 | FORWARD |  
+     26 |    1 |   agg2 | 0010.9401.0008 | FORWARD |  
+     27 |    1 |   agg2 | 0010.9401.0009 | FORWARD |  
+     28 |    1 |   agg2 | 0010.9401.000a | FORWARD |  
+     29 |    1 |   agg1 | 0010.9401.0010 | FORWARD |  
+     30 |    1 |   agg2 | 0010.9401.0020 | FORWARD |  
+     31 |    1 |   agg1 | 0010.9402.0001 | FORWARD |  
+     32 |    1 |   agg2 | 0010.9402.0002 | FORWARD |  
+     33 |    1 |   agg1 | 0010.9403.0001 | FORWARD |  
+     34 |    1 |   agg2 | 0010.9403.0002 | FORWARD |  
+     35 |    1 |   agg2 | 0100.5e00.0101 | FORWARD | STATIC
+     36 |    1 |   agg2 | 0100.5e00.0102 | FORWARD | STATIC
+     37 |    1 |   agg2 | 0100.5e00.0103 | FORWARD | STATIC
+     38 |    1 |   agg2 | 0100.5e00.0104 | FORWARD | STATIC
+     39 |    1 |   agg2 | 0100.5e00.0105 | FORWARD | STATIC
+     40 |    1 |   agg2 | 0100.5e00.0106 | FORWARD | STATIC
+     41 |    1 |   agg2 | 0100.5e00.0107 | FORWARD | STATIC
+     42 |    1 |   agg2 | 0100.5e00.0108 | FORWARD | STATIC
+     43 |    1 |   agg2 | 0100.5e00.0109 | FORWARD | STATIC
+     44 |    1 |   agg2 | 0100.5e00.010a | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# #S_CLI_STP_FAILOVER_SHOW
+TiFRONT(config)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+shutdown
+TiFRONT(config-if-agg1)# 
+end
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  4001-0006c4550088 ( priority : 16384 )
+ root id      :  2001-0006c4135791
+ root port   xg1		 /  path cost 40000
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     ge17: portid 801b - path cost   20000 - role Designated - Forwarding
+      xg1: portid 8023 - path cost   20000 - role   Rootport - Forwarding
+TiFRONT# 
+show port-monitoring
+                    Port Monitoring Table
+ --------------------------------------------------------------------
+   Port  |  RxRate(pps) |  RxRate(bps) |  TxRate(pps) |  TxRate(bps)
+ --------+--------------+--------------+--------------+--------------
+     ge1 |            0 |            0 |            0 |            0 
+     ge2 |            0 |            0 |            0 |            0 
+     ge3 |            0 |            0 |            0 |            0 
+     ge4 |            0 |            0 |            0 |            0 
+     ge5 |            0 |            0 |            0 |            0 
+     ge6 |            0 |            0 |            0 |            0 
+     ge7 |            0 |            0 |            0 |            0 
+     ge8 |            0 |            0 |            0 |            0 
+     ge9 |            0 |            0 |            0 |            0 
+    ge10 |            0 |            0 |            0 |            0 
+    ge11 |            0 |            0 |            0 |            0 
+    ge12 |            0 |            0 |            0 |            0 
+    ge13 |            0 |            0 |            0 |            0 
+    ge14 |            0 |            0 |            0 |            0 
+    ge15 |            0 |            0 |            0 |            0 
+    ge16 |            0 |            0 |            0 |            0 
+    ge17 |         2106 |      1645056 |         2116 |      1650176 
+    ge18 |            0 |            0 |            0 |            0 
+    ge19 |            0 |            0 |            0 |            0 
+    ge20 |            0 |            0 |            0 |            0 
+    ge21 |            0 |            0 |            0 |            0 
+    ge22 |            0 |            0 |            0 |            0 
+    ge23 |            0 |            0 |            0 |            0 
+    ge24 |            0 |            0 |            0 |            0 
+     xg1 |         2117 |      1651200 |         2105 |      1644544 
+     xg2 |            0 |            0 |            0 |            0 
+     xg3 |            0 |            0 |            0 |            0 
+     xg4 |            0 |            0 |            0 |            0 
+ --------------------------------------------------------------------
+TiFRONT# 
+show lacp statistics
+ --------------------------------------------------------------------------------
+    AGGREGATOR TRAFFIC STATISTICS
+ --------------------------------------------------------------------------------
+         | # OF PACKETs                        | DROPPED             | ERROR     
+   PORT  |-------------------------------------+---------------------+-----------
+         | Rx                Tx                | Rx        Tx        | Rx   Tx   
+ --------+-------------------------------------+---------------------+-----------
+ --------------------------------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_STP_FAILOVER_SHOW
+TiFRONT(config)# #S_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# 
+end
+TiFRONT# 
+clear mac address-table static
+TiFRONT# 
+clear mac address-table multicast
+TiFRONT# 
+clear mac address-table dynamic
+TiFRONT# 
+show spanning-tree
+spanning-tree: RPVST+ enable
+ instance name  :  default instance(0) 
+ protocol(1d) :  enabled 
+ bridge id    :  2001-0006c4135791 ( priority : 8192 )
+ root id      :  2001-0006c4135791
+ root port   ---		 /  path cost 0
+ forward delay   4 (sec)	 /  bridge forward delay 4 (sec)
+ hello time   1 (sec)		 /  bridge hello time 1 (sec)
+ max age   6 (sec)		 /  bridge max age 6 (sec)
+     agg2: portid 8002 - path cost   20000 - role Designated - Forwarding
+TiFRONT# 
+show ip igmp snooping mrouter
+VLAN 1
+Mrouter--> agg2 (Dynamic)
+TiFRONT# 
+show ip igmp groups
+IGMP Connected Group Membership
+Group Address    Interface            Uptime   Expires  Last Reporter
+224.0.1.1        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.2        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.3        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.4        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.5        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.6        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.7        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.8        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.9        agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+224.0.1.10       agg2  (vlan1)        00:00:04 00:04:19 10.10.10.12
+TiFRONT# 
+show mac-table
+  ageing-time 300
+ -----------------------------------------------------------
+    No  | VLAN |  PORT  |   MAC ADDRESS  | FWD/DIS | STATIC  
+ -------+------+--------+----------------+---------+--------
+      1 |    1 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      2 |  100 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      3 |  200 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      4 |  300 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      5 |  400 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      6 | 1000 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      7 | 4001 |    CPU | 0006.c413.5790 | FORWARD | STATIC
+      8 |    1 |   agg2 | 0010.9400.0001 | FORWARD |  
+      9 |    1 |   agg2 | 0010.9400.0002 | FORWARD |  
+     10 |    1 |   agg2 | 0010.9400.0003 | FORWARD |  
+     11 |    1 |   agg2 | 0010.9400.0004 | FORWARD |  
+     12 |    1 |   agg2 | 0010.9400.0005 | FORWARD |  
+     13 |    1 |   agg2 | 0010.9400.0006 | FORWARD |  
+     14 |    1 |   agg2 | 0010.9400.0007 | FORWARD |  
+     15 |    1 |   agg2 | 0010.9400.0008 | FORWARD |  
+     16 |    1 |   agg2 | 0010.9400.0009 | FORWARD |  
+     17 |    1 |   agg2 | 0010.9400.000a | FORWARD |  
+     18 |    1 |   agg2 | 0010.9401.0001 | FORWARD |  
+     19 |    1 |   agg2 | 0010.9401.0002 | FORWARD |  
+     20 |    1 |   agg2 | 0010.9401.0003 | FORWARD |  
+     21 |    1 |   agg2 | 0010.9401.0004 | FORWARD |  
+     22 |    1 |   agg2 | 0010.9401.0005 | FORWARD |  
+     23 |    1 |   agg2 | 0010.9401.0006 | FORWARD |  
+     24 |    1 |   agg2 | 0010.9401.0007 | FORWARD |  
+     25 |    1 |   agg2 | 0010.9401.0008 | FORWARD |  
+     26 |    1 |   agg2 | 0010.9401.0009 | FORWARD |  
+     27 |    1 |   agg2 | 0010.9401.000a | FORWARD |  
+     28 |    1 |   agg2 | 0010.9401.0010 | FORWARD |  
+     29 |    1 |   agg2 | 0010.9401.0020 | FORWARD |  
+     30 |    1 |   agg2 | 0010.9403.0001 | FORWARD |  
+     31 |    1 |   agg2 | 0010.9403.0002 | FORWARD |  
+     32 |    1 |   agg2 | 0100.5e00.0101 | FORWARD | STATIC
+     33 |    1 |   agg2 | 0100.5e00.0102 | FORWARD | STATIC
+     34 |    1 |   agg2 | 0100.5e00.0103 | FORWARD | STATIC
+     35 |    1 |   agg2 | 0100.5e00.0104 | FORWARD | STATIC
+     36 |    1 |   agg2 | 0100.5e00.0105 | FORWARD | STATIC
+     37 |    1 |   agg2 | 0100.5e00.0106 | FORWARD | STATIC
+     38 |    1 |   agg2 | 0100.5e00.0107 | FORWARD | STATIC
+     39 |    1 |   agg2 | 0100.5e00.0108 | FORWARD | STATIC
+     40 |    1 |   agg2 | 0100.5e00.0109 | FORWARD | STATIC
+     41 |    1 |   agg2 | 0100.5e00.010a | FORWARD | STATIC
+ -----------------------------------------------------------
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_NBR1_IGMP_GROUP_SHOW
+TiFRONT(config)# #S_CLI_STP_RECOVERY
+TiFRONT(config)# 
+interface range ge18,ge24
+TiFRONT(config-if-range)# 
+no shutdown
+TiFRONT(config-if-range)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+no shutdown
+TiFRONT(config-if-agg1)# 
+no spanning-tree priority
+TiFRONT(config-if-agg1)# 
+no spanning-tree path-cost
+TiFRONT(config-if-agg1)# 
+interface range ge20,ge22
+TiFRONT(config-if-range)# 
+no channel-group
+TiFRONT(config-if-range)# 
+interface ge20
+TiFRONT(config-if-ge20)# 
+switchport access vlan 100
+TiFRONT(config-if-ge20)# 
+interface ge22
+TiFRONT(config-if-ge22)# 
+switchport access vlan 200
+TiFRONT(config-if-ge22)# 
+interface ge24
+TiFRONT(config-if-ge24)# 
+switchport access vlan 300
+TiFRONT(config-if-ge24)# 
+no spanning-tree priority
+TiFRONT(config-if-ge24)# 
+no spanning-tree path-cost
+TiFRONT(config-if-ge24)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+switchport access vlan 400
+TiFRONT(config-if-xg1)# 
+no spanning-tree priority
+TiFRONT(config-if-xg1)# 
+no spanning-tree path-cost
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+no spanning-tree forward-time
+TiFRONT(config)# 
+no spanning-tree max-age
+TiFRONT(config)# 
+no spanning-tree hello-time
+TiFRONT(config)# 
+no spanning-tree priority
+TiFRONT(config)# 
+spanning-tree disable
+TiFRONT(config)# 
+#E_CLI_STP_RECOVERY
+TiFRONT(config)# #S_NBR1_STP_RECOVERY
+TiFRONT(config)# 
+interface range ge42,ge41
+TiFRONT(config-if-range)# 
+no shutdown
+TiFRONT(config-if-range)# 
+interface agg1
+TiFRONT(config-if-agg1)# 
+no spanning-tree priority
+TiFRONT(config-if-agg1)# 
+no spanning-tree path-cost
+TiFRONT(config-if-agg1)# 
+interface agg2
+TiFRONT(config-if-agg2)# 
+no spanning-tree priority
+TiFRONT(config-if-agg2)# 
+no spanning-tree path-cost
+TiFRONT(config-if-agg2)# 
+interface range ge44,ge46
+TiFRONT(config-if-range)# 
+no channel-group
+TiFRONT(config-if-range)# 
+interface ge44
+TiFRONT(config-if-ge44)# 
+switchport access vlan 100
+TiFRONT(config-if-ge44)# 
+interface ge46
+TiFRONT(config-if-ge46)# 
+switchport access vlan 200
+TiFRONT(config-if-ge46)# 
+interface range ge43,ge45,ge47
+TiFRONT(config-if-range)# 
+no static-channel-group
+TiFRONT(config-if-range)# 
+interface ge43
+TiFRONT(config-if-ge43)# 
+switchport access vlan 100
+TiFRONT(config-if-ge43)# 
+interface ge45
+TiFRONT(config-if-ge45)# 
+switchport access vlan 200
+TiFRONT(config-if-ge45)# 
+interface ge47
+TiFRONT(config-if-ge47)# 
+switchport access vlan 300
+TiFRONT(config-if-ge47)# 
+interface ge48
+TiFRONT(config-if-ge48)# 
+switchport access vlan 300
+TiFRONT(config-if-ge48)# 
+no spanning-tree priority
+TiFRONT(config-if-ge48)# 
+no spanning-tree path-cost
+TiFRONT(config-if-ge48)# 
+interface ge36
+TiFRONT(config-if-ge36)# 
+switchport access vlan 400
+TiFRONT(config-if-ge36)# 
+no spanning-tree priority
+TiFRONT(config-if-ge36)# 
+no spanning-tree path-cost
+TiFRONT(config-if-ge36)# 
+exit
+TiFRONT(config)# 
+no spanning-tree forward-time
+TiFRONT(config)# 
+no spanning-tree max-age
+TiFRONT(config)# 
+no spanning-tree hello-time
+TiFRONT(config)# 
+no spanning-tree priority
+TiFRONT(config)# 
+spanning-tree disable
+TiFRONT(config)# 
+no ip igmp snooping
+TiFRONT(config)# 
+#E_NBR1_STP_RECOVERY
+TiFRONT(config)# #S_NBR2_STP_RECOVERY
+TiFRONT(config)# 
+interface ge17
+TiFRONT(config-if-ge17)# 
+no shutdown
+TiFRONT(config-if-ge17)# 
+interface agg2
+TiFRONT(config-if-agg2)# 
+no spanning-tree priority
+TiFRONT(config-if-agg2)# 
+no spanning-tree path-cost
+TiFRONT(config-if-agg2)# 
+interface range ge19,ge21,ge23
+TiFRONT(config-if-range)# 
+no static-channel-group
+TiFRONT(config-if-range)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+switchport access vlan 100
+TiFRONT(config-if-ge19)# 
+interface ge21
+TiFRONT(config-if-ge21)# 
+switchport access vlan 200
+TiFRONT(config-if-ge21)# 
+interface ge23
+TiFRONT(config-if-ge23)# 
+switchport access vlan 300
+TiFRONT(config-if-ge23)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+no spanning-tree priority
+TiFRONT(config-if-xg1)# 
+no spanning-tree path-cost
+TiFRONT(config-if-xg1)# 
+switchport access vlan 400
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+no spanning-tree forward-time
+TiFRONT(config)# 
+no spanning-tree max-age
+TiFRONT(config)# 
+no spanning-tree hello-time
+TiFRONT(config)# 
+no spanning-tree priority
+TiFRONT(config)# 
+spanning-tree disable
+TiFRONT(config)# 
+#E_NBR2_STP_RECOVERY
+TiFRONT(config)# 

@@ -1,0 +1,23 @@
+#S_HOST_SPEED_SET
+interface {v_cli_port}
+speed {host_speed}
+exit
+#E_HOST_SPEED_SET
+#S_NBR1_SPEED_SET
+interface {v_nbr_port}
+speed {nbr_speed}
+exit
+#E_NBR1_SPEED_SET
+#S_CLI_SPEED_SHOW
+sleep 6
+show portstatus | include {v_cli_port} 
+#E_CLI_SPEED_SHOW
+#S_SHELL_SPEED_SHOW
+rtk_user_diag
+port get auto-nego port {v_sdk_port} state
+port dump port {v_sdk_port}
+exit
+#E_SHELL_SPEED_SHOW
+#S_NBR1_SPEED_SHOW
+show portstatus | include {v_nbr_port} 
+#E_NBR1_SPEED_SHOW

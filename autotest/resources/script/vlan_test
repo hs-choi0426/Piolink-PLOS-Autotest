@@ -1,0 +1,104 @@
+#S_CLI_ACCESS_SET
+interface {output_port}
+shutdown
+interface {input_port}
+switchport mode hybrid
+switchport hybrid allowed vlan add 100 e d
+switchport hybrid vlan 100
+end
+clear port statistic
+sleep 10
+show port-monitoring
+show vlan
+show port statistic
+conf
+interface {input_port}
+switchport mode access
+exit
+#E_CLI_ACCESS_SET
+#S_SHELL_ACCESS_SET
+rtk_user_diag
+vlan get vlan-table vid 1
+vlan get vlan-table vid 100
+vlan get pvid inner port {sdk_port1}
+vlan get pvid outer port {sdk_port1}
+vlan get accept-frame-type inner port {sdk_port1}
+vlan get ingress-filter port {sdk_port1}
+vlan get egress-filter port {sdk_port1}
+exit
+#E_SHELL_ACCESS_SET
+#S_CLI_HYBRID_SET
+interface {dev_port1}
+switchport mode hybrid
+switchport hybrid allowed vlan add 100 e d
+switchport hybrid vlan 100
+interface {dev_port2}
+switchport mode hybrid
+switchport hybrid allowed vlan add 200 e d
+switchport hybrid vlan 200
+interface {dev_port3}
+switchport mode hybrid
+switchport hybrid allowed vlan add 300 e d
+switchport hybrid vlan 300
+end
+clear port statistic
+sleep 10
+show port-monitoring
+show vlan
+show port statistic
+conf
+#E_CLI_HYBRID_SET
+#S_SHELL_HYBRID_SET
+rtk_user_diag
+vlan get vlan-table vid 1
+vlan get vlan-table vid 100
+vlan get pvid inner port {sdk_port1}
+vlan get pvid outer port {sdk_port1}
+vlan get accept-frame-type inner port {sdk_port1}
+vlan get ingress-filter port {sdk_port1}
+vlan get egress-filter port {sdk_port1}
+exit
+#E_SHELL_HYBRID_SET
+#S_CLI_TRUNK_SET
+interface {dev_port1}
+switchport mode trunk
+switchport trunk allowed vlan add 100
+interface {dev_port2}
+switchport mode trunk
+switchport trunk allowed vlan add 200
+interface {dev_port3}
+switchport mode trunk
+switchport trunk allowed vlan add 300
+end
+clear port statistic
+sleep 10
+show port-monitoring
+show vlan
+show port statistic
+conf
+#E_CLI_TRUNK_SET
+#S_SHELL_TRUNK_SET
+rtk_user_diag
+vlan get vlan-table vid 1
+vlan get vlan-table vid 100
+vlan get pvid inner port {sdk_port1}
+vlan get pvid outer port {sdk_port1}
+vlan get accept-frame-type inner port {sdk_port1}
+vlan get ingress-filter port {sdk_port1}
+vlan get egress-filter port {sdk_port1}
+exit
+#E_SHELL_TRUNK_SET
+#S_CLI_RECOVERY
+interface {output_port}
+no shutdown
+interface {dev_port1}
+switchport mode access
+switchport access vlan 100
+interface {dev_port2}
+switchport mode access
+switchport access vlan 200
+interface {dev_port3}
+switchport mode access
+switchport access vlan 300
+exit
+#E_CLI_RECOVERY

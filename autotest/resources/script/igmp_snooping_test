@@ -1,0 +1,63 @@
+#S_CLI_IGMP_SNOOPING_SET
+ip igmp snooping
+sleep 3
+end
+show ip igmp snooping mrouter
+show ip igmp snooping mrouter vlan1
+conf
+#E_CLI_IGMP_SNOOPING_SET
+#S_CLI_IGMP_MAC_SHOW
+end
+show mac-table interface {input_port}
+show mac-table interface {output_port}
+show ip igmp groups
+conf
+#E_CLI_IGMP_MAC_SHOW
+#S_SHELL_IGMP_MAC_SHOW
+rtk_user_diag
+l2-table dump mac-mcast
+exit
+#E_SHELL_IGMP_MAC_SHOW
+#S_NBR1_IGMP_GROUP_MEMBERSHIP_TIMEOUT
+interface {(nbr1)output_port}
+shutdown
+exit
+#E_NBR1_IGMP_GROUP_MEMBERSHIP_TIMEOUT
+#S_CLI_IGMP_GROUP_MEMBERSHIP_TIMEOUT
+end
+sleep 265
+show ip igmp groups
+show mac-table interface {output_port}
+conf
+#E_CLI_IGMP_GROUP_MEMBERSHIP_TIMEOUT
+#S_NBR1_IGMP_SNOOPING_UNSET
+interface {(nbr1)output_port}
+no shutdown
+exit
+#E_NBR1_IGMP_SNOOPING_UNSET
+#S_CLI_IGMP_SNOOPING_UNSET
+no ip igmp snooping
+sleep 3
+end
+show ip igmp snooping mrouter
+show ip igmp snooping mrouter vlan1
+show mac-table
+conf
+#E_CLI_IGMP_SNOOPING_UNSET
+#S_SHELL_IGMP_MAC_SHOW
+rtk_user_diag
+l2-table dump mac-mcast
+exit
+#E_SHELL_IGMP_MAC_SHOW
+#S_CLI_RECOVERY
+end
+clear mac address-table dynamic
+clear arp
+conf
+#E_CLI_RECOVERY
+#S_NBR1_RECOVERY
+end
+clear mac address-table dynamic
+clear arp
+conf
+#E_NBR1_RECOVERY

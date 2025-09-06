@@ -1,0 +1,35 @@
+#S_CLI_MIRRORING_SET_SHOW
+mirror {dev_port1} mirrored {input_port} in
+show mirror
+show portstatus | include {dev_port1}
+#E_CLI_MIRRORING_SET_SHOW
+#S_SHELL_MIRRORING_SET_SHOW
+rtk_user_diag
+mirror get mirror-id 0
+exit
+#E_SHELL_MIRRORING_SET_SHOW
+#S_CLI_MIRRORING_SET_STATISTIC_SHOW
+end
+clear port statistic
+sleep 5
+show port-monitoring
+show portstatus | include {dev_port1}
+conf
+#E_CLI_MIRRORING_SET_STATISTIC_SHOW
+#S_CLI_MIRRORING_UNSET_SHOW
+no mirror {dev_port1}
+show mirror
+show portstatus | include {dev_port1}
+#E_CLI_MIRRORING_UNSET_SHOW
+#S_SHELL_MIRRORING_UNSET_SHOW
+rtk_user_diag
+mirror get mirror-id 0
+exit
+#E_SHELL_MIRRORING_UNSET_SHOW
+#S_CLI_MIRRORING_UNSET_STATISTIC_SHOW
+end
+clear port statistic
+show port-monitoring | include {dev_port1} 
+show portstatus | include {dev_port1}
+conf
+#E_CLI_MIRRORING_UNSET_STATISTIC_SHOW

@@ -1,0 +1,29 @@
+#S_CLI_HALF_DUPLEX_SHOW
+interface {dev_port1}
+speed 100
+duplex half
+exit
+show portstatus | include {dev_port1} 
+#E_CLI_HALF_DUPLEX_SHOW
+#S_SHELL_HALF_DUPLEX_SHOW
+rtk_user_diag
+port get phy-force port {sdk_port1}
+exit
+#E_SHELL_HALF_DUPLEX_SHOW
+#S_CLI_FULL_DUPLEX_SHOW
+interface {dev_port1}
+duplex full
+exit
+show portstatus | include {dev_port1} 
+#E_CLI_FULL_DUPLEX_SHOW
+#S_SHELL_FULL_DUPLEX_SHOW
+rtk_user_diag
+port get phy-force port {sdk_port1}
+exit
+#E_SHELL_FULL_DUPLEX_SHOW
+#S_CLI_RECOVERY
+interface {dev_port1}
+duplex half
+speed auto
+exit
+#E_CLI_RECOVERY

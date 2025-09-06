@@ -1,0 +1,135 @@
+#S_CLI_ROUTE_SET
+TiFRONT(config)# 
+interface vlan1000
+TiFRONT(config-if-vlan1000)# 
+ip addr 192.168.197.201/24
+TiFRONT(config-if-vlan1000)# 
+interface ge1
+TiFRONT(config-if-ge1)# 
+no shutdown
+TiFRONT(config-if-ge1)# 
+exit
+TiFRONT(config)# 
+ip route 0.0.0.0/0 192.168.197.1
+TiFRONT(config)# 
+exit
+TiFRONT# 
+show ip interface vlan1000 brief
+Interface             IP-Address      Status                Protocol
+vlan1000              192.168.197.201 up                    up                   
+TiFRONT# 
+show ip route
+Codes: K - kernel, C - connected, S - static, R - RIP, B - BGP
+       O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default
+Gateway of last resort is 192.168.197.1 to network 0.0.0.0
+S*      0.0.0.0/0 [1/0] via 192.168.197.1, vlan1000
+C       127.0.0.0/8 is directly connected, loopback
+C       192.168.197.0/24 is directly connected, vlan1000
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_ROUTE_SET
+TiFRONT(config)# #S_SHELL_ROUTE_SET
+bash-4.4# 
+ping 192.168.203.100 -c 10
+PING 192.168.203.100 (192.168.203.100) 56(84) bytes of data.
+64 bytes from 192.168.203.100: icmp_seq=1 ttl=63 time=10.0 ms
+64 bytes from 192.168.203.100: icmp_seq=2 ttl=63 time=0.000 ms
+64 bytes from 192.168.203.100: icmp_seq=3 ttl=63 time=0.000 ms
+64 bytes from 192.168.203.100: icmp_seq=4 ttl=63 time=0.000 ms
+64 bytes from 192.168.203.100: icmp_seq=5 ttl=63 time=0.000 ms
+64 bytes from 192.168.203.100: icmp_seq=6 ttl=63 time=0.000 ms
+64 bytes from 192.168.203.100: icmp_seq=7 ttl=63 time=0.000 ms
+64 bytes from 192.168.203.100: icmp_seq=8 ttl=63 time=0.000 ms
+64 bytes from 192.168.203.100: icmp_seq=9 ttl=63 time=0.000 ms
+64 bytes from 192.168.203.100: icmp_seq=10 ttl=63 time=0.000 ms
+--- 192.168.203.100 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 19ms
+rtt min/avg/max/mdev = 0.000/1.000/10.000/3.000 ms
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+l3 dump host ip from begin to end
+Index |VRF ID| IPv4 Address   |Path|Pri |   Forward Action   | Flag  
+------+------+----------------+----+----+--------------------+----------------------
+ 6048 |    0 |       127.0.0.1|   0|   0|        Trap to CPU |  
+ 6054 |    0 | 192.168.197.201|   0|   0|        Trap to CPU |  
+ Total entry number : 2 
+RTK.0> 
+l3 dump route ip from begin to end
+Index |VRF ID| IPv4 Address   |Pre-len|Suf-len|Path|Pri |   Forward Action   | Flag  
+------+------+----------------+-------+-------+----+----+--------------------+----------------------
+    0 |    0 |   192.168.197.0|   24  |    0  |   0|   0|        Trap to CPU |  
+    1 |    0 |         0.0.0.0|    0  |    0  |   0|   0|        Trap to CPU |  
+ Total entry number : 2 
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_ROUTE_SET
+bash-4.4# #S_CLI_ROUTE_UNSET
+TiFRONT(config)# 
+interface vlan1000
+TiFRONT(config-if-vlan1000)# 
+no ip addr 192.168.197.201/24
+TiFRONT(config-if-vlan1000)# 
+interface ge1
+TiFRONT(config-if-ge1)# 
+shutdown
+TiFRONT(config-if-ge1)# 
+exit
+TiFRONT(config)# 
+no ip route 0.0.0.0/0 192.168.197.1
+TiFRONT(config)# 
+exit
+TiFRONT# 
+show ip interface vlan1000 brief
+Interface             IP-Address      Status                Protocol
+vlan1000              unassigned      up                    down                 
+TiFRONT# 
+show ip route
+Codes: K - kernel, C - connected, S - static, R - RIP, B - BGP
+       O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default
+C       127.0.0.0/8 is directly connected, loopback
+Gateway of last resort is not set
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_ROUTE_UNSET
+TiFRONT(config)# #S_SHELL_ROUTE_UNSET
+bash-4.4# 
+ping 192.168.203.100 -c 10
+connect: Network is unreachable
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+l3 dump host ip from begin to end
+Index |VRF ID| IPv4 Address   |Path|Pri |   Forward Action   | Flag  
+------+------+----------------+----+----+--------------------+----------------------
+ 6048 |    0 |       127.0.0.1|   0|   0|        Trap to CPU |  
+ Total entry number : 1 
+RTK.0> 
+l3 dump route ip from begin to end
+Index |VRF ID| IPv4 Address   |Pre-len|Suf-len|Path|Pri |   Forward Action   | Flag  
+------+------+----------------+-------+-------+----+----+--------------------+----------------------
+ Total entry number : 0 
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_ROUTE_UNSET
+bash-4.4# 

@@ -1,0 +1,76 @@
+#S_CLI_EEE_SET
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+speed auto
+% Failed set interface ge10 speed auto
+TiFRONT(config-if-ge10)# 
+eee enable
+TiFRONT(config-if-ge10)# 
+end
+TiFRONT# 
+show eee | include ge10 
+    ge10 |  EN |   Normal  
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_EEE_SET
+TiFRONT(config)# #S_NBR1_EEE_SET
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+eee enable
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_EEE_SET
+TiFRONT(config)# #S_SHELL_EEE_SET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+eee get port 9 state
+Port 9 EEE:
+    Configure : enable,     Status : enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_EEE_SET
+bash-4.4# #S_CLI_EEE_UNSET
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+eee disable
+TiFRONT(config-if-ge10)# 
+end
+TiFRONT# 
+show eee | include ge10 
+    ge10 | DIS |   Normal  
+TiFRONT# 
+conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+TiFRONT(config)# 
+#E_CLI_EEE_UNSET
+TiFRONT(config)# #S_SHELL_EEE_UNSET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+eee get port 9 state
+Port 9 EEE:
+    Configure : disable,     Status : disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_EEE_UNSET
+bash-4.4# #S_NBR1_RECOVERY
+TiFRONT(config)# 
+interface ge19
+TiFRONT(config-if-ge19)# 
+eee disable
+TiFRONT(config-if-ge19)# 
+exit
+TiFRONT(config)# 
+#E_NBR1_RECOVERY
+TiFRONT(config)# 

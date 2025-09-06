@@ -1,0 +1,179 @@
+#S_CLI_STP_SET
+spanning-tree mode rpvst+
+spanning-tree max-age 6
+spanning-tree forward-time 4
+spanning-tree hello-time 1
+spanning-tree enable
+spanning-tree priority 12288
+interface {input_port}
+shutdown
+interface range {nbr_port1},{nbr_port4}
+no switchport access vlan
+spanning-tree path-cost 20000
+exit
+#E_CLI_STP_SET
+#S_NBR1_STP_SET
+spanning-tree mode rpvst+
+spanning-tree max-age 6
+spanning-tree forward-time 4
+spanning-tree hello-time 1
+spanning-tree enable
+spanning-tree priority 8192
+interface range {(nbr1)input_port},{(nbr1)output_port}
+shutdown
+interface range {(nbr1)nbr_port1},{(nbr1)nbr_port2},{(nbr1)dev_port1}
+no switchport access vlan
+spanning-tree path-cost 20000
+exit
+#E_NBR1_STP_SET
+#S_NBR2_STP_SET
+spanning-tree mode rpvst+
+spanning-tree max-age 6
+spanning-tree forward-time 4
+spanning-tree hello-time 1
+spanning-tree enable
+spanning-tree priority 4096
+interface {(nbr2)output_port}
+shutdown
+interface range {(nbr2)dev_port1},{(nbr2)dev_port2},{(nbr2)dev_port4}
+no switchport access vlan
+spanning-tree path-cost 20000
+exit
+#E_NBR2_STP_SET
+#S_NBR2_STP_BRIDGE_CHANGE_ROOT_SHOW
+end
+sleep 15
+show spanning-tree
+show port-monitoring
+conf
+#E_NBR2_STP_BRIDGE_CHANGE_ROOT_SHOW
+#S_NBR2_STP_BRIDGE_CHANGE_NON_ROOT_SHOW
+spanning-tree priority 16384
+sleep 25
+end
+show spanning-tree
+show port-monitoring
+conf
+#E_NBR2_STP_BRIDGE_CHANGE_NON_ROOT_SHOW
+#S_NBR1_STP_BRIDGE_CHANGE_ROOT_SHOW
+end
+show spanning-tree
+show port-monitoring
+conf
+#E_NBR1_STP_BRIDGE_CHANGE_ROOT_SHOW
+#S_NBR1_STP_PORT_PRIORITY_CHANGE
+interface {(nbr1)nbr_port1}
+spanning-tree priority 32
+exit
+#E_NBR1_STP_PORT_PRIORITY_CHANGE
+#S_NBR2_STP_PORT_PRIORITY_CHANGE_SHOW
+end
+sleep 15
+show spanning-tree
+show port-monitoring
+conf
+#E_NBR2_STP_PORT_PRIORITY_CHANGE_SHOW
+#S_NBR1_STP_PORT_PRIORITY_CHANGE
+interface {(nbr1)nbr_port2}
+spanning-tree priority 16
+exit
+#E_NBR1_STP_PORT_PRIORITY_CHANGE
+#S_NBR2_STP_PORT_PRIORITY_CHANGE_SHOW
+end
+sleep 15
+show spanning-tree
+show port-monitoring
+conf
+#E_NBR2_STP_PORT_PRIORITY_CHANGE_SHOW
+#S_NBR1_STP_PORT_PRIORITY_CHANGE
+interface range {(nbr1)nbr_port1},{(nbr1)nbr_port2}
+no spanning-tree priority
+exit
+#E_NBR1_STP_PORT_PRIORITY_CHANGE
+#S_NBR2_STP_PATH_COST_CHANGE_SHOW
+interface {(nbr2)dev_port1}
+spanning-tree path-cost 15000
+end
+sleep 15
+show spanning-tree
+show port-monitoring
+conf
+#E_NBR2_STP_PATH_COST_CHANGE_SHOW
+#S_NBR2_STP_PATH_COST_CHANGE_SHOW
+interface {(nbr2)dev_port1}
+spanning-tree path-cost 25000
+end
+sleep 15
+show spanning-tree
+show port-monitoring
+conf
+#E_NBR2_STP_PATH_COST_CHANGE_SHOW
+#S_NBR2_STP_FAILOVER_SHOW
+interface {(nbr2)dev_port2}
+shutdown
+end
+sleep 15
+show spanning-tree
+show port-monitoring
+conf
+#E_NBR2_STP_FAILOVER_SHOW
+#S_NBR2_STP_FAILOVER_SHOW
+interface {(nbr2)dev_port1}
+shutdown
+end
+sleep 15
+show spanning-tree
+show port-monitoring
+conf
+#E_NBR2_STP_FAILOVER_SHOW
+#S_CLI_STP_RECOVERY
+interface range {input_port},{output_port},{nbr_port1},{nbr_port4}
+no shutdown
+interface {nbr_port1}
+switchport access vlan 100
+no spanning-tree path-cost
+interface {nbr_port4}
+switchport access vlan 400
+no spanning-tree path-cost
+exit
+no spanning-tree forward-time
+no spanning-tree max-age
+no spanning-tree hello-time
+no spanning-tree priority
+spanning-tree disable
+#E_CLI_STP_RECOVERY
+#S_NBR1_STP_RECOVERY
+interface range {(nbr1)input_port},{(nbr1)output_port},{(nbr1)nbr_port1},{(nbr1)nbr_port2},{(nbr1)dev_port1}
+no shutdown
+interface range {(nbr1)nbr_port1},{(nbr1)dev_port1}
+switchport access vlan 100
+no spanning-tree path-cost
+interface {(nbr1)nbr_port2}
+switchport access vlan 200
+no spanning-tree path-cost
+exit
+no spanning-tree forward-time
+no spanning-tree max-age
+no spanning-tree hello-time
+no spanning-tree priority
+spanning-tree disable
+#E_NBR1_STP_RECOVERY
+#S_NBR2_STP_RECOVERY
+interface range {(nbr2)input_port},{(nbr2)output_port},{(nbr2)dev_port1},{(nbr2)dev_port2},{(nbr2)dev_port4}
+no shutdown
+interface {(nbr2)dev_port1}
+switchport access vlan 100
+no spanning-tree path-cost
+interface {(nbr2)dev_port2}
+switchport access vlan 200
+no spanning-tree path-cost
+interface {(nbr2)dev_port4}
+switchport access vlan 400
+no spanning-tree path-cost
+exit
+no spanning-tree forward-time
+no spanning-tree max-age
+no spanning-tree hello-time
+no spanning-tree priority
+spanning-tree disable
+#E_NBR2_STP_RECOVERY

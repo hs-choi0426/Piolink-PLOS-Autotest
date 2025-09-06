@@ -1,0 +1,260 @@
+#S_CLI_VOICE_VLAN_SET
+TiFRONT(config)# 
+voice vlan mode global
+TiFRONT(config)# 
+voice vlan 100
+TiFRONT(config)# 
+voice vlan dscp 36
+TiFRONT(config)# 
+voice vlan priority 7
+TiFRONT(config)# 
+voice vlan oui 0006.C400.0000 mask FFFF.FF00.0000 vender piolin k
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+voice vlan enable
+TiFRONT(config-if-ge10)# 
+end
+TiFRONT# 
+show voice vlan
+  Voice Vlan Mode     :	Global
+  Voice Vlan ID       :	100
+  Voice Vlan DSCP     :	36
+  Voice Vlan Priority :	7
+  Voice Vlan CoS Override :	disable
+  Voice Vlan Port
+     ge10
+  Voice Vlan OUI List
+ ---------------------------------------------------------
+   NUM  |    OUI Address   |     OUI Mask     |  Vender
+ ---------------------------------------------------------
+    1	|  0006.C400.0000  |  FFFF.FF00.0000  |  piolink
+ ---------------------------------------------------------
+TiFRONT# 
+show run interface ge10
+!
+interface ge10
+ no shutdown
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ flowcontrol send off
+ flowcontrol receive off
+ voice vlan enable
+ jumbo-frame off
+!
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_VOICE_VLAN_SET
+TiFRONT(config)# #S_SHELL_VOICE_VLAN_SET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+acl dump entry phase 1 entry 25 26
+phase: Ingress ACL
+f13   f12   f11   f10   f9    f8    f7    f6    f5    f4    f3    f2    f1    f0    
+entry 25, template 0
+spm3  spm2  spm1  spm0  ether Dsap  IPTO  vlan  smac2 smac1 smac0 dmac2 dmac1 dmac0 fix   
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0006  c455  0038  0002
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  ffff  ffff  ffff  0003
+entry 26, template 0
+spm3  spm2  spm1  spm0  ether Dsap  IPTO  vlan  smac2 smac1 smac0 dmac2 dmac1 dmac0 fix   
+0000  0000  0000  0000  0000  0000  0000  0000  0006  c400  0000  0000  0000  0000  0002
+0100  0000  0101  0dff  0000  0000  0000  0000  ffff  ff00  0000  0000  0000  0000  0003
+ether(ethertype); IPTO(ip-tos-proto); L4SP(l4-sport); 
+L4DP(l4-dport); L34H(l34-header); TCP(tcp-info); 
+FSMSK(field_selector_valid_msk); FS0(field_selector0); FS1(field_selector1); 
+FS2(field_selector2); FS3(field_selector3); FS4(field_selector4); 
+FS5(field_selector5); FS6(field_selector6); FS7(field_selector7); 
+FS8(field_selector8); FS9(field_selector9); FS10(field_selector10); 
+FS11(field_selector11); FS12(field_selector12); FS13(field_selector13); 
+PKT(packet-info); FL(flow-label); Dsap(dsap-ssap); 
+SNAPo(snap-oui); FWVID(fwd-vid); R-CHK(range-check); 
+VGM(vlan-group-mask); META(meta-data); SFV(src-fwd-vlan); 
+mpls1(first-mpls1); mpls2(first-mpls2); dpm0(dpm3); 
+fix(fix field); 
+RTK.0> 
+acl get entry phase 1 entry 25 action
+Ingress ACL entry index 25:
+	Drop action state: Disable
+	Yellow Drop action state: Disable
+	Red Drop action state: Disable
+	Forward action state: Disable
+	Statistic action state: Disable
+	Mirror action state: Disable
+	Meter action state: Disable
+	Inner Vlan translate action state: Disable
+	Inner Priority action state: Disable
+	Outer Vlan translate action state: Disable
+	Outer Priority action state: Disable
+	Tag status action state: Disable
+	Internal Priority action state: Disable
+	Bypass action state: Disable
+	CPU QID action state: Enable
+		qid:2
+	Remark action state: Disable
+	Yellow Remark action state: Disable
+	Red Remark action state: Disable
+	Meta Data action state: Disable
+	IP Reserved Flag Invert: Disable
+RTK.0> 
+acl get entry phase 1 entry 26 action
+Ingress ACL entry index 26:
+	Drop action state: Disable
+	Yellow Drop action state: Disable
+	Red Drop action state: Disable
+	Forward action state: Disable
+	Statistic action state: Disable
+	Mirror action state: Disable
+	Meter action state: Disable
+	Inner Vlan translate action state: Disable
+	Inner Priority action state: Enable
+		action: new priority:7
+	Outer Vlan translate action state: Disable
+	Outer Priority action state: Disable
+	Tag status action state: Disable
+	Internal Priority action state: Disable
+	Bypass action state: Disable
+	CPU QID action state: Disable
+	Remark action state: Enable
+		remark DSCP 36
+	Yellow Remark action state: Disable
+	Red Remark action state: Disable
+	Meta Data action state: Disable
+	IP Reserved Flag Invert: Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_VOICE_VLAN_SET
+bash-4.4# #S_CLI_VOICE_VLAN_UNSET
+TiFRONT(config)# 
+interface ge10
+TiFRONT(config-if-ge10)# 
+no voice vlan enable
+TiFRONT(config-if-ge10)# 
+exit
+TiFRONT(config)# 
+no voice vlan 100
+TiFRONT(config)# 
+no voice vlan oui 0006.C400.0000
+TiFRONT(config)# 
+voice vlan dscp 46
+TiFRONT(config)# 
+voice vlan priority 5
+TiFRONT(config)# 
+end
+TiFRONT# 
+show voice vlan
+  Voice Vlan Mode     :	Global
+  Voice Vlan ID       :	1
+  Voice Vlan DSCP     :	46
+  Voice Vlan Priority :	5
+  Voice Vlan CoS Override :	disable
+  Voice Vlan Port
+     None
+  Voice Vlan OUI List
+     None
+TiFRONT# 
+show run interface ge10
+!
+interface ge10
+ no shutdown
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ flowcontrol send off
+ flowcontrol receive off
+ jumbo-frame off
+!
+TiFRONT# 
+configure terminal force
+[ Warning!!! ] Enter multi-configuration mode by the user force.
+System settings can be dangerous in the current force configuration mode. 
+Enter configuration mode status : users[1]
+TiFRONT(config)# 
+#E_CLI_VOICE_VLAN_UNSET
+TiFRONT(config)# #S_SHELL_VOICE_VLAN_UNSET
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+acl dump entry phase 1 entry 25 26
+phase: Ingress ACL
+f13   f12   f11   f10   f9    f8    f7    f6    f5    f4    f3    f2    f1    f0    
+entry 25, template 0
+spm3  spm2  spm1  spm0  ether Dsap  IPTO  vlan  smac2 smac1 smac0 dmac2 dmac1 dmac0 fix   
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0006  c455  0038  0002
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  ffff  ffff  ffff  0003
+entry 26, template 0
+spm3  spm2  spm1  spm0  ether Dsap  IPTO  vlan  smac2 smac1 smac0 dmac2 dmac1 dmac0 fix   
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
+0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000  0000
+ether(ethertype); IPTO(ip-tos-proto); L4SP(l4-sport); 
+L4DP(l4-dport); L34H(l34-header); TCP(tcp-info); 
+FSMSK(field_selector_valid_msk); FS0(field_selector0); FS1(field_selector1); 
+FS2(field_selector2); FS3(field_selector3); FS4(field_selector4); 
+FS5(field_selector5); FS6(field_selector6); FS7(field_selector7); 
+FS8(field_selector8); FS9(field_selector9); FS10(field_selector10); 
+FS11(field_selector11); FS12(field_selector12); FS13(field_selector13); 
+PKT(packet-info); FL(flow-label); Dsap(dsap-ssap); 
+SNAPo(snap-oui); FWVID(fwd-vid); R-CHK(range-check); 
+VGM(vlan-group-mask); META(meta-data); SFV(src-fwd-vlan); 
+mpls1(first-mpls1); mpls2(first-mpls2); dpm0(dpm3); 
+fix(fix field); 
+RTK.0> 
+acl get entry phase 1 entry 25 action
+Ingress ACL entry index 25:
+	Drop action state: Disable
+	Yellow Drop action state: Disable
+	Red Drop action state: Disable
+	Forward action state: Disable
+	Statistic action state: Disable
+	Mirror action state: Disable
+	Meter action state: Disable
+	Inner Vlan translate action state: Disable
+	Inner Priority action state: Disable
+	Outer Vlan translate action state: Disable
+	Outer Priority action state: Disable
+	Tag status action state: Disable
+	Internal Priority action state: Disable
+	Bypass action state: Disable
+	CPU QID action state: Enable
+		qid:2
+	Remark action state: Disable
+	Yellow Remark action state: Disable
+	Red Remark action state: Disable
+	Meta Data action state: Disable
+	IP Reserved Flag Invert: Disable
+RTK.0> 
+acl get entry phase 1 entry 26 action
+Ingress ACL entry index 26:
+	Drop action state: Disable
+	Yellow Drop action state: Disable
+	Red Drop action state: Disable
+	Forward action state: Disable
+	Statistic action state: Disable
+	Mirror action state: Disable
+	Meter action state: Disable
+	Inner Vlan translate action state: Disable
+	Inner Priority action state: Disable
+	Outer Vlan translate action state: Disable
+	Outer Priority action state: Disable
+	Tag status action state: Disable
+	Internal Priority action state: Disable
+	Bypass action state: Disable
+	CPU QID action state: Disable
+	Remark action state: Disable
+	Yellow Remark action state: Disable
+	Red Remark action state: Disable
+	Meta Data action state: Disable
+	IP Reserved Flag Invert: Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_VOICE_VLAN_UNSET
+bash-4.4# 

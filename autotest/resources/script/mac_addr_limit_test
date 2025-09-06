@@ -1,0 +1,41 @@
+#S_CLI_MAC_ADDR_LIMIT_SET
+interface {output_port}
+shutdown
+end
+clear mac address-table dynamic
+clear arp
+configure terminal force
+interface {input_port}
+mac-address limit {limit}
+sleep 15
+end
+show mac-address limit | include {input_port} 
+show mac-table | include {input_port}
+configure terminal force
+#E_CLI_MAC_ADDR_LIMIT_SET
+#S_SHELL_MAC_ADDR_LIMIT_SET
+rtk_user_diag
+l2-table get limit-learning port {in_sdk_port}
+l2-table dump mac-ucast all
+exit
+#E_SHELL_MAC_ADDR_LIMIT_SET
+#S_CLI_MAC_ADDR_LIMIT_UNSET
+interface {input_port}
+mac-address limit unlimited
+end
+sleep 10
+show mac-address limit | include {input_port} 
+show mac-table | include {input_port}
+configure terminal force
+#E_CLI_MAC_ADDR_LIMIT_UNSET
+#S_SHELL_MAC_ADDR_LIMIT_UNSET
+rtk_user_diag
+l2-table get limit-learning port {in_sdk_port}
+l2-table dump mac-ucast all
+exit
+#E_SHELL_MAC_ADDR_LIMIT_UNSET
+#S_CLI_MAC_ADDR_LIMIT_UNSET
+interface {output_port}
+no shutdown
+exit
+#E_CLI_MAC_ADDR_LIMIT_UNSET

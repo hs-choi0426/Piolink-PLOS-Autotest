@@ -1,0 +1,231 @@
+#S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+shutdown
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge5 
+      ge5 | DIS | DOWN | FORC |   100 | HALF | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 32 state
+Port 32 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_NBR1_SHUTDOWN
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SHUTDOWN
+TiFRONT(config)# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+no shutdown
+TiFRONT(config-if-ge5)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge5 
+      ge5 |  EN |  UP  | FORC |   100 | HALF | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 32 state
+Port 32 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_NBR1_NO_SHUTDOWN
+TiFRONT(config)# 
+show portstatus | include ge19 
+     ge19 |  EN |  UP  | AUTO |   100 | HALF | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_NO_SHUTDOWN
+TiFRONT(config)# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+shutdown
+TiFRONT(config-if-ge7)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge7 
+      ge7 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 36 state
+Port 36 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_NBR1_SHUTDOWN
+TiFRONT(config)# 
+show portstatus | include ge21 
+     ge21 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SHUTDOWN
+TiFRONT(config)# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+no shutdown
+TiFRONT(config-if-ge7)# 
+exit
+TiFRONT(config)# 
+show portstatus | include ge7 
+      ge7 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 36 state
+Port 36 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_NBR1_NO_SHUTDOWN
+TiFRONT(config)# 
+show portstatus | include ge21 
+     ge21 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_NO_SHUTDOWN
+TiFRONT(config)# #S_CLI_SHUTDOWN
+TiFRONT(config)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+shutdown
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+show portstatus | include xg1 
+      xg1 | DIS | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_SHUTDOWN
+TiFRONT(config)# #S_SHELL_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 8 state
+Port  8 :
+	Admin : Disable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_SHUTDOWN
+bash-4.4# #S_NBR1_SHUTDOWN
+TiFRONT(config)# 
+show portstatus | include ge23 
+     ge23 |  EN | DOWN | AUTO |     0 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_SHUTDOWN
+TiFRONT(config)# #S_CLI_NO_SHUTDOWN
+TiFRONT(config)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+no shutdown
+TiFRONT(config-if-xg1)# 
+exit
+TiFRONT(config)# 
+show portstatus | include xg1 
+      xg1 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_CLI_NO_SHUTDOWN
+TiFRONT(config)# #S_SHELL_NO_SHUTDOWN
+bash-4.4# 
+rtk_user_diag
+RTK.0> 
+port get port 8 state
+Port  8 :
+	Admin : Enable
+RTK.0> 
+exit
+RTK.0> 
+bash-4.4# 
+#E_SHELL_NO_SHUTDOWN
+bash-4.4# #S_NBR1_NO_SHUTDOWN
+TiFRONT(config)# 
+show portstatus | include ge23 
+     ge23 |  EN |  UP  | AUTO |  1000 | FULL | DIS |  FWD  |  CO 
+TiFRONT(config)# 
+#E_NBR1_NO_SHUTDOWN
+TiFRONT(config)# #S_CLI_RECOVERY
+TiFRONT(config)# 
+interface range all
+TiFRONT(config-if-range)# 
+shutdown
+% Can't shutdown interface ge1. Interface is not up
+TiFRONT(config-if-range)# 
+interface ge2
+TiFRONT(config-if-ge2)# 
+no shut
+TiFRONT(config-if-ge2)# 
+interface ge3
+TiFRONT(config-if-ge3)# 
+no shut
+TiFRONT(config-if-ge3)# 
+interface ge5
+TiFRONT(config-if-ge5)# 
+no shut
+TiFRONT(config-if-ge5)# 
+interface ge7
+TiFRONT(config-if-ge7)# 
+no shut
+TiFRONT(config-if-ge7)# 
+interface xg1
+TiFRONT(config-if-xg1)# 
+no shut
+TiFRONT(config-if-xg1)# 
+interface xg2
+TiFRONT(config-if-xg2)# 
+no shut
+TiFRONT(config-if-xg2)# 
+interface ge4
+TiFRONT(config-if-ge4)# 
+no shut
+TiFRONT(config-if-ge4)# 
+interface ge6
+TiFRONT(config-if-ge6)# 
+no shut
+TiFRONT(config-if-ge6)# 
+interface ge8
+TiFRONT(config-if-ge8)# 
+no shut
+TiFRONT(config-if-ge8)# 
+interface xg2
+TiFRONT(config-if-xg2)# 
+no shut
+TiFRONT(config-if-xg2)# 
+exit
+TiFRONT(config)# 
+#E_CLI_RECOVERY
+TiFRONT(config)# 
