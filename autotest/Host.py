@@ -65,7 +65,7 @@ class _Host(object):
             self._execute_cmd('configure terminal')
 
         elif config == 'shell':
-            self._execute_cmd('at-shell dnflsekqdmfckwdmfrjtdleksmfrmfoTemtdl', prompt='# ')
+            self._execute_cmd('at-shell *******************', prompt='# ')
 
         rets = []
 
